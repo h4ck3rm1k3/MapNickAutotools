@@ -12,7 +12,6 @@ _mapnik_la_SOURCES = \
 	mapnik_envelope.cpp \
 	mapnik_feature.cpp \
 	mapnik_featureset.cpp \
-	mapnik_filter.cpp \
 	mapnik_font_engine.cpp \
 	mapnik_geometry.cpp \
 	mapnik_image.cpp \

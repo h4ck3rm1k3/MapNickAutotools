@@ -13,104 +13,30 @@ endif
 
 
 libmapnik_HEADERS = \
-	agg_renderer.hpp\
-	arrow.hpp \
-	attribute_collector.hpp \
-	attribute_descriptor.hpp \
-	${cairo_inc} \
-	color.hpp \
-	color_factory.hpp \
-	comparison.hpp \
-	config.hpp \
-	config_error.hpp \
-	coord.hpp \
-	coord_array.hpp \
-	css_color_parser.hpp \
-	ctrans.hpp \
-	datasource.hpp \
-	datasource_cache.hpp \
-	distance.hpp \
-	ellipsoid.hpp \
-	enumeration.hpp \
-	envelope.hpp \
-	expression.hpp \
-	factory.hpp \
-	feature.hpp \
-	feature_factory.hpp \
-	feature_layer_desc.hpp \
-	feature_style_processor.hpp \
-	feature_type_style.hpp \
-	fill.hpp \
-	filter.hpp \
-	filter_expression.hpp \
-	filter_factory.hpp \
-	filter_featureset.hpp \
-	filter_parser.hpp \
-	filter_visitor.hpp \
-	font_engine_freetype.hpp \
-	font_set.hpp \
-	gamma.hpp \
-	geometry.hpp \
-	geom_util.hpp \
-	global.hpp \
-	graphics.hpp \
-	hit_test_filter.hpp \
-	image_data.hpp \
-	image_reader.hpp \
-	image_util.hpp \
-	image_view.hpp \
-	jpeg_io.hpp \
-	label_collision_detector.hpp \
-	label_placement.hpp \
-	layer.hpp \
-	${libxml2_inc} \
-	line_pattern_symbolizer.hpp \
-	line_symbolizer.hpp \
-	load_map.hpp \
-	local_datasource.hpp \
-	logical.hpp \
-	map.hpp \
-	markers_converter.hpp \
-	markers_symbolizer.hpp \
-	math_expr.hpp \
-	memory.hpp \
-	memory_datasource.hpp \
-	memory_featureset.hpp \
-	octree.hpp \
-	params.hpp \
-	placement_finder.hpp \
-	plugin.hpp \
-	png_io.hpp \
-	point_symbolizer.hpp \
-	polygon_pattern_symbolizer.hpp \
-	polygon_symbolizer.hpp \
-	pool.hpp \
-	projection.hpp \
-	proj_transform.hpp \
-	ptree_helpers.hpp \
-	quad_tree.hpp \
-	query.hpp \
-	raster.hpp \
-	raster_symbolizer.hpp \
-	regex_filter.hpp \
-	rule.hpp \
-	save_map.hpp \
-	scale_denominator.hpp \
-	shield_symbolizer.hpp \
-	spatial.hpp \
-	stroke.hpp \
-	style.hpp \
-	style_factory.hpp \
-	symbolizer.hpp \
-	text_path.hpp \
-	text_symbolizer.hpp \
-	unicode.hpp \
-	utils.hpp \
-	value.hpp \
-	vertex.hpp \
-	vertex_transform.hpp \
-	vertex_vector.hpp \
-	wkb.hpp
+	agg_renderer.hpp          feature_factory.hpp           layer.hpp                       quad_tree.hpp\
+arrow.hpp                 feature.hpp                   libxml2_loader.hpp              query.hpp									  \
+attribute_collector.hpp   feature_layer_desc.hpp        line_pattern_symbolizer.hpp     raster.hpp									  \
+attribute_descriptor.hpp  feature_style_processor.hpp   line_symbolizer.hpp             raster_symbolizer.hpp								  \
+box2d.hpp                 feature_type_style.hpp        load_map.hpp                    rule.hpp									  \
+cairo_renderer.hpp        fill.hpp                      map.hpp                         save_map.hpp									  \
+color_factory.hpp         filter_factory.hpp            markers_converter.hpp           scale_denominator.hpp								  \
+color.hpp                 filter_featureset.hpp         markers_symbolizer.hpp          shield_symbolizer.hpp								  \
+config_error.hpp          font_engine_freetype.hpp      memory_datasource.hpp           stroke.hpp									  \
+config.hpp                font_set.hpp                  memory_featureset.hpp           style_factory.hpp								  \
+coord_array.hpp           gamma.hpp                     memory.hpp                      style.hpp									  \
+coord.hpp                 geometry.hpp                  octree.hpp                      symbolizer.hpp									  \
+css_color_grammar.hpp     geom_util.hpp                 params.hpp                      text_path.hpp									  \
+ctrans.hpp                global.hpp                    path_expression_grammar.hpp     text_symbolizer.hpp								  \
+datasource_cache.hpp      graphics.hpp                  placement_finder.hpp            unicode.hpp									  \
+datasource.hpp            hit_test_filter.hpp           plugin.hpp                      utils.hpp									  \
+distance.hpp              image_cache.hpp               png_io.hpp                      value.hpp									  \
+ellipsoid.hpp             image_data.hpp                point_symbolizer.hpp            version.hpp									  \
+enumeration.hpp           image_reader.hpp              polygon_pattern_symbolizer.hpp  vertex.hpp									  \
+expression_evaluator.hpp  image_util.hpp                polygon_symbolizer.hpp          vertex_transform.hpp								  \
+expression_grammar.hpp    image_view.hpp                pool.hpp                        vertex_vector.hpp								  \
+expression_node.hpp       jpeg_io.hpp                   projection.hpp                  wall_clock_timer.hpp								  \
+expression_string.hpp     label_collision_detector.hpp  proj_transform.hpp              wkb.hpp factory.hpp               label_placement.hpp           ptree_helpers.hpp
+
 
 EXTRA_DIST = \
 	$(libmapnik_HEADERS)
