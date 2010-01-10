@@ -80,6 +80,8 @@ m4_include(m4/ax_lib_postgresql.m4)
 m4_include(m4/ax_lib_sqlite3.m4)	
 
 
+m4_include(m4/freetype2.m4)	
+
 AX_BOOST_BASE
 if test "$succeeded" != "yes" ; then
   echo "Error: You need to install the boost library!"
@@ -237,6 +239,19 @@ if [ test "x$enable_cairo" = "xyes"]; then
 else
   AC_MSG_RESULT(no)
 fi
+
+
+AC_CHECK_FT2(2.0.5,
+    [have_freetype=true
+     FREETYPE_CFLAGS=
+     FREETYPE_LIBS=$FT2_LIBS
+     CXXFLAGS +="$FT2_CFLAGS"
+     LDFLAGS +="$FT2_LIBS"
+
+     AC_DEFINE(HAVE_FREETYPE,, Freetype support library available)
+     yn_have_freetype=yes],
+     AC_MSG_ERROR([NO FREETYPE found])
+     )
 
 #dnl Set PACKAGE SOURCE DIR in config.h.
 packagesrcdir=`cd $srcdir && pwd`

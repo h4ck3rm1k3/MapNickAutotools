@@ -26,10 +26,11 @@ osm_la_CXXFLAGS = \
   ${PROFILING_CFLAGS} \
   ${TRACING_CFLAGS} \
 	-I../../../include \
-	${LIBXML2_CFLAGS}
+	${LIBXML2_CFLAGS} \
+	${FT2_CFLAGS}
 
 osm_la_LIBADD = \
-	${LIBXML2_LIBS}
+	${LIBXML2_LIBS} ${FT2_LIBS}
 
 osm_la_LDFLAGS = \
 	-module \
