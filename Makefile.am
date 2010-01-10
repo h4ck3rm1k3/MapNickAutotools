@@ -8,7 +8,8 @@ SUBDIRS = agg \
 	plugins\
 	include \
 	bindings \
-	utils
+	utils \
+	demo 
 
 
 mapnikdocdir = ${prefix}/doc/mapnik

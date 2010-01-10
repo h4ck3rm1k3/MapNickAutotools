@@ -1,0 +1,20 @@
+bin_PROGRAMS = cppdemo 
+
+cppdemo_SOURCES= rundemo.cpp
+
+CXX = g++
+
+cppdemo_CXXFLAGS = \
+  -Wall \
+  $(DEFINES) $(INCLUDE) -Wall \
+  ${PROFILING_CFLAGS} \
+  ${TRACING_CFLAGS} \
+	-I../../../include \
+	${LIBXML2_CFLAGS} \
+	`pkg-config --cflags cairomm-1.0` \
+	${FT2_CFLAGS}
+
+osm_la_LIBADD = \
+	${LIBXML2_LIBS} ${FT2_LIBS} \
+	`pkg-config --libs  cairomm-1.0`
+
