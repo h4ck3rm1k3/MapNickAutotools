@@ -57,8 +57,10 @@ libmapnik_la_SOURCES = \
 	text_symbolizer.cpp \
 	tiff_reader.cpp \
 	unicode.cpp \
-	wkb.cpp
-
+	wkb.cpp \
+	box2d.cpp \
+	expression_string.cpp \
+	image_cache.cpp 
 
 libmapnik_la_LIBADD = \
 	${PNG_LIBS} \

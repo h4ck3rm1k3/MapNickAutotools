@@ -101,7 +101,7 @@ am__libmapnik_la_SOURCES_DIST = agg_renderer.cpp arrow.cpp \
 	projection.cpp proj_transform.cpp save_map.cpp \
 	scale_denominator.cpp shield_symbolizer.cpp stroke.cpp \
 	symbolizer.cpp text_symbolizer.cpp tiff_reader.cpp unicode.cpp \
-	wkb.cpp
+	wkb.cpp box2d.cpp expression_string.cpp image_cache.cpp
 @HAVE_CAIRO_TRUE@am__objects_1 = libmapnik_la-cairo_renderer.lo
 @HAVE_LIBXML2_TRUE@am__objects_2 = libmapnik_la-libxml2_loader.lo
 am_libmapnik_la_OBJECTS = libmapnik_la-agg_renderer.lo \
@@ -123,7 +123,8 @@ am_libmapnik_la_OBJECTS = libmapnik_la-agg_renderer.lo \
 	libmapnik_la-shield_symbolizer.lo libmapnik_la-stroke.lo \
 	libmapnik_la-symbolizer.lo libmapnik_la-text_symbolizer.lo \
 	libmapnik_la-tiff_reader.lo libmapnik_la-unicode.lo \
-	libmapnik_la-wkb.lo
+	libmapnik_la-wkb.lo libmapnik_la-box2d.lo \
+	libmapnik_la-expression_string.lo libmapnik_la-image_cache.lo
 libmapnik_la_OBJECTS = $(am_libmapnik_la_OBJECTS)
 libmapnik_la_LINK = $(LIBTOOL) --tag=CXX $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(libmapnik_la_CXXFLAGS) \
@@ -374,7 +375,10 @@ libmapnik_la_SOURCES = \
 	text_symbolizer.cpp \
 	tiff_reader.cpp \
 	unicode.cpp \
-	wkb.cpp
+	wkb.cpp \
+	box2d.cpp \
+	expression_string.cpp \
+	image_cache.cpp 
 
 libmapnik_la_LIBADD = \
 	${PNG_LIBS} \
@@ -483,14 +487,17 @@ distclean-compile:
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libmapnik_la-agg_renderer.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libmapnik_la-arrow.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libmapnik_la-box2d.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libmapnik_la-cairo_renderer.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libmapnik_la-color.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libmapnik_la-datasource_cache.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libmapnik_la-distance.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libmapnik_la-expression_string.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libmapnik_la-filter_factory.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libmapnik_la-font_engine_freetype.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libmapnik_la-font_set.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libmapnik_la-graphics.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libmapnik_la-image_cache.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libmapnik_la-image_reader.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libmapnik_la-image_util.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libmapnik_la-layer.Plo@am__quote@
@@ -790,6 +797,27 @@ libmapnik_la-wkb.lo: wkb.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='wkb.cpp' object='libmapnik_la-wkb.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(LIBTOOL)  --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmapnik_la_CXXFLAGS) $(CXXFLAGS) -c -o libmapnik_la-wkb.lo `test -f 'wkb.cpp' || echo '$(srcdir)/'`wkb.cpp
+
+libmapnik_la-box2d.lo: box2d.cpp
+@am__fastdepCXX_TRUE@	$(LIBTOOL)  --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmapnik_la_CXXFLAGS) $(CXXFLAGS) -MT libmapnik_la-box2d.lo -MD -MP -MF $(DEPDIR)/libmapnik_la-box2d.Tpo -c -o libmapnik_la-box2d.lo `test -f 'box2d.cpp' || echo '$(srcdir)/'`box2d.cpp
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/libmapnik_la-box2d.Tpo $(DEPDIR)/libmapnik_la-box2d.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='box2d.cpp' object='libmapnik_la-box2d.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(LIBTOOL)  --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmapnik_la_CXXFLAGS) $(CXXFLAGS) -c -o libmapnik_la-box2d.lo `test -f 'box2d.cpp' || echo '$(srcdir)/'`box2d.cpp
+
+libmapnik_la-expression_string.lo: expression_string.cpp
+@am__fastdepCXX_TRUE@	$(LIBTOOL)  --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmapnik_la_CXXFLAGS) $(CXXFLAGS) -MT libmapnik_la-expression_string.lo -MD -MP -MF $(DEPDIR)/libmapnik_la-expression_string.Tpo -c -o libmapnik_la-expression_string.lo `test -f 'expression_string.cpp' || echo '$(srcdir)/'`expression_string.cpp
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/libmapnik_la-expression_string.Tpo $(DEPDIR)/libmapnik_la-expression_string.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='expression_string.cpp' object='libmapnik_la-expression_string.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(LIBTOOL)  --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmapnik_la_CXXFLAGS) $(CXXFLAGS) -c -o libmapnik_la-expression_string.lo `test -f 'expression_string.cpp' || echo '$(srcdir)/'`expression_string.cpp
+
+libmapnik_la-image_cache.lo: image_cache.cpp
+@am__fastdepCXX_TRUE@	$(LIBTOOL)  --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmapnik_la_CXXFLAGS) $(CXXFLAGS) -MT libmapnik_la-image_cache.lo -MD -MP -MF $(DEPDIR)/libmapnik_la-image_cache.Tpo -c -o libmapnik_la-image_cache.lo `test -f 'image_cache.cpp' || echo '$(srcdir)/'`image_cache.cpp
+@am__fastdepCXX_TRUE@	$(am__mv) $(DEPDIR)/libmapnik_la-image_cache.Tpo $(DEPDIR)/libmapnik_la-image_cache.Plo
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='image_cache.cpp' object='libmapnik_la-image_cache.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(LIBTOOL)  --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libmapnik_la_CXXFLAGS) $(CXXFLAGS) -c -o libmapnik_la-image_cache.lo `test -f 'image_cache.cpp' || echo '$(srcdir)/'`image_cache.cpp
 
 mostlyclean-libtool:
 	-rm -f *.lo
