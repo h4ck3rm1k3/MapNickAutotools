@@ -29,6 +29,7 @@
 #include <mapnik/color_factory.hpp>
 #include <mapnik/image_util.hpp>
 #include <mapnik/config_error.hpp>
+#include <mapnik/expression_string.hpp>
 
 #if defined(HAVE_CAIRO)
 // cairo
@@ -162,7 +163,10 @@ int main ( int argc , char** argv)
         
         feature_type_style popplaces_style;
         rule_type popplaces_rule;
-        text_symbolizer popplaces_text_symbolizer("GEONAME","DejaVu Sans Book",10,color(0,0,0));
+
+	//expression_string aname (std::string("GEONAME"));
+	//expression_ptr aPtr(aname);
+        text_symbolizer popplaces_text_symbolizer(parse_expression("'GEONAME'"),std::string("DejaVu Sans Book"),10,color(0,0,0));
         popplaces_text_symbolizer.set_halo_fill(color(255,255,200));
         popplaces_text_symbolizer.set_halo_radius(1);
         popplaces_rule.append(popplaces_text_symbolizer);

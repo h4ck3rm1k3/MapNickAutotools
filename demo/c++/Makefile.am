@@ -9,12 +9,14 @@ cppdemo_CXXFLAGS = \
   $(DEFINES) $(INCLUDE) -Wall \
   ${PROFILING_CFLAGS} \
   ${TRACING_CFLAGS} \
-	-I../../../include \
+	-I../../include \
 	${LIBXML2_CFLAGS} \
 	`pkg-config --cflags cairomm-1.0` \
 	${FT2_CFLAGS}
 
-osm_la_LIBADD = \
+cppdemo_LDFLAGS = \
 	${LIBXML2_LIBS} ${FT2_LIBS} \
-	`pkg-config --libs  cairomm-1.0`
+	`pkg-config --libs  cairomm-1.0` \
+	../../src/libmapnik.la 
+
 

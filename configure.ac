@@ -243,11 +243,8 @@ fi
 
 AC_CHECK_FT2(2.0.5,
     [have_freetype=true
-     FREETYPE_CFLAGS=
+     FREETYPE_CFLAGS=$FT2_CFLAGS
      FREETYPE_LIBS=$FT2_LIBS
-     CXXFLAGS +="$FT2_CFLAGS"
-     LDFLAGS +="$FT2_LIBS"
-
      AC_DEFINE(HAVE_FREETYPE,, Freetype support library available)
      yn_have_freetype=yes],
      AC_MSG_ERROR([NO FREETYPE found])
@@ -324,6 +321,8 @@ AC_DEFINE_UNQUOTED(PACKAGE_SOURCE_DIR, "${packagesrcdir}","")
 
 AC_OUTPUT([
 Makefile
+demo/Makefile
+demo/c++/Makefile
 include/Makefile
 include/mapnik/Makefile
 agg/Makefile
