@@ -63,4 +63,15 @@ report.txt:
 	echo TEST $(patsubst %.hpp, %.hpp.gch ,$(libmapnik_HEADERS))
 
 %.hpp.gch: %.hpp
-	$(CXX) -c $< 
+	$(CXX) -I ../.. -I .. -I  	${PROFILING_CFLAGS} \
+	${TRACING_CFLAGS} \
+	${PNG_CFLAGS} \
+	${FREETYPE2_CFLAGS} \
+	${AGG_CFLAGS} \
+	${JPEG_CFLAGS} \
+	${TIFF_CFLAGS} \
+	${PROJ_CFLAGS} \
+	${LTDL_CFLAGS} \
+	${BOOST_CPPFLAGS} \
+	${LIBXML2_CFLAGS} \
+	${CAIRO_CFLAGS} -c $< 

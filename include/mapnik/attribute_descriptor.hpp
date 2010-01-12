@@ -25,9 +25,10 @@
 #ifndef ATTRIBUTE_DESCRIPTOR
 #define ATTRIBUTE_DESCRIPTOR
 
-#include <string>
+#include "stdinc.hpp"
 
 namespace mapnik {
+  template <class etyp
     struct attribute_desc
     {
         std::string name;

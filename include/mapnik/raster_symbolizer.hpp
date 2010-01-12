@@ -24,7 +24,7 @@
 #ifndef RASTER_SYMBOLIZER_HPP
 #define RASTER_SYMBOLIZER_HPP
 
-#include <mapnik/config.hpp>
+#include "stdinc.hpp"
 
 namespace mapnik
 {

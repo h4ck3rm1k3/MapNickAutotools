@@ -24,16 +24,18 @@
 #ifndef _OCTREE_HPP_
 #define _OCTREE_HPP_
 
+ #include "stdinc.hpp"
+
 // mapnik
-#include <mapnik/global.hpp>
+// #include <mapnik/global.hpp>
 
-// boost
-#include <boost/utility.hpp>
+// // boost
+// #include <boost/utility.hpp>
 
-// stl
-#include <vector>
-#include <iostream>
-#include <deque>
+// // stl
+// #include <vector>
+// #include <iostream>
+// #include <deque>
 
 namespace mapnik {
 	
