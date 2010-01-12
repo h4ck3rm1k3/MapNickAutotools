@@ -68,10 +68,11 @@ report.txt:
 	${PNG_CFLAGS} \
 	${FREETYPE2_CFLAGS} \
 	${AGG_CFLAGS} \
-	${JPEG_CFLAGS} \
-	${TIFF_CFLAGS} \
-	${PROJ_CFLAGS} \
-	${LTDL_CFLAGS} \
 	${BOOST_CPPFLAGS} \
 	${LIBXML2_CFLAGS} \
 	${CAIRO_CFLAGS} -c $< 
+
+# ${JPEG_CFLAGS} \
+# ${TIFF_CFLAGS} \
+# ${PROJ_CFLAGS} \
+# ${LTDL_CFLAGS} \
