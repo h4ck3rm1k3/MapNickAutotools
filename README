@@ -8,7 +8,18 @@ Then :
 
 then make
 
+plans are:
 
+1.  to enable a full static running , to work on generating c++ code from the templates, then to compile that code again to eliminate 
+unneeded evaluation code. 
+
+It should work like this :
+
+file :
+     class for some rule 
+     class for some condition
+     
+2. to make the compile time fast, to use precompiled headers.
 
 Mapnik is an OpenSource C++/Python toolkit for developing 
 GIS (Geographic Information Systems) applications. At the core is a C++ shared 

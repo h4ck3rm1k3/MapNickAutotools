@@ -88,61 +88,61 @@ if test "$succeeded" != "yes" ; then
   exit
 fi
 
-AX_BOOST_THREAD
-if test "x$ax_cv_boost_thread" = "xno"; then
-  echo
-  echo "Error: You need to install the boost thread library!"
-  echo
-  exit
-fi
+dnl AX_BOOST_THREAD
+dnl if test "x$ax_cv_boost_thread" = "xno"; then
+dnl   echo
+dnl   echo "Error: You need to install the boost thread library!"
+dnl   echo
+dnl   exit
+dnl fi
 
-AX_BOOST_FILESYSTEM
-if test "x$ax_cv_boost_filesystem" = "xno"; then
-  echo
-  echo "Error: You need to install the boost filesystem library!"
-  echo
-  exit
-fi
+dnl AX_BOOST_FILESYSTEM
+dnl if test "x$ax_cv_boost_filesystem" = "xno"; then
+dnl   echo
+dnl   echo "Error: You need to install the boost filesystem library!"
+dnl   echo
+dnl   exit
+dnl fi
 
-AX_BOOST_REGEX
-if test "x$ax_cv_boost_regex" = "xno"; then
-  echo
-  echo "Error: You need to install the boost regex library!"
-  echo
-  exit
-fi
+dnl AX_BOOST_REGEX
+dnl if test "x$ax_cv_boost_regex" = "xno"; then
+dnl   echo
+dnl   echo "Error: You need to install the boost regex library!"
+dnl   echo
+dnl   exit
+dnl fi
 
-AX_BOOST_SERIALIZATION
-if test "x$ax_cv_boost_serialization" = "xno"; then
-  echo
-  echo "Error: You need to install the boost serialization library!"
-  echo
-  exit
-fi
+dnl AX_BOOST_SERIALIZATION
+dnl if test "x$ax_cv_boost_serialization" = "xno"; then
+dnl   echo
+dnl   echo "Error: You need to install the boost serialization library!"
+dnl   echo
+dnl   exit
+dnl fi
 
-AX_BOOST_IOSTREAMS
-if test "x$ax_cv_boost_iostreams" = "xno"; then
-  echo
-  echo "Error: You need to install the boost iostreams library!"
-  echo
-  exit
-fi
+dnl AX_BOOST_IOSTREAMS
+dnl if test "x$ax_cv_boost_iostreams" = "xno"; then
+dnl   echo
+dnl   echo "Error: You need to install the boost iostreams library!"
+dnl   echo
+dnl   exit
+dnl fi
 
 AX_BOOST_PROGRAM_OPTIONS
 AM_CONDITIONAL(HAVE_BOOST_PROGRAM_OPTIONS, test "x$ax_cv_boost_program_options" = "xyes")
 
-dnl check to build python bindings
-AX_BOOST_PYTHON
+dnl dnl check to build python bindings
+dnl AX_BOOST_PYTHON
 
-AM_PATH_PYTHON([2.4])
+dnl AM_PATH_PYTHON([2.4])
 
-AX_LIB_POSTGRESQL
-if test "x$found_postgresql" = "xyes"; then
-  echo "checking whether to enable postgresql... yes"
-else
-  echo "checking whether to enable postgresql... no"
-fi
-AM_CONDITIONAL(HAVE_POSTGRESQL, test "x$found_postgresql" = "xyes")
+dnl AX_LIB_POSTGRESQL
+dnl if test "x$found_postgresql" = "xyes"; then
+dnl   echo "checking whether to enable postgresql... yes"
+dnl else
+dnl   echo "checking whether to enable postgresql... no"
+dnl fi
+dnl AM_CONDITIONAL(HAVE_POSTGRESQL, test "x$found_postgresql" = "xyes")
 
 AC_ARG_WITH(gdal-config,
 [  --with-gdal-config=GDAL_CONFIG    use gdal-config specified ],
@@ -187,12 +187,12 @@ if test "x$link_ltdl" = "xno"; then
   exit
 fi
 
-## test for optional sqlite3 support
-AX_LIB_SQLITE3
-if [ test "x$success" = "xyes"]; then
-  found_sqlite3="yes"
-fi
-AM_CONDITIONAL(HAVE_SQLITE3, test "x$success" = "xyes")
+dnl ## test for optional sqlite3 support
+dnl AX_LIB_SQLITE3
+dnl if [ test "x$success" = "xyes"]; then
+dnl   found_sqlite3="yes"
+dnl fi
+dnl AM_CONDITIONAL(HAVE_SQLITE3, test "x$success" = "xyes")
 
 PKG_CHECK_MODULES(PNG, libpng)
 AC_SUBST(PNG_CFLAGS)
