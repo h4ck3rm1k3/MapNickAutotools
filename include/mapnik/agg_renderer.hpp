@@ -26,17 +26,8 @@
 #define AGG_RENDERER_HPP
 
 // mapnik
-#include <mapnik/config.hpp>
-#include <mapnik/feature_style_processor.hpp>
-#include <mapnik/font_engine_freetype.hpp>
-#include <mapnik/label_collision_detector.hpp>
-#include <mapnik/placement_finder.hpp>
-#include <mapnik/map.hpp>
+#include "stdinc.hpp"   
 
-// boost
-#include <boost/utility.hpp>
-#include <boost/scoped_ptr.hpp>
-   
 namespace mapnik {
    
    struct rasterizer;

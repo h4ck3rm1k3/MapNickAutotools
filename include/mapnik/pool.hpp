@@ -26,21 +26,21 @@
 #define POOL_HPP
 
 // mapnik
-#include <mapnik/utils.hpp>
-// boost
-#include <boost/shared_ptr.hpp>
-#include <boost/utility.hpp>
+// #include <mapnik/utils.hpp>
+// // boost
+// #include <boost/shared_ptr.hpp>
+// #include <boost/utility.hpp>
 
-#ifdef MAPNIK_THREADSAFE
-#include <boost/thread/mutex.hpp>
-#endif
+// #ifdef MAPNIK_THREADSAFE
+// #include <boost/thread/mutex.hpp>
+// #endif
 
-// stl
-#include <iostream>
-#include <map>
-#include <deque>
-#include <ctime>
-
+// // stl
+// #include <iostream>
+// #include <map>
+// #include <deque>
+// #include <ctime>
+#include "stdinc.hpp"
 namespace mapnik
 {
    template <typename T, typename PoolT>

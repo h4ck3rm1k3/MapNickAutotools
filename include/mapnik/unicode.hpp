@@ -25,15 +25,16 @@
 #define UNICODE_HPP
 
 //mapnik
-#include <mapnik/config.hpp>
-// icu
-#include <unicode/unistr.h>
-#include <unicode/ucnv.h>
-// boost
-#include <boost/utility.hpp>
-// stl
-#include <string>
+// #include <mapnik/config.hpp>
+// // icu
+// #include <unicode/unistr.h>
+// #include <unicode/ucnv.h>
+// // boost
+// #include <boost/utility.hpp>
+// // stl
+// #include <string>
 
+#include "stdinc.hpp"
 namespace mapnik {
    class MAPNIK_DECL transcoder : private boost::noncopyable
    {

@@ -25,37 +25,37 @@
 #ifndef FONT_ENGINE_FREETYPE_HPP
 #define FONT_ENGINE_FREETYPE_HPP
 // mapnik
-#include <mapnik/color.hpp>
-#include <mapnik/utils.hpp>
-#include <mapnik/ctrans.hpp>
-#include <mapnik/geometry.hpp>
-#include <mapnik/text_path.hpp>
-#include <mapnik/font_set.hpp>
+// #include <mapnik/color.hpp>
+// #include <mapnik/utils.hpp>
+// #include <mapnik/ctrans.hpp>
+// #include <mapnik/geometry.hpp>
+// #include <mapnik/text_path.hpp>
+// #include <mapnik/font_set.hpp>
 
-// freetype2
-extern "C"
-{
-#include <ft2build.h>
-#include FT_FREETYPE_H
-#include FT_GLYPH_H
-}
+// // freetype2
+// extern "C"
+// {
+// #include <ft2build.h>
+// #include FT_FREETYPE_H
+// #include FT_GLYPH_H
+// }
 
-// boost
-#include <boost/shared_ptr.hpp>
-#include <boost/utility.hpp>
-#include <boost/ptr_container/ptr_vector.hpp>
-#include <boost/thread/mutex.hpp>
+// // boost
+// #include <boost/shared_ptr.hpp>
+// #include <boost/utility.hpp>
+// #include <boost/ptr_container/ptr_vector.hpp>
+// #include <boost/thread/mutex.hpp>
 
-// stl
-#include <string>
-#include <vector>
-#include <map>
-#include <iostream>
+// // stl
+// #include <string>
+// #include <vector>
+// #include <map>
+// #include <iostream>
 
-// icu
-#include <unicode/ubidi.h>
-#include <unicode/ushape.h>
-
+// // icu
+// #include <unicode/ubidi.h>
+// #include <unicode/ushape.h>
+#include "stdinc.hpp"   
 namespace mapnik
 {
     class font_face;

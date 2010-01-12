@@ -25,10 +25,10 @@
 #ifndef WKB_HPP
 #define WKB_HPP
 
-#include <mapnik/geometry.hpp>
-#include <mapnik/ctrans.hpp>
-#include <mapnik/feature.hpp>
-
+// #include <mapnik/geometry.hpp>
+// #include <mapnik/ctrans.hpp>
+// #include <mapnik/feature.hpp>
+#include "stdinc.hpp"
 namespace mapnik
 {
 

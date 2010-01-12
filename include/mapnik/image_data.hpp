@@ -25,9 +25,11 @@
 #ifndef IMAGE_DATA_HPP
 #define IMAGE_DATA_HPP
 
-#include <mapnik/global.hpp>
-#include <cassert>
-#include <cstring>
+// #include <mapnik/global.hpp>
+// #include <cassert>
+// #include <cstring>
+
+#include "stdinc.hpp"   
 
 namespace mapnik 
 {

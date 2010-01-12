@@ -25,9 +25,9 @@
 #ifndef MAPNIK_FILTER_FACTORY_HPP
 #define MAPNIK_FILTER_FACTORY_HPP
 
-#include <mapnik/config.hpp>
-#include <mapnik/expression_grammar.hpp>
-
+// #include <mapnik/config.hpp>
+// #include <mapnik/expression_grammar.hpp>
+#include "stdinc.hpp"   
 namespace mapnik
 {
 

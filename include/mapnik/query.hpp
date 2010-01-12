@@ -26,12 +26,12 @@
 #define QUERY_HPP
 
 //mapnik
-#include <mapnik/box2d.hpp>
-#include <mapnik/feature.hpp>
-// stl
-#include <set>
-#include <limits>
-
+// #include <mapnik/box2d.hpp>
+// #include <mapnik/feature.hpp>
+// // stl
+// #include <set>
+// #include <limits>
+#include "stdinc.hpp"
 namespace mapnik {
    class query 
    {

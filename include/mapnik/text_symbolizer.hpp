@@ -26,18 +26,18 @@
 #define MAPNIK_TEXT_SYMBOLIZER_HPP
 
 // mapnik
-#include <mapnik/enumeration.hpp>
-#include <mapnik/color.hpp>
-#include <mapnik/font_set.hpp>
-#include <mapnik/graphics.hpp>
-#include <mapnik/expression_node.hpp>
+// #include <mapnik/enumeration.hpp>
+// #include <mapnik/color.hpp>
+// #include <mapnik/font_set.hpp>
+// #include <mapnik/graphics.hpp>
+// #include <mapnik/expression_node.hpp>
 
-// boost
-#include <boost/tuple/tuple.hpp>
-#include <boost/shared_ptr.hpp>
-// stl
-#include <string>
-
+// // boost
+// #include <boost/tuple/tuple.hpp>
+// #include <boost/shared_ptr.hpp>
+// // stl
+// #include <string>
+#include "stdinc.hpp"
 namespace mapnik
 {
    enum label_placement_enum {

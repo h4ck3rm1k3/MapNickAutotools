@@ -23,9 +23,9 @@
 #ifndef MAPNIK_WALL_CLOCK_TIMER_INCLUDED
 #define MAPNIK_WALL_CLOCK_TIMER_INCLUDED
 
-#include <cstdlib>
-#include <sys/time.h> 
-
+// #include <cstdlib>
+// #include <sys/time.h> 
+#include "stdinc.hpp"
 namespace mapnik {
 
     // This is a class with a similar signature to boost::timer, but which measures

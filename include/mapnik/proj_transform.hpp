@@ -26,10 +26,10 @@
 #define PROJ_TRANSFORM_HPP
 
 // mapnik
-#include <mapnik/projection.hpp>
-// boost
-#include <boost/utility.hpp>
-
+// #include <mapnik/projection.hpp>
+// // boost
+// #include <boost/utility.hpp>
+#include "stdinc.hpp"
 namespace mapnik {
     
     class MAPNIK_DECL proj_transform : private boost::noncopyable

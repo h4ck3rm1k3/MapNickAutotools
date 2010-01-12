@@ -25,12 +25,12 @@
 #define MAPNIK_SYMBOLIZER_HPP
 
 // mapnik
-#include <mapnik/config.hpp>
-#include <mapnik/path_expression_grammar.hpp>
+// #include <mapnik/config.hpp>
+// #include <mapnik/path_expression_grammar.hpp>
 
-// stl
-#include <string>
-
+// // stl
+// #include <string>
+#include "stdinc.hpp"
 namespace mapnik 
 {
 

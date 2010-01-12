@@ -76,19 +76,25 @@
 #include <vector>
 
 
-
+// #include <mapnik/config.hpp>
+// #include <mapnik/coord.hpp>
+// // boost
+// #include <boost/operators.hpp>
+// // stl
+// #include <iomanip>
+#include <mapnik/config.hpp>
+#include <mapnik/coord.hpp>
 #include <mapnik/box2d.hpp>
 #include <mapnik/color_factory.hpp>
 #include <mapnik/color.hpp>
 #include <mapnik/config_error.hpp>
-#include <mapnik/config.hpp>
+
 #include <mapnik/coord_array.hpp>
-#include <mapnik/coord.hpp>
+
 #include <mapnik/css_color_grammar.hpp>
 #include <mapnik/ctrans.hpp>
 #include <mapnik/datasource.hpp>
 #include <mapnik/enumeration.hpp>
-#include <mapnik/expression_evaluator.hpp>
 #include <mapnik/expression_grammar.hpp>
 #include <mapnik/expression_node.hpp>
 #include <mapnik/feature_factory.hpp> // TODO remove
@@ -130,9 +136,19 @@
 #include <mapnik/symbolizer.hpp>
 
 
-#include <mapnik/feature_type_style.hpp>
-#include <mapnik/map.hpp>
-#include <mapnik/attribute_collector.hpp>
+
+
+
+// // mapnik
+// #include <mapnik/feature_layer_desc.hpp>
+// #include <mapnik/rule.hpp>
+// #include <mapnik/path_expression_grammar.hpp>
+
+// // boost
+// #include <boost/utility.hpp>
+// #include <boost/variant.hpp>
+// #include <boost/concept_check.hpp>
+
 #include <mapnik/text_symbolizer.hpp>
 #include <mapnik/raster_symbolizer.hpp>
 
@@ -150,25 +166,9 @@
 #include <mapnik/line_pattern_symbolizer.hpp>
 #include <mapnik/line_symbolizer.hpp>
 #include <mapnik/markers_symbolizer.hpp>
-
-
-
-#ifdef MAPNIK_DEBUG
-//#include <mapnik/wall_clock_timer.hpp>
-#endif
-// // mapnik
-// #include <mapnik/box2d.hpp>
-// #include <mapnik/datasource.hpp>
-// #include <mapnik/layer.hpp>
-// #include <mapnik/map.hpp>
-// #include <mapnik/attribute_collector.hpp>
-// #include <mapnik/expression_evaluator.hpp>
-// #include <mapnik/utils.hpp>
-// #include <mapnik/projection.hpp>
-// #include <mapnik/scale_denominator.hpp>
-#include <mapnik/feature_style_processor.hpp>
 #include <mapnik/polygon_pattern_symbolizer.hpp>
 
+#include <mapnik/attribute_collector.hpp>
 
 // #include <mapnik/line_symbolizer.hpp>
 // #include <mapnik/line_pattern_symbolizer.hpp>
@@ -187,3 +187,43 @@
 // #include <vector>
 #include <mapnik/rule.hpp>
 
+#include <mapnik/feature_type_style.hpp> // needs attribute collector
+
+#include <mapnik/map.hpp> // needs  feature_type_style.hpp
+
+
+
+#ifdef MAPNIK_DEBUG
+//#include <mapnik/wall_clock_timer.hpp>
+#endif
+// // mapnik
+// #include <mapnik/box2d.hpp>
+// #include <mapnik/datasource.hpp>
+// #include <mapnik/layer.hpp>
+// #include <mapnik/map.hpp>
+// #include <mapnik/attribute_collector.hpp>
+// #include <mapnik/expression_evaluator.hpp>
+// #include <mapnik/utils.hpp>
+// #include <mapnik/projection.hpp>
+// #include <mapnik/scale_denominator.hpp>
+#include <mapnik/expression_evaluator.hpp>
+#include <mapnik/feature_style_processor.hpp>
+
+
+
+
+
+
+
+
+// #include <mapnik/config.hpp>
+// #include <mapnik/feature_style_processor.hpp>
+// #include <mapnik/font_engine_freetype.hpp>
+// #include <mapnik/label_collision_detector.hpp>
+// #include <mapnik/placement_finder.hpp>
+// #include <mapnik/map.hpp>
+
+// // boost
+// #include <boost/utility.hpp>
+// #include <boost/scoped_ptr.hpp>
+// agg_render.hpp

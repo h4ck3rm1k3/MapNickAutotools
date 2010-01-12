@@ -26,9 +26,9 @@
 #ifndef __TEXT_PATH_H__
 #define __TEXT_PATH_H__
 
-#include <boost/utility.hpp>
-#include <unicode/unistr.h>
-
+// #include <boost/utility.hpp>
+// #include <unicode/unistr.h>
+#include "stdinc.hpp"
 namespace mapnik
 {
    struct character_info

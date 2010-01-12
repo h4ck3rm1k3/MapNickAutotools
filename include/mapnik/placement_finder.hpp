@@ -26,13 +26,13 @@
 #ifndef __PLACEMENT_FINDER__
 #define __PLACEMENT_FINDER__
 
-#include <mapnik/ctrans.hpp>
-#include <mapnik/label_collision_detector.hpp>
-#include <mapnik/text_symbolizer.hpp>
-#include <mapnik/shield_symbolizer.hpp>
-#include <mapnik/geometry.hpp>
-#include <mapnik/text_path.hpp>
-
+// #include <mapnik/ctrans.hpp>
+// #include <mapnik/label_collision_detector.hpp>
+// #include <mapnik/text_symbolizer.hpp>
+// #include <mapnik/shield_symbolizer.hpp>
+// #include <mapnik/geometry.hpp>
+// #include <mapnik/text_path.hpp>
+#include "stdinc.hpp"
 #include <queue>
 
 namespace mapnik

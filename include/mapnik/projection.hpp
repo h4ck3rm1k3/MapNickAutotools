@@ -26,19 +26,19 @@
 #define PROJECTION_HPP
 
 // mapnik
-#include <mapnik/box2d.hpp>
+// #include <mapnik/box2d.hpp>
 
-// boost
-#ifdef MAPNIK_THREADSAFE
-#include <boost/thread/mutex.hpp>
-#endif
+// // boost
+// #ifdef MAPNIK_THREADSAFE
+// #include <boost/thread/mutex.hpp>
+// #endif
 
-#include <boost/utility.hpp>
-// stl
-#include <string>
-#include <iostream>
-#include <stdexcept>
-
+// #include <boost/utility.hpp>
+// // stl
+// #include <string>
+// #include <iostream>
+// #include <stdexcept>
+#include "stdinc.hpp"
 namespace mapnik {
     
     class proj_init_error : public std::runtime_error

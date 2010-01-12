@@ -24,11 +24,11 @@
 #ifndef STROKE_HPP
 #define STROKE_HPP
 // mapnik
-#include <mapnik/color.hpp>
-#include <mapnik/enumeration.hpp>
-// stl
-#include <vector>
- 
+// #include <mapnik/color.hpp>
+// #include <mapnik/enumeration.hpp>
+// // stl
+// #include <vector>
+#include "stdinc.hpp" 
 namespace mapnik
 {
     using std::pair;

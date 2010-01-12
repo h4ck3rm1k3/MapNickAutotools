@@ -30,15 +30,15 @@
 #endif
 
 // stl
-#include <stdexcept>
-#include <cstdlib>
-#include <limits>
-#include <ctime>
-#include <sstream>
-#include <iostream>
-#include <algorithm>
-#include <cmath>
-
+// #include <stdexcept>
+// #include <cstdlib>
+// #include <limits>
+// #include <ctime>
+// #include <sstream>
+// #include <iostream>
+// #include <algorithm>
+// #include <cmath>
+#include "stdinc.hpp"
 namespace mapnik
 {
 #ifdef MAPNIK_THREADSAFE

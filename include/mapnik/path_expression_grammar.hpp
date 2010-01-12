@@ -25,32 +25,32 @@
 #ifndef MAPNIK_PATH_EXPRESSIONS_GRAMMAR_HPP
 #define MAPNIK_PATH_EXPRESSIONS_GRAMMAR_HPP
 
-// mapnik
-#include <mapnik/unicode.hpp>
-#include <mapnik/expression_node.hpp>
-#include <mapnik/feature.hpp>
+// // mapnik
+// #include <mapnik/unicode.hpp>
+// #include <mapnik/expression_node.hpp>
+// #include <mapnik/feature.hpp>
 
-// boost
-#include <boost/variant.hpp>
-#include <boost/shared_ptr.hpp>
-#include <boost/concept_check.hpp>
-#include <boost/foreach.hpp>
-//spirit2
-#include <boost/spirit/include/qi.hpp>
-#include <boost/spirit/include/qi_action.hpp>
-//fusion
-#include <boost/fusion/include/adapt_struct.hpp>
-//phoenix
-#include <boost/spirit/include/phoenix_core.hpp>
-#include <boost/spirit/include/phoenix_object.hpp>
-#include <boost/spirit/include/phoenix_operator.hpp>
-#include <boost/spirit/include/phoenix_function.hpp>
-#include <boost/spirit/include/phoenix_stl.hpp>
-#include <boost/spirit/home/phoenix/object/construct.hpp>
-// stl
-#include <string>
-#include <vector>
-
+// // boost
+// #include <boost/variant.hpp>
+// #include <boost/shared_ptr.hpp>
+// #include <boost/concept_check.hpp>
+// #include <boost/foreach.hpp>
+// //spirit2
+// #include <boost/spirit/include/qi.hpp>
+// #include <boost/spirit/include/qi_action.hpp>
+// //fusion
+// #include <boost/fusion/include/adapt_struct.hpp>
+// //phoenix
+// #include <boost/spirit/include/phoenix_core.hpp>
+// #include <boost/spirit/include/phoenix_object.hpp>
+// #include <boost/spirit/include/phoenix_operator.hpp>
+// #include <boost/spirit/include/phoenix_function.hpp>
+// #include <boost/spirit/include/phoenix_stl.hpp>
+// #include <boost/spirit/home/phoenix/object/construct.hpp>
+// // stl
+// #include <string>
+// #include <vector>
+#include "stdinc.hpp"
 namespace mapnik
 {
 

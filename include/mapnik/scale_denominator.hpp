@@ -21,8 +21,8 @@
  *****************************************************************************/
 
 //$Id$
-#include <mapnik/config.hpp>
-
+// #include <mapnik/config.hpp>
+#include "stdinc.hpp"
 namespace mapnik {
  
     class Map;

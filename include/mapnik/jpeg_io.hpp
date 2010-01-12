@@ -22,13 +22,13 @@
 
 //$Id$
 
-#include <mapnik/global.hpp>
+// #include <mapnik/global.hpp>
 
-extern "C"
-{
-#include <jpeglib.h>
-}
-
+// extern "C"
+// {
+// #include <jpeglib.h>
+// }
+#include "stdinc.hpp"   
 namespace mapnik {
 
 #define BUFFER_SIZE 4096

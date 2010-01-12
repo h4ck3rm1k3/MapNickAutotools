@@ -24,9 +24,9 @@
 #ifndef MEMORY_HPP
 #define MEMORY_HPP
 
-#include <iostream>
-#include <cassert>
-
+// #include <iostream>
+// #include <cassert>
+#include "stdinc.hpp"
 namespace mapnik
 {
     class MemoryUtils

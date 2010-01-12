@@ -25,8 +25,8 @@
 #define MAPNIK_POINT_SYMBOLIZER_HPP
 
 // mapnik
-#include <mapnik/symbolizer.hpp> 
-
+// #include <mapnik/symbolizer.hpp> 
+#include "stdinc.hpp"
 namespace mapnik 
 {   
 struct MAPNIK_DECL point_symbolizer : 

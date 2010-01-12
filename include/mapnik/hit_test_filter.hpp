@@ -25,7 +25,8 @@
 #ifndef HIT_TEST_FILTER_HPP
 #define HIT_TEST_FILTER_HPP
 
-#include <mapnik/feature.hpp>
+// #include <mapnik/feature.hpp>
+#include "stdinc.hpp"   
 
 namespace mapnik {
     class hit_test_filter

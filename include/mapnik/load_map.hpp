@@ -24,12 +24,12 @@
 #ifndef MAP_LOADER_HPP
 #define MAP_LOADER_HPP
 
-#ifdef HAVE_CONFIG_H
-  #include <config.h>
-#endif
-
-#include <mapnik/map.hpp>
-#include <string>
+// #ifdef HAVE_CONFIG_H
+//   #include <config.h>
+// #endif
+ #include "stdinc.hpp"
+// #include <mapnik/map.hpp>
+// #include <string>
 
 namespace mapnik
 {

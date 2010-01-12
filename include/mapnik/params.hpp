@@ -24,13 +24,13 @@
 #ifndef PARAMS_HPP
 #define PARAMS_HPP
 
-#include <boost/variant.hpp>
-#include <boost/optional.hpp>
-#include <boost/none.hpp>
-#include <boost/lexical_cast.hpp>
-#include <string>
-#include <map>
-
+// #include <boost/variant.hpp>
+// #include <boost/optional.hpp>
+// #include <boost/none.hpp>
+// #include <boost/lexical_cast.hpp>
+// #include <string>
+// #include <map>
+#include "stdinc.hpp"
 namespace mapnik
 {
    typedef boost::variant<int,double,std::string> value_holder;

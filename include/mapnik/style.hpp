@@ -24,15 +24,15 @@
 #ifndef STYLE_HPP
 #define STYLE_HPP
 // mapnik
-#include <mapnik/color.hpp>
-#include <mapnik/symbolizer.hpp>
-// boost
-#include <boost/shared_ptr.hpp>
-// stl
-#include <vector>
-#include <algorithm>
-#include <functional>
-
+// #include <mapnik/color.hpp>
+// #include <mapnik/symbolizer.hpp>
+// // boost
+// #include <boost/shared_ptr.hpp>
+// // stl
+// #include <vector>
+// #include <algorithm>
+// #include <functional>
+#include "stdinc.hpp"
 namespace mapnik { }
 
 #endif //STYLE_HPP

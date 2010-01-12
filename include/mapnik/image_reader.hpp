@@ -24,13 +24,13 @@
 
 #ifndef IMAGE_READER_HPP
 #define IMAGE_READER_HPP
-// mapnik
-#include <mapnik/image_data.hpp>
-#include <mapnik/config.hpp>
-// stl
-#include <stdexcept>
-#include <string>
-
+// // mapnik
+// #include <mapnik/image_data.hpp>
+// #include <mapnik/config.hpp>
+// // stl
+// #include <stdexcept>
+// #include <string>
+#include "stdinc.hpp"   
 namespace mapnik 
 {
 class image_reader_exception : public std::exception

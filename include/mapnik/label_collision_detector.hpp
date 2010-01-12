@@ -25,12 +25,12 @@
 #if !defined LABEL_COLLISION_DETECTOR
 #define LABEL_COLLISION_DETECTOR
 // mapnik
-#include <mapnik/quad_tree.hpp>
-#include <mapnik/value.hpp>
-// stl
-#include <vector>
-#include <unicode/unistr.h>
-
+// #include <mapnik/quad_tree.hpp>
+// #include <mapnik/value.hpp>
+// // stl
+// #include <vector>
+// #include <unicode/unistr.h>
+#include "stdinc.hpp"   
 namespace mapnik
 {
    //this needs to be tree structure 

@@ -21,10 +21,10 @@
  *****************************************************************************/
 
 //$Id$
-#include <mapnik/global.hpp>
-#include <mapnik/octree.hpp>
-#include <mapnik/global.hpp>
-
+// #include <mapnik/global.hpp>
+// #include <mapnik/octree.hpp>
+// #include <mapnik/global.hpp>
+#include "stdinc.hpp"
 extern "C"
 {
 #include <png.h>

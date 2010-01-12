@@ -25,10 +25,10 @@
 #ifndef MEMORY_DATASOURCE_HPP
 #define MEMORY_DATASOURCE_HPP
 
-#include <mapnik/datasource.hpp>
-#include <mapnik/feature_factory.hpp> // TODO remove
-#include <vector>
-
+// #include <mapnik/datasource.hpp>
+// #include <mapnik/feature_factory.hpp> // TODO remove
+// #include <vector>
+#include "stdinc.hpp"
 namespace mapnik {
     
    class MAPNIK_DECL memory_datasource : public datasource

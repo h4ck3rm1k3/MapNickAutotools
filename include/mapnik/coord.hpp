@@ -25,10 +25,10 @@
 #ifndef COORD_HPP
 #define COORD_HPP
 
-#include <boost/operators.hpp>
-#include <iomanip>
-#include <sstream>
-
+// #include <boost/operators.hpp>
+// #include <iomanip>
+// #include <sstream>
+#include "stdinc.hpp"   
 namespace mapnik {   
     template <typename T,int dim>
     struct coord {

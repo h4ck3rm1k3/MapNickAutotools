@@ -25,18 +25,18 @@
 #ifndef IMAGE_UTIL_HPP
 #define IMAGE_UTIL_HPP
 
-// mapnik
-#include <mapnik/config.hpp>
-#include <mapnik/graphics.hpp>
+// // mapnik
+// #include <mapnik/config.hpp>
+// #include <mapnik/graphics.hpp>
 
-// boost
-#include <boost/algorithm/string.hpp>
-#include <boost/lexical_cast.hpp>
-#include <boost/optional.hpp>
+// // boost
+// #include <boost/algorithm/string.hpp>
+// #include <boost/lexical_cast.hpp>
+// #include <boost/optional.hpp>
 
-// stl
-#include <string>
-
+// // stl
+// #include <string>
+#include "stdinc.hpp"   
 namespace mapnik {
     
     class ImageWriterException : public std::exception

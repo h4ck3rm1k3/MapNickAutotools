@@ -24,24 +24,24 @@
 
 #ifndef FEATURE_HPP
 #define FEATURE_HPP
-// mapnik
-#include <mapnik/value.hpp>
-#include <mapnik/geometry.hpp>
-#include <mapnik/raster.hpp>
+// // mapnik
+// #include <mapnik/value.hpp>
+// #include <mapnik/geometry.hpp>
+// #include <mapnik/raster.hpp>
 
-// boost
-#include <boost/version.hpp>
-#if BOOST_VERSION >= 104000
-#include <boost/property_map/property_map.hpp>
-#else
-#include <boost/property_map.hpp>
-#endif
+// // boost
+// #include <boost/version.hpp>
+// #if BOOST_VERSION >= 104000
+// #include <boost/property_map/property_map.hpp>
+// #else
+// #include <boost/property_map.hpp>
+// #endif
 
-#include <boost/utility.hpp>
-#include <boost/shared_ptr.hpp>
-// stl
-#include <map>
-
+// #include <boost/utility.hpp>
+// #include <boost/shared_ptr.hpp>
+// // stl
+// #include <map>
+ #include "stdinc.hpp"
 namespace mapnik {
 typedef boost::shared_ptr<raster> raster_ptr;    
 typedef boost::associative_property_map<

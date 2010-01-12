@@ -24,14 +24,14 @@
 #ifndef QUAD_TREE_HPP
 #define QUAD_TREE_HPP
 // mapnik
-#include <mapnik/box2d.hpp>
-// boost
-#include <boost/ptr_container/ptr_vector.hpp>
-#include <boost/noncopyable.hpp>
-// stl
-#include <vector>
-#include <cstring>
-
+// #include <mapnik/box2d.hpp>
+// // boost
+// #include <boost/ptr_container/ptr_vector.hpp>
+// #include <boost/noncopyable.hpp>
+// // stl
+// #include <vector>
+// #include <cstring>
+#include "stdinc.hpp"
 namespace mapnik
 {
    template <typename T>

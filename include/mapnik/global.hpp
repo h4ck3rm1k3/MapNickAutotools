@@ -25,12 +25,12 @@
 #ifndef GLOBAL_HPP
 #define GLOBAL_HPP
 
-// boost
-#include <boost/cstdint.hpp>
-#include <boost/detail/endian.hpp>
-// stl
-#include <cstring>
-
+// // boost
+// #include <boost/cstdint.hpp>
+// #include <boost/detail/endian.hpp>
+// // stl
+// #include <cstring>
+#include "stdinc.hpp"   
 namespace mapnik
 {
  

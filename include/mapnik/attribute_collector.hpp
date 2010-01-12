@@ -25,15 +25,6 @@
 #ifndef ATTRIBUTE_COLLECTOR_HPP
 #define ATTRIBUTE_COLLECTOR_HPP
 
-// mapnik
-#include <mapnik/feature_layer_desc.hpp>
-#include <mapnik/rule.hpp>
-#include <mapnik/path_expression_grammar.hpp>
-
-// boost
-#include <boost/utility.hpp>
-#include <boost/variant.hpp>
-#include <boost/concept_check.hpp>
 // stl
 #include "stdinc.hpp"
 

@@ -25,8 +25,8 @@
 #ifndef GAMMA_HPP
 #define GAMMA_HPP
 
-#include <cmath>
-
+// #include <cmath>
+#include "stdinc.hpp"   
 namespace mapnik 
 {
     struct MAPNIK_DECL gamma

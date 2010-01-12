@@ -24,8 +24,8 @@
 #ifndef RASTER_HPP
 #define RASTER_HPP
 
-#include <mapnik/graphics.hpp>
-
+// #include <mapnik/graphics.hpp>
+#include "stdinc.hpp"
 namespace mapnik {
     struct raster
     {

@@ -25,14 +25,14 @@
 #ifndef MAPNIK_BOX2D_HPP
 #define MAPNIK_BOX2D_HPP
 
-// mapnik
-#include <mapnik/config.hpp>
-#include <mapnik/coord.hpp>
-// boost
-#include <boost/operators.hpp>
-// stl
-#include <iomanip>
-
+// // mapnik
+// #include <mapnik/config.hpp>
+// #include <mapnik/coord.hpp>
+// // boost
+// #include <boost/operators.hpp>
+// // stl
+// #include <iomanip>
+#include "stdinc.hpp"   
 namespace mapnik {
   
    /*!

@@ -25,10 +25,10 @@
 #ifndef FEATURE_LAYER_DESC_HPP
 #define FEATURE_LAYER_DESC_HPP
 
-#include <string>
-#include <vector>
-#include <iostream>
-
+// #include <string>
+// #include <vector>
+// #include <iostream>
+#include "stdinc.hpp"   
 namespace mapnik
 {
     

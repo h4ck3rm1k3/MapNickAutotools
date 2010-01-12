@@ -25,8 +25,8 @@
 #ifndef POLYGON_SYMBOLIZER_HPP
 #define POLYGON_SYMBOLIZER_HPP
 
-#include <mapnik/color.hpp>
-
+// #include <mapnik/color.hpp>
+#include "stdinc.hpp"
 namespace mapnik 
 {
     struct MAPNIK_DECL polygon_symbolizer

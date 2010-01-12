@@ -25,12 +25,12 @@
 #ifndef CTRANS_HPP
 #define CTRANS_HPP
 
-#include <algorithm>
+// #include <algorithm>
 
-#include <mapnik/box2d.hpp>
-#include <mapnik/coord_array.hpp>
-#include <mapnik/proj_transform.hpp>
-
+// #include <mapnik/box2d.hpp>
+// #include <mapnik/coord_array.hpp>
+// #include <mapnik/proj_transform.hpp>
+#include "stdinc.hpp"   
 namespace mapnik {
    typedef coord_array<coord2d> CoordinateArray;
     

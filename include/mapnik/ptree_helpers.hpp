@@ -23,17 +23,17 @@
 #ifndef MAPNIK_CONFIG_HELPERS_INCLUDED
 #define MAPNIK_CONFIG_HELPERS_INCLUDED
 
-#include <mapnik/enumeration.hpp>
-#include <mapnik/config_error.hpp>
-#include <mapnik/color_factory.hpp>
+// #include <mapnik/enumeration.hpp>
+// #include <mapnik/config_error.hpp>
+// #include <mapnik/color_factory.hpp>
 
-#include <boost/property_tree/ptree.hpp>
-#include <boost/lexical_cast.hpp>
-#include <boost/optional.hpp>
+// #include <boost/property_tree/ptree.hpp>
+// #include <boost/lexical_cast.hpp>
+// #include <boost/optional.hpp>
 
-#include <iostream>
-#include <sstream>
-
+// #include <iostream>
+// #include <sstream>
+#include "stdinc.hpp"
 namespace mapnik {
 
     template <typename T>

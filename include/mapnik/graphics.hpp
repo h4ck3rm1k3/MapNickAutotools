@@ -24,23 +24,23 @@
 
 #ifndef GRAPHICS_HPP
 #define GRAPHICS_HPP
-// mapnik
-#include <mapnik/color.hpp>
-#include <mapnik/gamma.hpp>
-#include <mapnik/image_data.hpp>
-#include <mapnik/box2d.hpp>
-#include <mapnik/image_view.hpp>
-#include <mapnik/global.hpp>
+// // mapnik
+// #include <mapnik/color.hpp>
+// #include <mapnik/gamma.hpp>
+// #include <mapnik/image_data.hpp>
+// #include <mapnik/box2d.hpp>
+// #include <mapnik/image_view.hpp>
+// #include <mapnik/global.hpp>
 
-// stl
-#include <cmath>
-#include <string>
-#include <cassert>
+// // stl
+// #include <cmath>
+// #include <string>
+// #include <cassert>
 
-// cairo
-#ifdef HAVE_CAIRO
-#include <cairomm/surface.h>
-#endif
+// // cairo
+// #ifdef HAVE_CAIRO
+// #include <cairomm/surface.h>
+// #endif
 
 namespace mapnik
 {

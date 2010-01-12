@@ -24,12 +24,12 @@
 
 #ifndef PLUGIN_HPP
 #define PLUGIN_HPP
-// boost
-#include <boost/utility.hpp>
-// stl
-#include <string>
-// ltdl
-#include <ltdl.h>
+// // boost
+// #include <boost/utility.hpp>
+// // stl
+// #include <string>
+// // ltdl
+// #include <ltdl.h>
 
 namespace mapnik
 {

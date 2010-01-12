@@ -24,23 +24,24 @@
 #ifndef VALUE_HPP
 #define VALUE_HPP
 
-// mapnik
-#include <mapnik/unicode.hpp>
-#include <mapnik/config_error.hpp>
-// boost
-#include <boost/variant.hpp>
-#include <boost/scoped_array.hpp>
-#include <boost/concept_check.hpp>
-// stl
-#include <iostream>
-#include <string>
-#include <sstream>
-#include <iomanip>
-#include <cmath>
-// uci
-#include <unicode/unistr.h>
-#include <unicode/ustring.h>
+// // mapnik
+// #include <mapnik/unicode.hpp>
+// #include <mapnik/config_error.hpp>
+// // boost
+// #include <boost/variant.hpp>
+// #include <boost/scoped_array.hpp>
+// #include <boost/concept_check.hpp>
+// // stl
+// #include <iostream>
+// #include <string>
+// #include <sstream>
+// #include <iomanip>
+// #include <cmath>
+// // uci
+// #include <unicode/unistr.h>
+// #include <unicode/ustring.h>
 
+#include "stdinc.hpp"
 
 namespace mapnik  {
 
