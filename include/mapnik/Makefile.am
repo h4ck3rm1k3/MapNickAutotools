@@ -62,6 +62,8 @@ report.txt:
 	echo headers $(libmapnik_HEADERS)
 	echo TEST $(patsubst %.hpp, %.hpp.gch ,$(libmapnik_HEADERS))
 
+CLEANFILES =$(GCH_FILES)
+
 %.hpp.gch: %.hpp
 	$(CXX) -I ../.. -I .. -I  	${PROFILING_CFLAGS} \
 	${TRACING_CFLAGS} \
@@ -72,7 +74,10 @@ report.txt:
 	${LIBXML2_CFLAGS} \
 	${CAIRO_CFLAGS} -c $< 
 
-# ${JPEG_CFLAGS} \
-# ${TIFF_CFLAGS} \
-# ${PROJ_CFLAGS} \
-# ${LTDL_CFLAGS} \
+# ${JPEG_CFLAGS} 
+# ${TIFF_CFLAGS} 
+# ${PROJ_CFLAGS} 
+# ${LTDL_CFLAGS} 
+
+cleangch :
+	rm $(GCH_FILES)

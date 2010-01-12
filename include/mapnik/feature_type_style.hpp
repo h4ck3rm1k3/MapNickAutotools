@@ -25,13 +25,15 @@
 #ifndef FEATURE_TYPE_STYLE_HPP
 #define FEATURE_TYPE_STYLE_HPP
 // mapnik 
-#include <mapnik/rule.hpp>
-#include <mapnik/feature.hpp>
+// // // #include <mapnik/rule.hpp>
+// // // #include <mapnik/feature.hpp>
 // stl
-#include <vector>
+#include "stdinc.hpp"
 
 namespace mapnik
 {
+  //    typedef qi::rule<Iterator, expr_node(), space_type> rule_type;
+
     typedef std::vector<rule_type> rules;
     class feature_type_style
     {

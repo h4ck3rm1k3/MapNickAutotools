@@ -1,3 +1,4 @@
+
 /*****************************************************************************
  * 
  * This file is part of Mapnik (c++ mapping toolkit)
@@ -21,11 +22,13 @@
  *****************************************************************************/
 //$Id$
 
-#ifndef POLYGON_PATTERN_SYMBOLIZER_HPP
+#ifndef MAPNIK_POLYGON_PATTERN_SYMBOLIZER_HPP
 #define MAPNIK_POLYGON_PATTERN_SYMBOLIZER_HPP
 
-// mapnik 
-#include <mapnik/symbolizer.hpp> 
+#include "stdinc.hpp"
+
+// // mapnik 
+// #include <mapnik/symbolizer.hpp> 
 
 namespace mapnik
 {

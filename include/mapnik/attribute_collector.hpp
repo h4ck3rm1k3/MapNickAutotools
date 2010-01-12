@@ -35,14 +35,49 @@
 #include <boost/variant.hpp>
 #include <boost/concept_check.hpp>
 // stl
-#include <set>
-#include <iostream>
+#include "stdinc.hpp"
+
 
 namespace mapnik {
 
+ typedef const std::basic_string<char, std::char_traits<char>, std::allocator<char> >& TARG;
+
+struct ltstr
+{
+  bool operator()(const char* s1, const char* s2) const
+  {
+    return strcmp(s1, s2) < 0;
+  }
+
+
+  /* duplicate
+  bool operator ()(const std::basic_string<char, std::char_traits<char>, std::allocator<char> >&, const std::basic_string<char, std::char_traits<char>, std::allocator<char> >&) const
+  {
+    return s1 < s2;
+  }
+  bool operator()(TARG s1, TARG s2) const
+  {
+    return s1 < s2;
+  }
+
+  */
+
+
+  bool operator()(const std::string & s1, const std::string & s2) const
+  {
+    return s1 < s2;
+  }
+};
+typedef std::set<std::string, ltstr> TNameSet;
+typedef TNameSet& TNameSetRef;
+
+
 struct expression_attributes : boost::static_visitor<void>
 {
-    explicit expression_attributes(std::set<std::string> & names)
+
+
+
+    explicit expression_attributes(TNameSet & names)
 	: names_(names) {}
     
     void operator() (value_type const& x) const 
@@ -80,12 +115,12 @@ struct expression_attributes : boost::static_visitor<void>
     }
     
 private:
-    mutable std::set<std::string>& names_;
+    mutable TNameSetRef names_;
 };
 
 struct symbolizer_attributes : public boost::static_visitor<>
 {
-    symbolizer_attributes(std::set<std::string>& names)
+    symbolizer_attributes(TNameSetRef names)
 	: names_(names) {}
 	
     template <typename T>
@@ -147,17 +182,17 @@ struct symbolizer_attributes : public boost::static_visitor<>
     // TODO - support remaining syms
     
 private:
-    std::set<std::string>& names_;
+    TNameSetRef names_;
 };
 
 
 class attribute_collector : public boost::noncopyable
 {
 private:
-    std::set<std::string>& names_;
+    TNameSetRef names_;
 public:
     
-    attribute_collector(std::set<std::string>& names)
+    attribute_collector(TNameSetRef names)
 	: names_(names) {}
 	
     template <typename RuleType>

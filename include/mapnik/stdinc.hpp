@@ -1,3 +1,5 @@
+#pragma once 
+
 #include <algorithm>
 #include <bitset>
 #include <boost/algorithm/string.hpp>
@@ -38,6 +40,7 @@
 #include <boost/utility.hpp>
 #include <boost/variant.hpp>
 #include <boost/version.hpp>
+
 #include <cairomm/context.h>
 #include <cairomm/surface.h>
 #include <cassert>
@@ -57,7 +60,23 @@
 #include <limits>
 #include <ltdl.h>
 #include <map>
-#include <mapnik/attribute_collector.hpp>
+
+//#include <png.h>
+#include <queue>
+#include <set>
+#include <sstream>
+#include <stdexcept>
+#include <string>
+#include <sys/time.h> 
+#include <unicode/ubidi.h>
+#include <unicode/ucnv.h>
+#include <unicode/unistr.h>
+#include <unicode/ushape.h>
+#include <unicode/ustring.h>
+#include <vector>
+
+
+
 #include <mapnik/box2d.hpp>
 #include <mapnik/color_factory.hpp>
 #include <mapnik/color.hpp>
@@ -75,8 +94,8 @@
 #include <mapnik/feature_factory.hpp> // TODO remove
 #include <mapnik/feature.hpp>
 #include <mapnik/feature_layer_desc.hpp>
-#include <mapnik/feature_style_processor.hpp>
-#include <mapnik/feature_type_style.hpp>
+
+
 #include <mapnik/font_engine_freetype.hpp>
 #include <mapnik/font_set.hpp>
 #include <mapnik/gamma.hpp>
@@ -86,50 +105,85 @@
 #include <mapnik/graphics.hpp>
 #include <mapnik/image_data.hpp>
 #include <mapnik/image_view.hpp>
-#include <mapnik/label_collision_detector.hpp>
 #include <mapnik/layer.hpp>
-#include <mapnik/line_pattern_symbolizer.hpp>
-#include <mapnik/line_symbolizer.hpp>
-#include <mapnik/map.hpp>
-#include <mapnik/markers_symbolizer.hpp>
+
 #include <mapnik/memory_datasource.hpp>
 #include <mapnik/octree.hpp>
 #include <mapnik/params.hpp>
-#include <mapnik/path_expression_grammar.hpp>
-#include <mapnik/placement_finder.hpp>
 #include <mapnik/plugin.hpp>
-#include <mapnik/point_symbolizer.hpp>
-#include <mapnik/polygon_pattern_symbolizer.hpp>
-#include <mapnik/polygon_symbolizer.hpp>
 #include <mapnik/projection.hpp>
 #include <mapnik/proj_transform.hpp>
 #include <mapnik/quad_tree.hpp>
 #include <mapnik/query.hpp>
 #include <mapnik/raster.hpp>
-#include <mapnik/raster_symbolizer.hpp>
-#include <mapnik/rule.hpp>
-#include <mapnik/scale_denominator.hpp>
-#include <mapnik/shield_symbolizer.hpp>
 #include <mapnik/stroke.hpp>
-#include <mapnik/symbolizer.hpp>
-#include <mapnik/symbolizer.hpp> 
+
+
 #include <mapnik/text_path.hpp>
-#include <mapnik/text_symbolizer.hpp>
+
 #include <mapnik/unicode.hpp>
 #include <mapnik/utils.hpp>
 #include <mapnik/value.hpp>
 #include <mapnik/vertex.hpp>
 #include <mapnik/vertex_vector.hpp>
-#include <png.h>
-#include <queue>
-#include <set>
-#include <sstream>
-#include <stdexcept>
-#include <string>
-#include <sys/time.h> 
-#include <unicode/ubidi.h>
-#include <unicode/ucnv.h>
-#include <unicode/unistr.h>
-#include <unicode/ushape.h>
-#include <unicode/ustring.h>
-#include <vector>
+
+#include <mapnik/symbolizer.hpp>
+
+
+#include <mapnik/feature_type_style.hpp>
+#include <mapnik/map.hpp>
+#include <mapnik/attribute_collector.hpp>
+#include <mapnik/text_symbolizer.hpp>
+#include <mapnik/raster_symbolizer.hpp>
+
+#include <mapnik/scale_denominator.hpp>
+#include <mapnik/shield_symbolizer.hpp>
+
+#include <mapnik/point_symbolizer.hpp>
+
+#include <mapnik/polygon_symbolizer.hpp>
+
+#include <mapnik/path_expression_grammar.hpp>
+#include <mapnik/placement_finder.hpp>
+
+#include <mapnik/label_collision_detector.hpp>
+#include <mapnik/line_pattern_symbolizer.hpp>
+#include <mapnik/line_symbolizer.hpp>
+#include <mapnik/markers_symbolizer.hpp>
+
+
+
+#ifdef MAPNIK_DEBUG
+//#include <mapnik/wall_clock_timer.hpp>
+#endif
+// // mapnik
+// #include <mapnik/box2d.hpp>
+// #include <mapnik/datasource.hpp>
+// #include <mapnik/layer.hpp>
+// #include <mapnik/map.hpp>
+// #include <mapnik/attribute_collector.hpp>
+// #include <mapnik/expression_evaluator.hpp>
+// #include <mapnik/utils.hpp>
+// #include <mapnik/projection.hpp>
+// #include <mapnik/scale_denominator.hpp>
+#include <mapnik/feature_style_processor.hpp>
+#include <mapnik/polygon_pattern_symbolizer.hpp>
+
+
+// #include <mapnik/line_symbolizer.hpp>
+// #include <mapnik/line_pattern_symbolizer.hpp>
+// #include <mapnik/polygon_symbolizer.hpp>
+// #include <mapnik/polygon_pattern_symbolizer.hpp>
+// #include <mapnik/point_symbolizer.hpp>
+// #include <mapnik/raster_symbolizer.hpp>
+// #include <mapnik/shield_symbolizer.hpp>
+// #include <mapnik/text_symbolizer.hpp>
+// #include <mapnik/markers_symbolizer.hpp>
+// #include <mapnik/feature.hpp>
+// #include <mapnik/expression_grammar.hpp>
+// #include <boost/shared_ptr.hpp>
+// #include <boost/variant.hpp>
+// #include <string>
+// #include <vector>
+#include <mapnik/rule.hpp>
+

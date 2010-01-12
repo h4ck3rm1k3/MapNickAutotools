@@ -25,28 +25,19 @@
 #ifndef FEATURE_STYLE_PROCESSOR_HPP
 #define FEATURE_STYLE_PROCESSOR_HPP
 
-// mapnik
-#include <mapnik/box2d.hpp>
-#include <mapnik/datasource.hpp>
-#include <mapnik/layer.hpp>
-#include <mapnik/map.hpp>
-#include <mapnik/attribute_collector.hpp>
-#include <mapnik/expression_evaluator.hpp>
-#include <mapnik/utils.hpp>
-#include <mapnik/projection.hpp>
-#include <mapnik/scale_denominator.hpp>
 
-#ifdef MAPNIK_DEBUG
-//#include <mapnik/wall_clock_timer.hpp>
-#endif
+
 //stl
-#include <vector>
+#include "stdinc.hpp"
 
 namespace mapnik
 {       
 template <typename Processor>
 class feature_style_processor 
 {
+  //typedef rule<Feature> rule_type;
+  // rule_vector std::vector<rule_type*>
+
     struct symbol_dispatch : public boost::static_visitor<>
     {
 	symbol_dispatch (Processor & output,

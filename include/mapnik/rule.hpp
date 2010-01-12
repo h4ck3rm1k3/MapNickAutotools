@@ -22,25 +22,9 @@
 
 #ifndef RULE_HPP
 #define RULE_HPP
-// mapnik
-#include <mapnik/line_symbolizer.hpp>
-#include <mapnik/line_pattern_symbolizer.hpp>
-#include <mapnik/polygon_symbolizer.hpp>
-#include <mapnik/polygon_pattern_symbolizer.hpp>
-#include <mapnik/point_symbolizer.hpp>
-#include <mapnik/raster_symbolizer.hpp>
-#include <mapnik/shield_symbolizer.hpp>
-#include <mapnik/text_symbolizer.hpp>
-#include <mapnik/markers_symbolizer.hpp>
-#include <mapnik/feature.hpp>
-#include <mapnik/expression_grammar.hpp>
+// // mapnik
 
-// boost
-#include <boost/shared_ptr.hpp>
-#include <boost/variant.hpp>
-// stl
-#include <string>
-#include <vector>
+ #include "stdinc.hpp"
 
 namespace mapnik
 {
@@ -72,11 +56,11 @@ namespace mapnik
       return (&lhs == &rhs); 
    }
     
-   inline bool operator==(raster_symbolizer const& lhs,
+    inline bool operator==(raster_symbolizer const& lhs,
                           raster_symbolizer const& rhs)
    {
       return (&lhs == &rhs); 
-   }
+      }
     
    inline bool operator==(text_symbolizer const& lhs,
                           text_symbolizer const& rhs)
