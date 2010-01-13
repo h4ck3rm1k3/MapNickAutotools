@@ -23,9 +23,9 @@
 #ifndef MAPNIK_CONFIG_ERROR_INCLUDED
 #define MAPNIK_CONFIG_ERROR_INCLUDED
 
-// #include <iostream>
-// #include <sstream>
-#include "stdinc.hpp"   
+#include <iostream>
+#include <sstream>
+//#include "stdinc.hpp"   
 namespace mapnik {
 
     class config_error : public std::exception

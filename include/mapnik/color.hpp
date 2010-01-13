@@ -25,16 +25,16 @@
 #ifndef COLOR_HPP
 #define COLOR_HPP
 
-// // mapnik
-// #include <mapnik/config.hpp>
-// #include <mapnik/global.hpp>
+// mapnik
+#include <mapnik/config.hpp>
+#include <mapnik/global.hpp>
 
-// //boost
-// #include <boost/cstdint.hpp>
+//boost
+#include <boost/cstdint.hpp>
 
-// // stl
-// #include <sstream>
-#include "stdinc.hpp"   
+// stl
+#include <sstream>
+//#include "stdinc.hpp"   
 namespace mapnik {
      
     class MAPNIK_DECL color

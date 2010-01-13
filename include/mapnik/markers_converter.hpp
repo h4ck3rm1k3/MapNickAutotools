@@ -25,11 +25,11 @@
 #ifndef MARKERS_CONVERTER_HPP
 #define MARKERS_CONVERTER_HPP
 
-// // #include <boost/utility.hpp>
-// #include "stdinc.hpp"
-// #include "agg_basics.h"
-// #include "agg_trans_affine.h"
+// #include <boost/utility.hpp>
 #include "stdinc.hpp"
+#include "agg_basics.h"
+#include "agg_trans_affine.h"
+//#include "stdinc.hpp"
 namespace mapnik {
    template <typename Locator, typename Shape, typename Detector>
    class markers_converter : boost::noncopyable

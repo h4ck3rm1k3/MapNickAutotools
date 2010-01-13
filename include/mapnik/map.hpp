@@ -24,19 +24,19 @@
 #ifndef MAP_HPP
 #define MAP_HPP
 
-// #ifdef HAVE_CONFIG_H
-//   #include <config.h>
-// #endif
+#ifdef HAVE_CONFIG_H
+  #include <config.h>
+#endif
 
-// // mapnik
-// #include <mapnik/enumeration.hpp>
-// #include <mapnik/feature_type_style.hpp>
-// #include <mapnik/datasource.hpp>
-// #include <mapnik/layer.hpp>
+// mapnik
+#include <mapnik/enumeration.hpp>
+#include <mapnik/feature_type_style.hpp>
+#include <mapnik/datasource.hpp>
+#include <mapnik/layer.hpp>
 
-// // boost
-// #include <boost/optional/optional.hpp>
-#include "stdinc.hpp"
+// boost
+#include <boost/optional/optional.hpp>
+//#include "stdinc.hpp"
 
 namespace mapnik
 {

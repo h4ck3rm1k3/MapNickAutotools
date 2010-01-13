@@ -25,15 +25,15 @@
 #ifndef MAPNIK_COLOR_FACTORY_HPP
 #define MAPNIK_COLOR_FACTORY_HPP
 
-// // mapnik
-// #include <mapnik/config.hpp>
-// #include <mapnik/color.hpp>
-// #include <mapnik/config_error.hpp>
-// #include <mapnik/css_color_grammar.hpp>
+// mapnik
+#include <mapnik/config.hpp>
+#include <mapnik/color.hpp>
+#include <mapnik/config_error.hpp>
+#include <mapnik/css_color_grammar.hpp>
 
-// // boost
-// #include <boost/utility.hpp>
-#include "stdinc.hpp"   
+// boost
+#include <boost/utility.hpp>
+//#include "stdinc.hpp"   
 
 namespace mapnik {    
    
