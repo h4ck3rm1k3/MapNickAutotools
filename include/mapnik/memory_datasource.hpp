@@ -26,9 +26,11 @@
 #define MEMORY_DATASOURCE_HPP
 
 // #include <mapnik/datasource.hpp>
-// #include <mapnik/feature_factory.hpp> // TODO remove
+
 // #include <vector>
 #include "stdinc.hpp"
+
+
 namespace mapnik {
     
    class MAPNIK_DECL memory_datasource : public datasource
@@ -56,7 +58,9 @@ namespace mapnik {
    public:
       point_datasource() : feat_id(0) {}
       void add_point(double x, double y, const char* key, const char* value) {
-         mapnik::feature_ptr feature(mapnik::feature_factory::create(feat_id++));
+         mapnik::feature_ptr feature(
+				     new Feature(feat_id++)
+				     );
          mapnik::geometry2d * pt = new mapnik::point_impl;
          pt->move_to(x,y);
          feature->add_geometry(pt);

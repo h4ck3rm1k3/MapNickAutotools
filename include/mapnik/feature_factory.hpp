@@ -28,15 +28,15 @@
 //#include <mapnik/feature.hpp>
  #include "stdinc.hpp"
 
-namespace mapnik
-{
-    struct feature_factory
-    {
-        static Feature* create (int fid)
-        {
-            return new Feature(fid);
-        }
-    }; 
-}
-
+// namespace mapnik
+// {
+//     struct feature_factory
+//     {
+//         static Feature* create (int fid)
+//         {
+//             return new Feature(fid);
+//         }
+//     }; 
+// }
+#error dont user
 #endif //FEATURE_FACTORY_HPP

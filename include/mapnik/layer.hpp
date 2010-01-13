@@ -21,8 +21,9 @@
  *****************************************************************************/
 //$Id: layer.hpp 39 2005-04-10 20:39:53Z pavlenko $
 
-#ifndef LAYER_HPP
-#define LAYER_HPP
+
+#ifndef INC_LAYER_HPP
+#define INC_LAYER_HPP 
 // mapnik
 // #include <mapnik/feature.hpp>
 // #include <mapnik/datasource.hpp>
@@ -41,7 +42,7 @@ namespace mapnik
      * ('+proj=<literal>'). If no srs is specified it will default to 
      * '+proj=latlong +datum=WGS84'
      */
-    class MAPNIK_DECL layer
+    class layer
     {
     public:
         explicit layer(std::string const& name, std::string const& srs="+proj=latlong +datum=WGS84");

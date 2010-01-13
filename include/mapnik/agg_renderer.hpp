@@ -33,7 +33,7 @@ namespace mapnik {
    struct rasterizer;
    
    template <typename T>
-   class MAPNIK_DECL agg_renderer : public feature_style_processor<agg_renderer<T> >,
+   class  agg_renderer : public feature_style_processor<agg_renderer<T> >,
                                     private boost::noncopyable
    {
      

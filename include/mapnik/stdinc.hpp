@@ -1,5 +1,6 @@
 #pragma once 
-
+#ifndef INC_STDINC_HPP
+#define INC_STDINC_HPP
 #include <algorithm>
 #include <bitset>
 #include <boost/algorithm/string.hpp>
@@ -142,13 +143,15 @@ extern "C"
  #include <mapnik/raster.hpp>
 
 #include <mapnik/feature.hpp>
-#include <mapnik/feature_factory.hpp> // TODO remove
+
 
 #include <mapnik/feature_layer_desc.hpp>
 
 #include <mapnik/params.hpp>
 #include <mapnik/query.hpp>
 #include <mapnik/datasource.hpp>
+#include <mapnik/unicode.hpp>
+#include <mapnik/memory_datasource.hpp> // neeeds transcode
 #include <mapnik/enumeration.hpp>
 
 // // mapnik
@@ -173,12 +176,12 @@ extern "C"
 // #include <boost/spirit/include/phoenix_stl.hpp>
 // #include <boost/spirit/home/phoenix/object/construct.hpp>
 
-#include <mapnik/unicode.hpp>
+
 #include <mapnik/expression_grammar.hpp>
 #include <mapnik/expression_node.hpp>
 
 
- #include <mapnik/color.hpp>
+
  #include <mapnik/utils.hpp>
  #include <mapnik/ctrans.hpp>
  #include <mapnik/geometry.hpp>
@@ -193,7 +196,7 @@ extern "C"
 #include <mapnik/geom_util.hpp>
 
 // // mapnik
-#include <mapnik/color.hpp>
+
 #include <mapnik/gamma.hpp>
 #include <mapnik/image_data.hpp>
 #include <mapnik/box2d.hpp>
@@ -206,7 +209,7 @@ extern "C"
 #include <mapnik/image_view.hpp>
 #include <mapnik/layer.hpp>
 
-#include <mapnik/memory_datasource.hpp>
+
 #include <mapnik/octree.hpp>
 
 #include <mapnik/plugin.hpp>
@@ -240,7 +243,7 @@ extern "C"
 
 
 // // mapnik
-// #include <mapnik/feature_layer_desc.hpp>
+
 // #include <mapnik/rule.hpp>
 // #include <mapnik/path_expression_grammar.hpp>
 
@@ -310,8 +313,9 @@ extern "C"
 // // mapnik
 #include <mapnik/enumeration.hpp>
 #include <mapnik/feature_type_style.hpp>
-#include <mapnik/datasource.hpp>
-#include <mapnik/layer.hpp>
+
+
+
 
 // // boost
 // #include <boost/optional/optional.hpp>
@@ -325,8 +329,7 @@ extern "C"
 #endif
 // // mapnik
 // #include <mapnik/box2d.hpp>
-// #include <mapnik/datasource.hpp>
-// #include <mapnik/layer.hpp>
+
 // #include <mapnik/map.hpp>
 // #include <mapnik/attribute_collector.hpp>
 // #include <mapnik/expression_evaluator.hpp>
@@ -345,7 +348,7 @@ extern "C"
 
 // #include <mapnik/config.hpp>
 // #include <mapnik/feature_style_processor.hpp>
-// #include <mapnik/font_engine_freetype.hpp>
+
 // #include <mapnik/label_collision_detector.hpp>
 // #include <mapnik/placement_finder.hpp>
 // #include <mapnik/map.hpp>
@@ -354,3 +357,4 @@ extern "C"
 // #include <boost/utility.hpp>
 // #include <boost/scoped_ptr.hpp>
 // agg_render.hpp
+#endif
