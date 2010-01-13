@@ -64,7 +64,7 @@ report.txt:
 CLEANFILES =$(GCH_FILES)
 
 %.hpp.gch: %.hpp
-	$(CXX) -save-temps --verbose -I ../.. -I .. -I  	${PROFILING_CFLAGS} \
+	$(CXX) -save-temps  -I ../.. -I .. -I  	${PROFILING_CFLAGS} \
 	${TRACING_CFLAGS} \
 	${PNG_CFLAGS} \
 	${FREETYPE2_CFLAGS} \

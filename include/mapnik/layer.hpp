@@ -24,14 +24,16 @@
 
 #ifndef INC_LAYER_HPP
 #define INC_LAYER_HPP 
-// mapnik
-// #include <mapnik/feature.hpp>
-// #include <mapnik/datasource.hpp>
-// // boost
-// #include <boost/shared_ptr.hpp>
-// // stl
-// #include <vector>
-#include "stdinc.hpp"   
+
+#include <mapnik/feature.hpp>
+#include <mapnik/datasource.hpp>
+// boost
+#include <boost/shared_ptr.hpp>
+// stl
+#include <vector>
+
+//#include "stdinc.hpp"   
+
 namespace mapnik
 {
     /*!

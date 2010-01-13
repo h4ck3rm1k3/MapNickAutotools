@@ -66,7 +66,7 @@ namespace mapnik {
       cairo_face_cache cache_;
    };
 
-   class MAPNIK_DECL cairo_renderer_base : private boost::noncopyable
+   class cairo_renderer_base : private boost::noncopyable
    {
      protected:
       cairo_renderer_base(Map const& m, Cairo::RefPtr<Cairo::Context> const& context, unsigned offset_x=0, unsigned offset_y=0);

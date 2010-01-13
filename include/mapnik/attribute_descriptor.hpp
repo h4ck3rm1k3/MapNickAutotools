@@ -28,7 +28,7 @@
 #include "stdinc.hpp"
 
 namespace mapnik {
-  template <class etyp
+  template <class etyp>
     struct attribute_desc
     {
         std::string name;

@@ -1,6 +1,9 @@
-#pragma once 
 #ifndef INC_STDINC_HPP
 #define INC_STDINC_HPP
+
+
+#pragma once 
+
 #include <algorithm>
 #include <bitset>
 #include <boost/algorithm/string.hpp>
@@ -341,20 +344,4 @@ extern "C"
 
 
 
-
-
-
-
-
-// #include <mapnik/config.hpp>
-// #include <mapnik/feature_style_processor.hpp>
-
-// #include <mapnik/label_collision_detector.hpp>
-// #include <mapnik/placement_finder.hpp>
-// #include <mapnik/map.hpp>
-
-// // boost
-// #include <boost/utility.hpp>
-// #include <boost/scoped_ptr.hpp>
-// agg_render.hpp
 #endif
