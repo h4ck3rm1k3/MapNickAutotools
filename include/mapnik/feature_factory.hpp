@@ -25,8 +25,8 @@
 #ifndef FEATURE_FACTORY_HPP
 #define FEATURE_FACTORY_HPP
 
-//#include <mapnik/feature.hpp>
- #include "stdinc.hpp"
+#include <mapnik/feature.hpp>
+// #include "stdinc.hpp"
 
 // namespace mapnik
 // {

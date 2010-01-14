@@ -25,12 +25,12 @@
 #ifndef FACTORY_HPP
 #define FACTORY_HPP
 
-// // mapnik
-// #include <mapnik/utils.hpp>
-// // stl
-// #include <stdexcept>
-// #include <map>
-#include "stdinc.hpp"   
+// mapnik
+#include <mapnik/utils.hpp>
+// stl
+#include <stdexcept>
+#include <map>
+//#include "stdinc.hpp"   
 namespace mapnik {
     template <typename key_type,
               typename product_type>

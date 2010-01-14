@@ -30,7 +30,7 @@
 // #include <boost/detail/endian.hpp>
 // // stl
 // #include <cstring>
-#include "stdinc.hpp"   
+#include "boostinc.hpp"   
 namespace mapnik
 {
  

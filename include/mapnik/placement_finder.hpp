@@ -26,14 +26,14 @@
 #ifndef __PLACEMENT_FINDER__
 #define __PLACEMENT_FINDER__
 
-// #include <mapnik/ctrans.hpp>
-// #include <mapnik/label_collision_detector.hpp>
-// #include <mapnik/text_symbolizer.hpp>
-// #include <mapnik/shield_symbolizer.hpp>
-// #include <mapnik/geometry.hpp>
-// #include <mapnik/text_path.hpp>
-#include "stdinc.hpp"
-#include <queue>
+#include <mapnik/feature.hpp>
+#include <mapnik/label_collision_detector.hpp>
+#include <mapnik/text_symbolizer.hpp>
+//#include <mapnik/shield_symbolizer.hpp>
+#include <mapnik/geometry.hpp>
+#include <mapnik/text_path.hpp>
+//#include "stdinc.hpp"
+//#include <queue>
 
 namespace mapnik
 {
@@ -41,7 +41,7 @@ typedef text_path placement_element;
 
 struct placement : boost::noncopyable
 {
-    placement(string_info & info_, shield_symbolizer const& sym, unsigned w, unsigned h, bool has_dimensions_= false);
+  placement(string_info & info_, text_symbolizer /*shield_symbolizer*/ const& sym, unsigned w, unsigned h, bool has_dimensions_= false);
 
     placement(string_info & info_, text_symbolizer const& sym);
 

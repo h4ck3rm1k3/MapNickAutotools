@@ -32,12 +32,12 @@
 #include <mapnik/css_color_grammar.hpp>
 
 // boost
-#include <boost/utility.hpp>
+//#include <boost/utility.hpp>
 //#include "stdinc.hpp"   
 
 namespace mapnik {    
    
-class MAPNIK_DECL color_factory : boost::noncopyable
+class color_factory : boost::noncopyable
 {
 public:
     

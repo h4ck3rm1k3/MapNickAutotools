@@ -24,24 +24,27 @@
 #ifndef VALUE_HPP
 #define VALUE_HPP
 
-// mapnik
-#include <mapnik/unicode.hpp>
-#include <mapnik/config_error.hpp>
-// boost
-#include <boost/variant.hpp>
-#include <boost/scoped_array.hpp>
-#include <boost/concept_check.hpp>
-// stl
-#include <iostream>
-#include <string>
-#include <sstream>
-#include <iomanip>
-#include <cmath>
-// uci
-#include <unicode/unistr.h>
-#include <unicode/ustring.h>
+//#include "boostinc.hpp"
 
-//#include "stdinc.hpp"
+// // mapnik
+//#include "unicode.hpp"
+//#include <mapnik/config_error.hpp>
+
+// // boost
+// #include <boost/variant.hpp>
+// #include <boost/scoped_array.hpp>
+// #include <boost/concept_check.hpp>
+// // stl
+// #ifndef _GLIBCXX_IOSTREAM
+// #include <iostream>
+// #endif
+// #include <string>
+// #include <sstream>
+// #include <iomanip>
+// #include <cmath>
+// // uci
+
+#include "stdinc_value.hpp"
 
 namespace mapnik  {
 
@@ -54,12 +57,12 @@ inline void to_utf8(UnicodeString const& input, std::string & target)
     int len;
       
     UErrorCode err = U_ZERO_ERROR;
-    u_strToUTF8(buf, BUF_SIZE, &len, input.getBuffer(), input.length(), &err);
+    u_strToUTF8_4_0(buf, BUF_SIZE, &len, input.getBuffer(), input.length(), &err);
     if (err == U_BUFFER_OVERFLOW_ERROR || err == U_STRING_NOT_TERMINATED_WARNING ) 
     {
 	boost::scoped_array<char> buf_ptr(new char [len+1]);
 	err = U_ZERO_ERROR;
-	u_strToUTF8(buf_ptr.get() , len + 1, &len, input.getBuffer(), input.length(), &err);
+	u_strToUTF8_4_0(buf_ptr.get() , len + 1, &len, input.getBuffer(), input.length(), &err);
 	target.assign(buf_ptr.get() , len);
     }
     else

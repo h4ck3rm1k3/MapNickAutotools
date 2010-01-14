@@ -28,7 +28,7 @@
 
 
 //stl
-#include "stdinc.hpp"
+#include "stdinc_feature_style_processor.hpp"
 
 namespace mapnik
 {       
@@ -201,14 +201,16 @@ private:
 				if (result.to_bool())
 				{   
 				    do_else=false;
-				    const rule_type::symbolizers& symbols = (*itr)->get_symbolizers();
+				    /*
+				      const rule_type::symbolizers& symbols = (*itr)->get_symbolizers();
 				    rule_type::symbolizers::const_iterator symIter=symbols.begin();
 				    rule_type::symbolizers::const_iterator symEnd =symbols.end();
 				    for (;symIter != symEnd;++symIter)
 				    {   
 					boost::apply_visitor
 					    (symbol_dispatch(p,*feature,prj_trans),*symIter);
-				    }
+					    }
+				    */
 				}			    
 			    }
 			    if (do_else)
@@ -220,7 +222,7 @@ private:
 				    else_rules.end();
 				for (;itr != end;++itr)
 				{
-				    const rule_type::symbolizers& symbols = (*itr)->get_symbolizers();
+				  /*   const rule_type::symbolizers& symbols = (*itr)->get_symbolizers();
 				    rule_type::symbolizers::const_iterator symIter= symbols.begin();
 				    rule_type::symbolizers::const_iterator symEnd = symbols.end();
                                         
@@ -228,7 +230,8 @@ private:
 				    {
 					boost::apply_visitor
 					    (symbol_dispatch(p,*feature,prj_trans),*symIter);
-				    }
+				    } 
+				  */
 				}
 			    }	  
                         }

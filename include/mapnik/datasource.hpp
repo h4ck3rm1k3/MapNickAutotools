@@ -25,31 +25,32 @@
 #ifndef DATASOURCE_HPP
 #define DATASOURCE_HPP
 // // mapnik
-#include <mapnik/config.hpp>
-#include <mapnik/ctrans.hpp>
-#include <mapnik/params.hpp>
-#include <mapnik/feature.hpp>
-#include <mapnik/query.hpp>
-#include <mapnik/feature_layer_desc.hpp>
-// boost
-#include <boost/utility.hpp>
-#include <boost/shared_ptr.hpp>
-// stl
-#include <map>
-#include <string>
-// #include "stdinc.hpp"
+// #include <mapnik/config.hpp>
+// #include <mapnik/ctrans.hpp>
+// #include <mapnik/params.hpp>
+// #include <mapnik/feature.hpp>
+// #include <mapnik/query.hpp>
+// #include <mapnik/feature_layer_desc.hpp>
+// // boost
+// #include <boost/utility.hpp>
+// #include <boost/shared_ptr.hpp>
+// // stl
+// #include <map>
+// #include <string>
+#include "stdinc_datasource.hpp"
+
 namespace mapnik {    
-    typedef MAPNIK_DECL boost::shared_ptr<Feature> feature_ptr;
+    typedef  boost::shared_ptr<Feature> feature_ptr;
     
-    struct MAPNIK_DECL Featureset
+    struct  Featureset
     {
         virtual feature_ptr next()=0;
         virtual ~Featureset() {};
     };
     
-    typedef MAPNIK_DECL boost::shared_ptr<Featureset> featureset_ptr;
+    typedef  boost::shared_ptr<Featureset> featureset_ptr;
     
-    class MAPNIK_DECL datasource_exception : public std::exception
+    class  datasource_exception : public std::exception
     {
     private:
         std::string message_;
@@ -64,7 +65,7 @@ namespace mapnik {
         }
     };
     
-    class MAPNIK_DECL datasource : private boost::noncopyable
+    class  datasource : private boost::noncopyable
     {
     public:        
         enum datasource_t {

@@ -24,9 +24,9 @@
 #ifndef VERTEX_HPP
 #define VERTEX_HPP
 
-// #include <iostream>
-// #include <sstream>
-#include "stdinc.hpp"
+
+#include "boostinc.hpp"
+
 namespace mapnik 
 {
     enum CommandType {

@@ -24,11 +24,11 @@
 #ifndef STROKE_HPP
 #define STROKE_HPP
 // mapnik
-// #include <mapnik/color.hpp>
-// #include <mapnik/enumeration.hpp>
+#include <mapnik/color.hpp>
+#include <mapnik/enumeration.hpp>
 // // stl
 // #include <vector>
-#include "stdinc.hpp" 
+//#include "stdinc.hpp" 
 namespace mapnik
 {
     using std::pair;
@@ -60,7 +60,7 @@ namespace mapnik
 
     DEFINE_ENUM( line_join_e, line_join_enum );
     
-  class MAPNIK_DECL stroke
+  class  stroke
   {	
         color c_;
         float width_;

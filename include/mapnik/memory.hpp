@@ -26,7 +26,8 @@
 
 // #include <iostream>
 // #include <cassert>
-#include "stdinc.hpp"
+//#include "stdinc.hpp"
+#include "boostinc.hpp"
 namespace mapnik
 {
     class MemoryUtils

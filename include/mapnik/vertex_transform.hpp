@@ -25,9 +25,9 @@
 #define VERTEX_TRANSFORM_HPP
 
 // mapnik
-// #include <mapnik/box2d.hpp>
-// #include <mapnik/vertex.hpp>
-#include "stdinc.hpp"
+#include <mapnik/box2d.hpp>
+#include <mapnik/vertex.hpp>
+//#include "stdinc.hpp"
 namespace mapnik
 {
     template <typename T0 ,typename T1,int shift=8>

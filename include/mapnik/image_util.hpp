@@ -26,8 +26,8 @@
 #define IMAGE_UTIL_HPP
 
 // // mapnik
-// #include <mapnik/config.hpp>
-// #include <mapnik/graphics.hpp>
+ #include <mapnik/config.hpp>
+ #include <mapnik/graphics.hpp>
 
 // // boost
 // #include <boost/algorithm/string.hpp>
@@ -56,16 +56,16 @@ namespace mapnik {
     };
 
    template <typename T>
-   MAPNIK_DECL void save_to_file(T const& image,
+    void save_to_file(T const& image,
                                  std::string const& filename,
                                  std::string const& type);
    // guess type from file extension
    template <typename T>
-   MAPNIK_DECL void save_to_file(T const& image,
+    void save_to_file(T const& image,
                                  std::string const& filename);
    
    template <typename T>
-   MAPNIK_DECL std::string save_to_string(T const& image,
+    std::string save_to_string(T const& image,
                                  std::string const& type);
 
    template <typename T>
@@ -416,42 +416,42 @@ inline std::string guess_type( const std::string & filename )
      }
    }
 
-   inline MAPNIK_DECL void save_to_file (image_32 const& image,
+   inline  void save_to_file (image_32 const& image,
                                          std::string const& file,
                                          std::string const& type) 
    {
       save_to_file<image_data_32>(image.data(),file,type);
    }
    
-   inline MAPNIK_DECL void save_to_file(image_32 const& image,
+   inline  void save_to_file(image_32 const& image,
                                         std::string const& file) 
    {
       save_to_file<image_data_32>(image.data(),file);
    }
 
-   inline MAPNIK_DECL std::string save_to_string(image_32 const& image,
+   inline  std::string save_to_string(image_32 const& image,
                                         std::string const& type)
    {
       return save_to_string<image_data_32>(image.data(),type);
    }
    
 #ifdef _MSC_VER
-   template MAPNIK_DECL void save_to_file<image_data_32>(image_data_32 const&,
+   template  void save_to_file<image_data_32>(image_data_32 const&,
                                                        std::string const&,
                                                        std::string const&);
-   template MAPNIK_DECL void save_to_file<image_data_32>(image_data_32 const&,
+   template  void save_to_file<image_data_32>(image_data_32 const&,
                                                        std::string const&);
-   template MAPNIK_DECL std::string save_to_string<image_data_32>(image_data_32 const&,
+   template  std::string save_to_string<image_data_32>(image_data_32 const&,
                                                        std::string const&);
    
-   template MAPNIK_DECL void save_to_file<image_view<image_data_32> > (image_view<image_data_32> const&,
+   template  void save_to_file<image_view<image_data_32> > (image_view<image_data_32> const&,
                                                                      std::string const&,
                                                                      std::string const&);
  
-   template MAPNIK_DECL void save_to_file<image_view<image_data_32> > (image_view<image_data_32> const&,
+   template  void save_to_file<image_view<image_data_32> > (image_view<image_data_32> const&,
                                                                      std::string const&);
    
-   template MAPNIK_DECL std::string save_to_string<image_view<image_data_32> > (image_view<image_data_32> const&,
+   template  std::string save_to_string<image_view<image_data_32> > (image_view<image_data_32> const&,
                                                                      std::string const&);
 #endif
 

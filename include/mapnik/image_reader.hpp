@@ -25,12 +25,12 @@
 #ifndef IMAGE_READER_HPP
 #define IMAGE_READER_HPP
 // // mapnik
-// #include <mapnik/image_data.hpp>
-// #include <mapnik/config.hpp>
+ #include <mapnik/image_data.hpp>
+ #include <mapnik/config.hpp>
 // // stl
 // #include <stdexcept>
 // #include <string>
-#include "stdinc.hpp"   
+//#include "stdinc.hpp"   
 namespace mapnik 
 {
 class image_reader_exception : public std::exception
@@ -49,7 +49,7 @@ public:
     }
 };
 
-struct MAPNIK_DECL image_reader
+struct  image_reader
 {
     virtual unsigned width() const=0;
     virtual unsigned height() const=0;
@@ -58,8 +58,8 @@ struct MAPNIK_DECL image_reader
 };
 
 bool register_image_reader(const std::string& type,image_reader* (*)(const std::string&));
-MAPNIK_DECL image_reader* get_image_reader(const std::string& file,const std::string& type);
-MAPNIK_DECL image_reader* get_image_reader(const std::string& file);
+ image_reader* get_image_reader(const std::string& file,const std::string& type);
+ image_reader* get_image_reader(const std::string& file);
    
 }
 

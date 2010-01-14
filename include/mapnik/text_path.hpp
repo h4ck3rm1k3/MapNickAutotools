@@ -28,7 +28,7 @@
 
 // #include <boost/utility.hpp>
 // #include <unicode/unistr.h>
-#include "stdinc.hpp"
+#include "boostinc.hpp"
 namespace mapnik
 {
    struct character_info

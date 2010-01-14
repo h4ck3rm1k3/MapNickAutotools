@@ -26,7 +26,7 @@
 #define PROJECTION_HPP
 
 // mapnik
-// #include <mapnik/box2d.hpp>
+#include <mapnik/box2d.hpp>
 
 // // boost
 // #ifdef MAPNIK_THREADSAFE
@@ -38,7 +38,7 @@
 // #include <string>
 // #include <iostream>
 // #include <stdexcept>
-#include "stdinc.hpp"
+//#include "stdinc.hpp"
 namespace mapnik {
     
     class proj_init_error : public std::runtime_error
@@ -48,7 +48,7 @@ namespace mapnik {
             : std::runtime_error("failed to initialize projection with:" + params) {}
     };
     
-    class MAPNIK_DECL projection
+    class projection
     {
         friend class proj_transform;
     public:

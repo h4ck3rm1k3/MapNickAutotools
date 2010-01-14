@@ -2,10 +2,54 @@
 #define INC_STDINC_HPP
 
 
-#pragma once 
+//#pragma once 
 
+//#include "freetype.hpp"
+//#include "boostinc.hpp"
+//#include "stdioinc.hpp"
+
+#include <utility>
+#include <string>
 #include <algorithm>
 #include <bitset>
+#include <cassert>
+#include <cmath>
+//#include <config.h>
+#include <cstdlib>
+#include <cstring>
+#include <ctime>
+#include <deque>
+#include <functional>
+#include <iomanip>
+#include <iostream>
+#include <jpeglib.h>
+#include <limits>
+#include <ltdl.h>
+#include <map>
+#include <map>
+#include <queue>
+#include <set>
+#include <sstream>
+#include <stdexcept>
+
+
+#include <sys/time.h> 
+#include <unicode/ubidi.h>
+#include <unicode/ucnv.h>
+#include <unicode/unistr.h>
+#include <unicode/ushape.h>
+#include <unicode/ustring.h>
+
+
+// // icu
+#include <unicode/ubidi.h>
+#include <unicode/ushape.h>
+
+#include <vector>
+
+
+
+#include <boost/config.hpp>
 #include <boost/algorithm/string.hpp>
 #include <boost/concept_check.hpp>
 #include <boost/config/warning_disable.hpp>
@@ -45,41 +89,15 @@
 #include <boost/variant.hpp>
 #include <boost/version.hpp>
 
-
+// boost
+#include <boost/shared_ptr.hpp>
+#include <boost/utility.hpp>
+#include <boost/ptr_container/ptr_vector.hpp>
+#include <boost/thread/mutex.hpp>
 
 #include <cairomm/context.h>
 #include <cairomm/surface.h>
-#include <cassert>
-#include <cmath>
-#include <config.h>
-#include <cstdlib>
-#include <cstring>
-#include <ctime>
-#include <deque>
 #include <ft2build.h>
-//TODO:#include FT_FREETYPE_H
-//#include FT_GLYPH_H
-#include <functional>
-#include <iomanip>
-#include <iostream>
-#include <jpeglib.h>
-#include <limits>
-#include <ltdl.h>
-#include <map>
-
-//#include <png.h>
-#include <queue>
-#include <set>
-#include <sstream>
-#include <stdexcept>
-#include <string>
-#include <sys/time.h> 
-#include <unicode/ubidi.h>
-#include <unicode/ucnv.h>
-#include <unicode/unistr.h>
-#include <unicode/ushape.h>
-#include <unicode/ustring.h>
-#include <vector>
 
 // freetype2
 extern "C"
@@ -89,29 +107,7 @@ extern "C"
 #include FT_GLYPH_H
 }
 
-// boost
-#include <boost/shared_ptr.hpp>
-#include <boost/utility.hpp>
-#include <boost/ptr_container/ptr_vector.hpp>
-#include <boost/thread/mutex.hpp>
 
-// stl
-#include <string>
-#include <vector>
-#include <map>
-#include <iostream>
-
-// // icu
-#include <unicode/ubidi.h>
-#include <unicode/ushape.h>
-
-
-// #include <mapnik/config.hpp>
-// #include <mapnik/coord.hpp>
-// // boost
-// #include <boost/operators.hpp>
-// // stl
-// #include <iomanip>
 #include <mapnik/config.hpp>
 #include <mapnik/coord.hpp>
 #include <mapnik/box2d.hpp>
@@ -160,24 +156,6 @@ extern "C"
 // // mapnik
  #include <mapnik/value.hpp>
 #include <mapnik/expression_node.hpp>
-
-// // boost
-
-// #include <boost/variant.hpp>
-// #include <boost/shared_ptr.hpp>
-// #include <boost/concept_check.hpp>
-// //spirit2
-// #include <boost/spirit/include/qi.hpp>
-// #include <boost/spirit/include/qi_action.hpp>
-// //fusion
-// #include <boost/fusion/include/adapt_struct.hpp>
-// //phoenix
-// #include <boost/spirit/include/phoenix_core.hpp>
-// #include <boost/spirit/include/phoenix_object.hpp>
-// #include <boost/spirit/include/phoenix_operator.hpp>
-// #include <boost/spirit/include/phoenix_function.hpp>
-// #include <boost/spirit/include/phoenix_stl.hpp>
-// #include <boost/spirit/home/phoenix/object/construct.hpp>
 
 
 #include <mapnik/expression_grammar.hpp>
@@ -236,9 +214,6 @@ extern "C"
 #include <mapnik/config.hpp>
 #include <mapnik/path_expression_grammar.hpp>
 
-// stl
-#include <string>
-
 #include <mapnik/symbolizer.hpp>
 
 
@@ -249,11 +224,6 @@ extern "C"
 
 // #include <mapnik/rule.hpp>
 // #include <mapnik/path_expression_grammar.hpp>
-
-// // boost
-// #include <boost/utility.hpp>
-// #include <boost/variant.hpp>
-// #include <boost/concept_check.hpp>
 
 #include <mapnik/text_symbolizer.hpp>
 #include <mapnik/raster_symbolizer.hpp>
@@ -290,21 +260,6 @@ extern "C"
 
 #include <mapnik/attribute_collector.hpp>
 
-// #include <mapnik/line_symbolizer.hpp>
-// #include <mapnik/line_pattern_symbolizer.hpp>
-// #include <mapnik/polygon_symbolizer.hpp>
-// #include <mapnik/polygon_pattern_symbolizer.hpp>
-// #include <mapnik/point_symbolizer.hpp>
-// #include <mapnik/raster_symbolizer.hpp>
-// #include <mapnik/shield_symbolizer.hpp>
-// #include <mapnik/text_symbolizer.hpp>
-// #include <mapnik/markers_symbolizer.hpp>
-// #include <mapnik/feature.hpp>
-// #include <mapnik/expression_grammar.hpp>
-// #include <boost/shared_ptr.hpp>
-// #include <boost/variant.hpp>
-// #include <string>
-// #include <vector>
 #include <mapnik/rule.hpp>
 
 #include <mapnik/feature_type_style.hpp> // needs attribute collector
@@ -317,12 +272,6 @@ extern "C"
 #include <mapnik/enumeration.hpp>
 #include <mapnik/feature_type_style.hpp>
 
-
-
-
-// // boost
-// #include <boost/optional/optional.hpp>
-
 #include <mapnik/map.hpp> // needs  feature_type_style.hpp
 
 
@@ -330,15 +279,6 @@ extern "C"
 #ifdef MAPNIK_DEBUG
 //#include <mapnik/wall_clock_timer.hpp>
 #endif
-// // mapnik
-// #include <mapnik/box2d.hpp>
-
-// #include <mapnik/map.hpp>
-// #include <mapnik/attribute_collector.hpp>
-// #include <mapnik/expression_evaluator.hpp>
-// #include <mapnik/utils.hpp>
-// #include <mapnik/projection.hpp>
-// #include <mapnik/scale_denominator.hpp>
 #include <mapnik/expression_evaluator.hpp>
 #include <mapnik/feature_style_processor.hpp>
 

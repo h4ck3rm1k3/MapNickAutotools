@@ -25,14 +25,14 @@
 #ifndef MAPNIK_FILTER_FACTORY_HPP
 #define MAPNIK_FILTER_FACTORY_HPP
 
-// #include <mapnik/config.hpp>
-// #include <mapnik/expression_grammar.hpp>
-#include "stdinc.hpp"   
+#include <mapnik/config.hpp>
+#include <mapnik/expression_grammar.hpp>
+//#include "stdinc.hpp"   
 namespace mapnik
 {
 
-MAPNIK_DECL expression_ptr parse_expression (std::string const& wkt, std::string const& encoding);
-MAPNIK_DECL expression_ptr parse_expression (std::string const& wkt);
+ expression_ptr parse_expression (std::string const& wkt, std::string const& encoding);
+ expression_ptr parse_expression (std::string const& wkt);
    
 }
 

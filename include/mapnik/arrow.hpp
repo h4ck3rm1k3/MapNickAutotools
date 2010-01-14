@@ -25,8 +25,8 @@
 #ifndef ARROW_HPP
 #define ARROW_HPP
 
-// #include <mapnik/box2d.hpp>
-#include "stdinc.hpp"   
+ #include <mapnik/box2d.hpp>
+//#include "stdinc.hpp"   
 namespace mapnik {
 
    class arrow

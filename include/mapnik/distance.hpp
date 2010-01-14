@@ -25,8 +25,8 @@
 #ifndef DISTANCE_HPP
 #define DISTANCE_HPP
 
-// #include <mapnik/coord.hpp>
-#include "stdinc.hpp"   
+#include <mapnik/coord.hpp>
+//#include "stdinc.hpp"   
 namespace mapnik
 {
     struct ellipsoid;

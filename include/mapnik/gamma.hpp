@@ -25,11 +25,11 @@
 #ifndef GAMMA_HPP
 #define GAMMA_HPP
 
-// #include <cmath>
-#include "stdinc.hpp"   
+//#include <cmath>
+#include "boostinc.hpp"   
 namespace mapnik 
 {
-    struct MAPNIK_DECL gamma
+    struct  gamma
     {
         unsigned char g2l[256];
         unsigned char l2g[256];

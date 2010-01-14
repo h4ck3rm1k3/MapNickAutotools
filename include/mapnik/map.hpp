@@ -40,7 +40,7 @@
 
 namespace mapnik
 {
-    class MAPNIK_DECL Map
+    class  Map
     {	
     public:
 

@@ -25,10 +25,12 @@
 #ifndef WKB_HPP
 #define WKB_HPP
 
-// #include <mapnik/geometry.hpp>
-// #include <mapnik/ctrans.hpp>
-// #include <mapnik/feature.hpp>
-#include "stdinc.hpp"
+ // // #include <mapnik/geometry.hpp>""
+ // // #include <mapnik/ctrans.hpp>
+ // // #include <mapnik/feature.hpp>
+
+#include "stdinc_feature.hpp"
+
 namespace mapnik
 {
 
@@ -49,7 +51,7 @@ namespace mapnik
         wkbSpatiaLite=2
     };
 
-    class MAPNIK_DECL geometry_utils 
+    class  geometry_utils 
     {
     public:
 

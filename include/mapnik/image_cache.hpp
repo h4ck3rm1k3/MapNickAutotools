@@ -26,9 +26,9 @@
 #define MAPNIK_IMAGE_CACHE_HPP
 
 // // mapnik
-// #include <mapnik/utils.hpp>
-// #include <mapnik/config.hpp>
-// #include <mapnik/image_data.hpp>
+ #include <mapnik/utils.hpp>
+ #include <mapnik/config.hpp>
+ #include <mapnik/image_data.hpp>
 
 // // boost
 // #include <boost/utility.hpp>
@@ -36,13 +36,13 @@
 // #include <boost/shared_ptr.hpp>
 // #include <boost/optional.hpp>
 // #include <boost/thread/mutex.hpp>
- #include "stdinc.hpp"
+// #include "stdinc.hpp"
 namespace mapnik
 {
 
 typedef boost::shared_ptr<image_data_32> image_ptr;
 
-struct MAPNIK_DECL image_cache :
+struct  image_cache :
 	public singleton <image_cache, CreateStatic>,
 	private boost::noncopyable
 {

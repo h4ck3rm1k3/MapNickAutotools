@@ -25,11 +25,15 @@
 #ifndef COORD_ARRAY_HPP
 #define COORD_ARRAY_HPP
 
-// //mapnik
-// #include <mapnik/coord.hpp>
-// // stl
-// #include <cassert>
-#include "stdinc.hpp"   
+//mapnik
+#include <mapnik/coord.hpp>
+// stl
+#ifndef assert
+
+#define assert 
+
+#endif 
+//#include "stdinc.hpp"   
 namespace mapnik {
     template <typename T>
     class coord_array 

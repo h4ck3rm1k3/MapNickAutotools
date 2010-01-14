@@ -29,22 +29,22 @@
 
 
 
-// // mapnik
-// #include <mapnik/config.hpp>
-// #include <mapnik/feature_style_processor.hpp>
-// #include <mapnik/font_engine_freetype.hpp>
-// #include <mapnik/label_collision_detector.hpp>
-// #include <mapnik/placement_finder.hpp>
-// #include <mapnik/map.hpp>
+// mapnik
+#include <mapnik/config.hpp>
+#include <mapnik/feature_style_processor.hpp>
+#include <mapnik/font_engine_freetype.hpp>
+#include <mapnik/label_collision_detector.hpp>
+#include <mapnik/placement_finder.hpp>
+#include <mapnik/map.hpp>
 
-// // cairo
-// #include <cairomm/context.h>
-// #include <cairomm/surface.h>
+// cairo
+#include <cairomm/context.h>
+#include <cairomm/surface.h>
 
-// // boost
-// #include <boost/utility.hpp>
-// #include <boost/scoped_ptr.hpp>
- #include "stdinc.hpp"
+// boost
+#include <boost/utility.hpp>
+#include <boost/scoped_ptr.hpp>
+// #include "stdinc.hpp"
 
 namespace mapnik {
 
@@ -116,7 +116,7 @@ namespace mapnik {
    };
 
    template <typename T>
-   class MAPNIK_DECL cairo_renderer : public feature_style_processor<cairo_renderer<T> >,
+   class cairo_renderer : public feature_style_processor<cairo_renderer<T> >,
                                       public cairo_renderer_base
    {
      public:

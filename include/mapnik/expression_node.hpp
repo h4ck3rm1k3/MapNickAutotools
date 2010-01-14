@@ -23,15 +23,15 @@
 #ifndef  MAPNIK_EXPRESSION_NODE_HPP
 #define  MAPNIK_EXPRESSION_NODE_HPP
 
-// // mapnik
-// #include <mapnik/value.hpp>
-// // boost
-// #include <boost/variant.hpp>
-// #include <boost/shared_ptr.hpp>
-// #include <boost/regex.hpp>
-// #include <boost/regex/icu.hpp>
-// #include <boost/function.hpp>
-#include "stdinc.hpp"   
+// mapnik
+#include <mapnik/value.hpp>
+// boost
+#include <boost/variant.hpp>
+#include <boost/shared_ptr.hpp>
+#include <boost/regex.hpp>
+#include <boost/regex/icu.hpp>
+#include <boost/function.hpp>
+//#include "stdinc.hpp"   
 namespace mapnik
 {
 

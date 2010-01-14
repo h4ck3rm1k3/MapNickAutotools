@@ -42,7 +42,34 @@ EXTRA_DIST = \
 	$(libmapnik_HEADERS)
 
 ## File created by the gnome-build tools
-GCH_FILES= unicode.hpp.gch value.hpp.gch feature.hpp.gch  layer.hpp.gch   quad_tree.hpp.gch   arrow.hpp.gch      libxml2_loader.hpp.gch   query.hpp.gch   attribute_collector.hpp.gch   feature_layer_desc.hpp.gch   line_pattern_symbolizer.hpp.gch   raster.hpp.gch   attribute_descriptor.hpp.gch   feature_style_processor.hpp.gch   line_symbolizer.hpp.gch   raster_symbolizer.hpp.gch   box2d.hpp.gch   feature_type_style.hpp.gch   load_map.hpp.gch   rule.hpp.gch   cairo_renderer.hpp.gch   fill.hpp.gch   map.hpp.gch   save_map.hpp.gch   color_factory.hpp.gch   filter_factory.hpp.gch   markers_converter.hpp.gch   scale_denominator.hpp.gch   color.hpp.gch   filter_featureset.hpp.gch   markers_symbolizer.hpp.gch   shield_symbolizer.hpp.gch   config_error.hpp.gch   font_engine_freetype.hpp.gch   memory_datasource.hpp.gch   stroke.hpp.gch   config.hpp.gch   font_set.hpp.gch   memory_featureset.hpp.gch   style_factory.hpp.gch   coord_array.hpp.gch   gamma.hpp.gch   memory.hpp.gch   style.hpp.gch   coord.hpp.gch   geometry.hpp.gch   octree.hpp.gch   symbolizer.hpp.gch   css_color_grammar.hpp.gch   geom_util.hpp.gch   params.hpp.gch   text_path.hpp.gch   ctrans.hpp.gch   global.hpp.gch   path_expression_grammar.hpp.gch   text_symbolizer.hpp.gch   datasource_cache.hpp.gch   graphics.hpp.gch   placement_finder.hpp.gch      datasource.hpp.gch   hit_test_filter.hpp.gch   plugin.hpp.gch   utils.hpp.gch   distance.hpp.gch   image_cache.hpp.gch   png_io.hpp.gch      ellipsoid.hpp.gch   image_data.hpp.gch   point_symbolizer.hpp.gch   version.hpp.gch   enumeration.hpp.gch   image_reader.hpp.gch   polygon_pattern_symbolizer.hpp.gch   vertex.hpp.gch   expression_evaluator.hpp.gch   image_util.hpp.gch   polygon_symbolizer.hpp.gch   vertex_transform.hpp.gch   expression_grammar.hpp.gch   image_view.hpp.gch   pool.hpp.gch   vertex_vector.hpp.gch   expression_node.hpp.gch   jpeg_io.hpp.gch   projection.hpp.gch   wall_clock_timer.hpp.gch   expression_string.hpp.gch   label_collision_detector.hpp.gch   proj_transform.hpp.gch   wkb.hpp.gch   factory.hpp.gch   label_placement.hpp.gch   ptree_helpers.hpp.gch  ptree_helpers.hpp.gch stdinc.hpp.gch agg_renderer.hpp.gch 
+GCH_FILES=  \
+	stdioinc.hpp.gch \
+	boostinc.hpp.gch \
+	freetype.hpp.gch \
+	 stdinc.hpp.gch \
+	stdinc_feature.hpp.gch\
+        stdinc_value.hpp.gch\
+	stdinc_ctrans.hpp.gch\
+	stdinc_raster.hpp.gch \
+	stdinc_geometry.hpp.gch \
+	stdinc_symbolizer.hpp.gch \
+	stdinc_attribute_collector.hpp.gch \
+        stdinc_feature_style_processor.hpp.gch\
+	stdinc_datasource.hpp.gch \
+	 config.hpp.gch \
+	unicode.hpp.gch \
+	config_error.hpp.gch \
+	coord.hpp.gch \
+	box2d.hpp.gch \
+	color.hpp.gch \
+	vertex.hpp.gch \
+	vertex_vector.hpp.gch \
+	geometry.hpp.gch \
+	value.hpp.gch \
+	raster.hpp.gch \
+	feature.hpp.gch \
+	 layer.hpp.gch \
+	  quad_tree.hpp.gch   arrow.hpp.gch      libxml2_loader.hpp.gch   query.hpp.gch   attribute_collector.hpp.gch   feature_layer_desc.hpp.gch   line_pattern_symbolizer.hpp.gch   raster.hpp.gch   attribute_descriptor.hpp.gch   feature_style_processor.hpp.gch   line_symbolizer.hpp.gch   raster_symbolizer.hpp.gch      feature_type_style.hpp.gch   load_map.hpp.gch   rule.hpp.gch   cairo_renderer.hpp.gch   fill.hpp.gch   map.hpp.gch   save_map.hpp.gch   color_factory.hpp.gch   filter_factory.hpp.gch   markers_converter.hpp.gch   scale_denominator.hpp.gch      filter_featureset.hpp.gch   markers_symbolizer.hpp.gch   shield_symbolizer.hpp.gch      font_engine_freetype.hpp.gch   memory_datasource.hpp.gch   stroke.hpp.gch      font_set.hpp.gch   memory_featureset.hpp.gch   style_factory.hpp.gch   coord_array.hpp.gch   gamma.hpp.gch   memory.hpp.gch   style.hpp.gch         octree.hpp.gch   symbolizer.hpp.gch   css_color_grammar.hpp.gch   geom_util.hpp.gch   params.hpp.gch   text_path.hpp.gch   ctrans.hpp.gch   global.hpp.gch   path_expression_grammar.hpp.gch   text_symbolizer.hpp.gch   datasource_cache.hpp.gch   graphics.hpp.gch   placement_finder.hpp.gch      datasource.hpp.gch   hit_test_filter.hpp.gch   plugin.hpp.gch   utils.hpp.gch   distance.hpp.gch   image_cache.hpp.gch   png_io.hpp.gch      ellipsoid.hpp.gch   image_data.hpp.gch   point_symbolizer.hpp.gch   version.hpp.gch   enumeration.hpp.gch   image_reader.hpp.gch   polygon_pattern_symbolizer.hpp.gch      expression_evaluator.hpp.gch   image_util.hpp.gch   polygon_symbolizer.hpp.gch   vertex_transform.hpp.gch   expression_grammar.hpp.gch   image_view.hpp.gch   pool.hpp.gch      expression_node.hpp.gch   jpeg_io.hpp.gch   projection.hpp.gch   wall_clock_timer.hpp.gch   expression_string.hpp.gch   label_collision_detector.hpp.gch   proj_transform.hpp.gch   wkb.hpp.gch   factory.hpp.gch   label_placement.hpp.gch   ptree_helpers.hpp.gch  ptree_helpers.hpp.gch stdinc.hpp.gch agg_renderer.hpp.gch 
 
 
 
@@ -64,12 +91,12 @@ report.txt:
 CLEANFILES =$(GCH_FILES)
 
 %.hpp.gch: %.hpp
-	$(CXX) -save-temps  -I ../.. -I .. -I  	${PROFILING_CFLAGS} \
+	$(CXX)  -Winvalid-pch -x c++-header -H    -I ../stdio -I ../boost  -I ../.. -I .. -I  	${PROFILING_CFLAGS} \
 	${TRACING_CFLAGS} \
 	${PNG_CFLAGS} \
 	${FREETYPE2_CFLAGS} \
 	${AGG_CFLAGS} \
-	${BOOST_CPPFLAGS} \
+	${BOOST_CPPFLAGS} -DBOOST_DISABLE_ASSERTS \
 	${LIBXML2_CFLAGS} \
 	${CAIRO_CFLAGS} -c $< 
 

@@ -25,14 +25,14 @@
 #ifndef MAPNIK_POLYGON_PATTERN_SYMBOLIZER_HPP
 #define MAPNIK_POLYGON_PATTERN_SYMBOLIZER_HPP
 
-#include "stdinc.hpp"
+//#include "stdinc.hpp"
 
 // // mapnik 
-// #include <mapnik/symbolizer.hpp> 
+#include <mapnik/symbolizer.hpp> 
 
 namespace mapnik
 {
-struct MAPNIK_DECL polygon_pattern_symbolizer :
+struct  polygon_pattern_symbolizer :
 	public symbolizer_with_image
 {
 	

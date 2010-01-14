@@ -62,7 +62,7 @@ namespace mapnik
 
     typedef boost::shared_ptr<font_face> face_ptr;
 
-    class MAPNIK_DECL font_glyph : private boost::noncopyable
+    class  font_glyph : private boost::noncopyable
     {
     public:
         font_glyph(face_ptr face, unsigned index)
@@ -136,7 +136,7 @@ namespace mapnik
     FT_Face face_;
     };
 
-    class MAPNIK_DECL font_face_set : private boost::noncopyable
+    class  font_face_set : private boost::noncopyable
     {
     public:
         typedef std::pair<unsigned,unsigned> dimension_t;
@@ -305,7 +305,7 @@ namespace mapnik
 
     typedef boost::shared_ptr<font_face_set> face_set_ptr;
 
-    class MAPNIK_DECL freetype_engine
+    class  freetype_engine
     {
       public:
         static bool register_font(std::string const& file_name);
@@ -320,7 +320,7 @@ namespace mapnik
     };
 
     template <typename T>
-    class MAPNIK_DECL face_manager : private boost::noncopyable
+    class  face_manager : private boost::noncopyable
     {
         typedef T font_engine_type;
         typedef std::map<std::string,face_ptr> faces;

@@ -28,7 +28,8 @@
 // #include <boost/operators.hpp>
 // #include <iomanip>
 // #include <sstream>
-#include "stdinc.hpp"   
+#include "boostinc.hpp"   
+
 namespace mapnik {   
     template <typename T,int dim>
     struct coord {

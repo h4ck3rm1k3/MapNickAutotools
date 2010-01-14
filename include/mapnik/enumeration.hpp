@@ -23,13 +23,13 @@
 #ifndef MAPNIK_ENUMERATION_INCLUDED
 #define MAPNIK_ENUMERATION_INCLUDED
 
-// #include <mapnik/config.hpp>
+#include <mapnik/config.hpp>
 
-// #include <vector>
-// #include <bitset>
-// #include <iostream>
-// #include <cstdlib>
-#include "stdinc.hpp"   
+#include <vector>
+#include <bitset>
+#include <iostream>
+#include <cstdlib>
+//#include "stdinc.hpp"   
 namespace mapnik {
 
 class illegal_enum_value : public std::exception
@@ -133,7 +133,7 @@ class illegal_enum_value : public std::exception
  */
 
 template <class ENUM, int THE_MAX>
-class MAPNIK_DECL enumeration {
+class  enumeration {
     public:
         typedef ENUM native_type;
         enumeration() {};

@@ -26,9 +26,9 @@
 #define MAPNIK_PATH_EXPRESSIONS_GRAMMAR_HPP
 
 // // mapnik
-// #include <mapnik/unicode.hpp>
-// #include <mapnik/expression_node.hpp>
-// #include <mapnik/feature.hpp>
+ #include <mapnik/unicode.hpp>
+ #include <mapnik/expression_node.hpp>
+ #include <mapnik/feature.hpp>
 
 // // boost
 // #include <boost/variant.hpp>
@@ -50,7 +50,7 @@
 // // stl
 // #include <string>
 // #include <vector>
-#include "stdinc.hpp"
+//#include "stdinc.hpp"
 namespace mapnik
 {
 

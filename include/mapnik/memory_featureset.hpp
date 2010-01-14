@@ -24,9 +24,9 @@
 #ifndef MEMORY_FEATURESET_HPP
 #define MEMORY_FEATURESET_HPP
 
-// #include <mapnik/memory_datasource.hpp>
+ #include <mapnik/memory_datasource.hpp>
 // #include <boost/utility.hpp>
-#include "stdinc.hpp"
+//#include "stdinc.hpp"
 namespace mapnik {
     
     class memory_featureset : public Featureset, private boost::noncopyable

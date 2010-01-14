@@ -26,8 +26,9 @@
 #define MAPNIK_EXPRESSIONS_GRAMMAR_HPP
 
 // // mapnik
-// #include <mapnik/value.hpp>
-// #include <mapnik/expression_node.hpp>
+#include <mapnik/unicode.hpp>
+#include <mapnik/value.hpp>
+#include <mapnik/expression_node.hpp>
 
 // // boost
 

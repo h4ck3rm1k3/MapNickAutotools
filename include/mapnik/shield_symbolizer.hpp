@@ -25,16 +25,17 @@
 #ifndef MAPNIK_SHIELD_SYMBOLIZER_HPP
 #define MAPNIK_SHIELD_SYMBOLIZER_HPP
 
+#include "stdinc_symbolizer.hpp"
 // mapnik
-// #include <mapnik/symbolizer.hpp>
-// #include <mapnik/text_symbolizer.hpp>
+#include <mapnik/symbolizer.hpp>
+#include <mapnik/text_symbolizer.hpp>
 
 // // boost
 // #include <boost/shared_ptr.hpp>
 
 namespace mapnik
 {
-struct MAPNIK_DECL shield_symbolizer : public text_symbolizer,
+struct  shield_symbolizer : public text_symbolizer,
 				       public symbolizer_with_image
 {
     shield_symbolizer(expression_ptr name,

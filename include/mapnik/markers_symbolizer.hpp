@@ -27,7 +27,7 @@
 
 namespace mapnik {
    
-   struct MAPNIK_DECL markers_symbolizer
+   struct  markers_symbolizer
    {
      public:
       markers_symbolizer() 

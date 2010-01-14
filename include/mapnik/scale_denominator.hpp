@@ -21,10 +21,14 @@
  *****************************************************************************/
 
 //$Id$
-// #include <mapnik/config.hpp>
-#include "stdinc.hpp"
+
+#ifndef INC_scale_denominator_HPP
+#define  INC_scale_denominator_HPP
+#include <mapnik/config.hpp>
+//#include "stdinc.hpp"
 namespace mapnik {
  
     class Map;
-    MAPNIK_DECL double scale_denominator(Map const& map, bool geographic);
+     double scale_denominator(Map const& map, bool geographic);
 }
+#endif

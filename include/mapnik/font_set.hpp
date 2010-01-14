@@ -25,16 +25,16 @@
 #ifndef FONT_SET_HPP
 #define FONT_SET_HPP
 // mapnik
-// #include <mapnik/config.hpp>
-// // boost
-// #include <boost/shared_ptr.hpp>
-// // stl
-// #include <string>
-// #include <vector>
-#include "stdinc.hpp"   
+#include <mapnik/config.hpp>
+// boost
+#include <boost/shared_ptr.hpp>
+// stl
+#include <string>
+#include <vector>
+//#include "stdinc.hpp"   
 namespace mapnik
 {
-    class MAPNIK_DECL font_set
+    class  font_set
     {
         public:
             font_set(); 

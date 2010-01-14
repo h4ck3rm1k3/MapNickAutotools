@@ -29,15 +29,17 @@
 
 #ifndef VERTEX_VECTOR_HPP
 #define VERTEX_VECTOR_HPP
-// mapnik
-#include <mapnik/vertex.hpp>
-#include <mapnik/ctrans.hpp>
-// boost
-#include <boost/utility.hpp>
-#include <boost/tuple/tuple.hpp>
-// stl
-#include <vector>
-#include <cstring>
+//#include "stdioinc.hpp"
+#include "boostinc.hpp"
+// // mapnik
+ #include <mapnik/vertex.hpp>
+ #include <mapnik/ctrans.hpp>
+// // boost
+// #include <boost/utility.hpp>
+// #include <boost/tuple/tuple.hpp>
+// // stl
+// #include <vector>
+// #include <cstring>
 
 namespace mapnik
 {

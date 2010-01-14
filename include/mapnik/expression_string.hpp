@@ -25,15 +25,15 @@
 #ifndef MAPNIK_EXPRESSION_STRING_HPP
 #define MAPNIK_EXPRESSION_STRING_HPP
 
-// // mapnik
-// #include <mapnik/config.hpp>
-// #include <mapnik/expression_node.hpp>
-// // stl
-// #include <string>
-#include "stdinc.hpp"   
+// mapnik
+#include <mapnik/config.hpp>
+#include <mapnik/expression_node.hpp>
+// stl
+#include <string>
+//#include "stdinc.hpp"   
 namespace mapnik
 {
-MAPNIK_DECL std::string to_expression_string(expr_node const& );
+ std::string to_expression_string(expr_node const& );
 }
 
 #endif // MAPNIK_EXPRESSION_STRING_HPP

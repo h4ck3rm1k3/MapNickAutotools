@@ -24,11 +24,28 @@
 
 #ifndef FEATURE_TYPE_STYLE_HPP
 #define FEATURE_TYPE_STYLE_HPP
-// mapnik 
-// // // #include <mapnik/rule.hpp>
-// // // #include <mapnik/feature.hpp>
+//mapnik 
+#include <mapnik/attribute_collector.hpp>
+#include <mapnik/text_path.hpp> // string_info
+#include <mapnik/point_symbolizer.hpp>
+#include <mapnik/text_symbolizer.hpp>
+#include <mapnik/raster_symbolizer.hpp>
+#include <mapnik/scale_denominator.hpp>
+#include <mapnik/symbolizer.hpp>
+#include <mapnik/text_symbolizer.hpp>
+#include <boost/shared_ptr.hpp>
+#include <mapnik/shield_symbolizer.hpp>
+#include <mapnik/point_symbolizer.hpp>
+#include <mapnik/polygon_symbolizer.hpp>
+
+
+#include <mapnik/rule.hpp>
+#include <mapnik/feature.hpp>
+
+
+
 // stl
-#include "stdinc.hpp"
+//#include "stdinc.hpp"
 
 namespace mapnik
 {

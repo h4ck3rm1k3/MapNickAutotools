@@ -25,16 +25,16 @@
 #define MAPNIK_SYMBOLIZER_HPP
 
 // mapnik
-// #include <mapnik/config.hpp>
-// #include <mapnik/path_expression_grammar.hpp>
+#include <mapnik/config.hpp>
+#include <mapnik/path_expression_grammar.hpp>
 
 // // stl
 // #include <string>
-#include "stdinc.hpp"
+//#include "stdinc.hpp"
 namespace mapnik 
 {
 
-class MAPNIK_DECL symbolizer_with_image {
+class symbolizer_with_image {
 public:
     path_expression_ptr get_filename() const;
     void set_filename(path_expression_ptr filename);

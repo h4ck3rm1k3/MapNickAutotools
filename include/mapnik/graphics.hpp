@@ -25,12 +25,12 @@
 #ifndef GRAPHICS_HPP
 #define GRAPHICS_HPP
 // // mapnik
-// #include <mapnik/color.hpp>
-// #include <mapnik/gamma.hpp>
-// #include <mapnik/image_data.hpp>
-// #include <mapnik/box2d.hpp>
-// #include <mapnik/image_view.hpp>
-// #include <mapnik/global.hpp>
+#include <mapnik/color.hpp>
+#include <mapnik/gamma.hpp>
+#include <mapnik/image_data.hpp>
+#include <mapnik/box2d.hpp>
+#include <mapnik/image_view.hpp>
+#include <mapnik/global.hpp>
 
 // // stl
 // #include <cmath>
@@ -135,7 +135,7 @@ struct MergeGrain2
     }
 };
 
-class MAPNIK_DECL image_32
+class  image_32
 {
 private:
     unsigned width_;

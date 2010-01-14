@@ -25,10 +25,12 @@
 #ifndef MAPNIK_EXPRESSION_EVALUATOR_HPP
 #define MAPNIK_EXPRESSION_EVALUATOR_HPP
 
-// // boost
-// #include <boost/regex.hpp>
-// #include <boost/regex/icu.hpp>
-#include "stdinc.hpp"   
+#include "attribute_collector.hpp"
+
+// boost
+#include <boost/regex.hpp>
+#include <boost/regex/icu.hpp>
+//#include "stdinc.hpp"   
 namespace mapnik
 {
 template <typename T0, typename T1>

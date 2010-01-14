@@ -26,7 +26,7 @@
 #define ATTRIBUTE_COLLECTOR_HPP
 
 // stl
-#include "stdinc.hpp"
+#include "stdinc_attribute_collector.hpp"
 
 
 namespace mapnik {
@@ -35,30 +35,18 @@ namespace mapnik {
 
 struct ltstr
 {
-  bool operator()(const char* s1, const char* s2) const
-  {
-    return strcmp(s1, s2) < 0;
-  }
+  template <class T> bool operator()(const T s1, const T s2) const;
+  // bool operator()(const char* s1, const char* s2) const
+  // {
+  //   return strcmp(s1, s2) < 0;
+  // }
 
-
-  /* duplicate
-  bool operator ()(const std::basic_string<char, std::char_traits<char>, std::allocator<char> >&, const std::basic_string<char, std::char_traits<char>, std::allocator<char> >&) const
-  {
-    return s1 < s2;
-  }
-  bool operator()(TARG s1, TARG s2) const
-  {
-    return s1 < s2;
-  }
-
-  */
-
-
-  bool operator()(const std::string & s1, const std::string & s2) const
-  {
-    return s1 < s2;
-  }
+  // bool operator()(const std::string & s1, const std::string & s2) const
+  // {
+  //   return s1 < s2;
+  // }
 };
+
 typedef std::set<std::string, ltstr> TNameSet;
 typedef TNameSet& TNameSetRef;
 
@@ -66,12 +54,12 @@ typedef TNameSet& TNameSetRef;
 struct expression_attributes : boost::static_visitor<void>
 {
 
-
-
     explicit expression_attributes(TNameSet & names)
 	: names_(names) {}
     
-    void operator() (value_type const& x) const 
+  template <class T> void operator() (T const& x) const ;
+
+  /*    void operator() (value_type const& x) const 
     {
 	boost::ignore_unused_variable_warning(x);
     }
@@ -104,6 +92,7 @@ struct expression_attributes : boost::static_visitor<void>
     {
 	boost::apply_visitor(expression_attributes(names_),x.expr);
     }
+  */
     
 private:
     mutable TNameSetRef names_;
@@ -115,60 +104,61 @@ struct symbolizer_attributes : public boost::static_visitor<>
 	: names_(names) {}
 	
     template <typename T>
-    void operator () (T const&) const {}
-    
-    void operator () (text_symbolizer const& sym)
-    {
-	expression_ptr const& name_expr = sym.get_name();
-	if (name_expr)
-	{
-	    expression_attributes f_attr(names_);
-	    boost::apply_visitor(f_attr,*name_expr);
-	}
-    }
-    
-    void operator () (point_symbolizer const& sym)
-    {	
-	path_expression_ptr const& filename_expr = sym.get_filename();
-	if (filename_expr)
-	{
-	    path_processor_type::collect_attributes(*filename_expr,names_);
-	}
-    }
+    void operator () (T const&) ; // take out of inline
 
-    void operator () (line_pattern_symbolizer const& sym)
-    {	
-	path_expression_ptr const& filename_expr = sym.get_filename();
-	if (filename_expr)
-	{
-	    path_processor_type::collect_attributes(*filename_expr,names_);
-	}
-    }
-
-    void operator () (polygon_pattern_symbolizer const& sym)
-    {	
-	path_expression_ptr const& filename_expr = sym.get_filename();
-	if (filename_expr)
-	{
-	    path_processor_type::collect_attributes(*filename_expr,names_);
-	}
-    }
+  // implement
+    // void operator () (text_symbolizer const& sym)
+    // {
+    // 	expression_ptr const& name_expr = sym.get_name();
+    // 	if (name_expr)
+    // 	{
+    // 	    expression_attributes f_attr(names_);
+    // 	    boost::apply_visitor(f_attr,*name_expr);
+    // 	}
+    // }
     
-    void operator () (shield_symbolizer const& sym)
-    {
-	expression_ptr const& name_expr = sym.get_name();
-	if (name_expr)
-	{
-	    expression_attributes name_attr(names_);
-	    boost::apply_visitor(name_attr,*name_expr);
-	}
+    // void operator () (point_symbolizer const& sym)
+    // {	
+    // 	path_expression_ptr const& filename_expr = sym.get_filename();
+    // 	if (filename_expr)
+    // 	{
+    // 	    path_processor_type::collect_attributes(*filename_expr,names_);
+    // 	}
+    // }
+
+    // void operator () (line_pattern_symbolizer const& sym)
+    // {	
+    // 	path_expression_ptr const& filename_expr = sym.get_filename();
+    // 	if (filename_expr)
+    // 	{
+    // 	    path_processor_type::collect_attributes(*filename_expr,names_);
+    // 	}
+    // }
+
+    // void operator () (polygon_pattern_symbolizer const& sym)
+    // {	
+    // 	path_expression_ptr const& filename_expr = sym.get_filename();
+    // 	if (filename_expr)
+    // 	{
+    // 	    path_processor_type::collect_attributes(*filename_expr,names_);
+    // 	}
+    // }
+    
+    // void operator () (shield_symbolizer const& sym)
+    // {
+    // 	expression_ptr const& name_expr = sym.get_name();
+    // 	if (name_expr)
+    // 	{
+    // 	    expression_attributes name_attr(names_);
+    // 	    boost::apply_visitor(name_attr,*name_expr);
+    // 	}
 	
-	path_expression_ptr const& filename_expr = sym.get_filename();
-	if (filename_expr)
-	{
-	    path_processor_type::collect_attributes(*filename_expr,names_);
-	}
-    }
+    // 	path_expression_ptr const& filename_expr = sym.get_filename();
+    // 	if (filename_expr)
+    // 	{
+    // 	    path_processor_type::collect_attributes(*filename_expr,names_);
+    // 	}
+    // }
 
     // TODO - support remaining syms
     

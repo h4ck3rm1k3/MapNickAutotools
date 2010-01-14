@@ -28,7 +28,7 @@
 
 namespace mapnik 
 {
-    struct MAPNIK_DECL line_symbolizer
+    struct  line_symbolizer
     {
         explicit line_symbolizer()
             : stroke_() {}

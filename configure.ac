@@ -325,6 +325,8 @@ demo/Makefile
 demo/c++/Makefile
 include/Makefile
 include/mapnik/Makefile
+include/boost/Makefile
+include/stdio/Makefile
 agg/Makefile
 agg/src/Makefile
 agg/include/Makefile

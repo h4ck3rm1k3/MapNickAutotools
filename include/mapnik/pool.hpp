@@ -26,7 +26,7 @@
 #define POOL_HPP
 
 // mapnik
-// #include <mapnik/utils.hpp>
+#include <mapnik/utils.hpp>
 // // boost
 // #include <boost/shared_ptr.hpp>
 // #include <boost/utility.hpp>

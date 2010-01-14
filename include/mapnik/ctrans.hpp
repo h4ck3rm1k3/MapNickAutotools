@@ -27,15 +27,15 @@
 
 // #include <algorithm>
 
-// #include <mapnik/box2d.hpp>
-// #include <mapnik/coord_array.hpp>
-// #include <mapnik/proj_transform.hpp>
-#include "stdinc.hpp"   
+//#include <mapnik/box2d.hpp>
+//#include <mapnik/coord_array.hpp>
+//#include <mapnik/proj_transform.hpp>
+#include "stdinc_ctrans.hpp"   
 namespace mapnik {
    typedef coord_array<coord2d> CoordinateArray;
     
    template <typename Transform,typename Geometry>
-   struct MAPNIK_DECL coord_transform
+   struct coord_transform
    {
       coord_transform(Transform const& t, Geometry& geom)
          : t_(t), geom_(geom) {}
@@ -58,7 +58,7 @@ namespace mapnik {
    };
 
    template <typename Transform,typename Geometry>
-   struct MAPNIK_DECL coord_transform2
+   struct coord_transform2
    {
       coord_transform2(Transform const& t, 
                        Geometry const& geom, 
@@ -88,7 +88,7 @@ namespace mapnik {
    };
     
    template <typename Transform,typename Geometry>
-   struct MAPNIK_DECL coord_transform3
+   struct coord_transform3
    {
       coord_transform3(Transform const& t, 
                        Geometry const& geom, 

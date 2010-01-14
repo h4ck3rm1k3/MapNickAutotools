@@ -24,11 +24,12 @@
 #ifndef RASTER_SYMBOLIZER_HPP
 #define RASTER_SYMBOLIZER_HPP
 
-#include "stdinc.hpp"
+//#include "stdinc.hpp"
+#include "boostinc.hpp"
 
 namespace mapnik
 {
-    struct MAPNIK_DECL raster_symbolizer {
+    struct raster_symbolizer {
         explicit raster_symbolizer()
             : mode_("normal"),
               scaling_("fast"),

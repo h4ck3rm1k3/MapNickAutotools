@@ -25,15 +25,16 @@
 #ifndef MEMORY_DATASOURCE_HPP
 #define MEMORY_DATASOURCE_HPP
 
+ #include <mapnik/unicode.hpp>
  #include <mapnik/datasource.hpp>
 
- #include <vector>
+// #include <vector>
 //#include "stdinc.hpp"
 
 
 namespace mapnik {
     
-   class MAPNIK_DECL memory_datasource : public datasource
+   class  memory_datasource : public datasource
    {
       friend class memory_featureset;
    public:
@@ -54,7 +55,7 @@ namespace mapnik {
    // TODO -- possible redesign, move into separate file
    //
    
-   class MAPNIK_DECL point_datasource : public mapnik::memory_datasource {
+   class  point_datasource : public mapnik::memory_datasource {
    public:
       point_datasource() : feat_id(0) {}
       void add_point(double x, double y, const char* key, const char* value) {

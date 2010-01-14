@@ -25,18 +25,18 @@
 #ifndef DATASOURCE_CACHE_HPP
 #define DATASOURCE_CACHE_HPP
 
-// // mapnik
-// #include <mapnik/utils.hpp>
-// #include <mapnik/params.hpp>
-// #include <mapnik/plugin.hpp>
-// #include <mapnik/datasource.hpp>
-// // boost
-// #include <boost/shared_ptr.hpp>
-// // stl
-// #include <map>
-#include "stdinc.hpp"   
+// mapnik
+#include <mapnik/utils.hpp>
+#include <mapnik/params.hpp>
+#include <mapnik/plugin.hpp>
+#include <mapnik/datasource.hpp>
+// boost
+#include <boost/shared_ptr.hpp>
+// stl
+#include <map>
+//#include "stdinc.hpp"   
 namespace mapnik {
-    class MAPNIK_DECL datasource_cache : 
+    class  datasource_cache : 
         public singleton <datasource_cache,CreateStatic>
     {
         friend class CreateStatic<datasource_cache>;

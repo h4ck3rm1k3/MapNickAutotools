@@ -32,7 +32,7 @@
 // #include <vector>
 // #include <algorithm>
 // #include <functional>
-#include "stdinc.hpp"
+//#include "stdinc.hpp"
 namespace mapnik { }
 
 #endif //STYLE_HPP

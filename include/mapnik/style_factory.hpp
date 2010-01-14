@@ -25,7 +25,7 @@
 #define STYLE_FACTORY_HPP
 
 //#include <mapnik/style.hpp>
-#include "stdinc.hpp"
+//#include "stdinc.hpp"
 namespace mapnik {
     
     class style_factory 

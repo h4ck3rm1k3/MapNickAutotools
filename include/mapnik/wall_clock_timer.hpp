@@ -25,7 +25,7 @@
 
 // #include <cstdlib>
 // #include <sys/time.h> 
-#include "stdinc.hpp"
+#include "boostinc.hpp"
 namespace mapnik {
 
     // This is a class with a similar signature to boost::timer, but which measures

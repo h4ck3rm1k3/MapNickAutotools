@@ -25,8 +25,8 @@
 #ifndef MARKERS_CONVERTER_HPP
 #define MARKERS_CONVERTER_HPP
 
-// #include <boost/utility.hpp>
-#include "stdinc.hpp"
+#include <mapnik/box2d.hpp>
+#include "boostinc.hpp"
 #include "agg_basics.h"
 #include "agg_trans_affine.h"
 //#include "stdinc.hpp"

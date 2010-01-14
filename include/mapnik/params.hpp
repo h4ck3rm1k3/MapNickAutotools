@@ -30,7 +30,7 @@
 // #include <boost/lexical_cast.hpp>
 // #include <string>
 // #include <map>
-#include "stdinc.hpp"
+#include "boostinc.hpp"
 namespace mapnik
 {
    typedef boost::variant<int,double,std::string> value_holder;

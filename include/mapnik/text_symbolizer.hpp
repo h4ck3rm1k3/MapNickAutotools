@@ -25,19 +25,22 @@
 #ifndef MAPNIK_TEXT_SYMBOLIZER_HPP
 #define MAPNIK_TEXT_SYMBOLIZER_HPP
 
-// mapnik
-// #include <mapnik/enumeration.hpp>
-// #include <mapnik/color.hpp>
-// #include <mapnik/font_set.hpp>
-// #include <mapnik/graphics.hpp>
-// #include <mapnik/expression_node.hpp>
+#include <mapnik/symbolizer.hpp>
+
+// // mapnik
+#include <mapnik/enumeration.hpp>
+#include <mapnik/color.hpp>
+#include <mapnik/font_set.hpp>
+#include <mapnik/graphics.hpp>
+#include <mapnik/expression_node.hpp>
 
 // // boost
 // #include <boost/tuple/tuple.hpp>
 // #include <boost/shared_ptr.hpp>
 // // stl
 // #include <string>
-#include "stdinc.hpp"
+//#include "stdinc.hpp"
+
 namespace mapnik
 {
    enum label_placement_enum {
@@ -91,7 +94,7 @@ namespace mapnik
 
    typedef boost::tuple<double,double> position;
 
-   struct MAPNIK_DECL text_symbolizer
+   struct  text_symbolizer
    {
          text_symbolizer(expression_ptr name, std::string const& face_name,
                          unsigned size, color const& fill);

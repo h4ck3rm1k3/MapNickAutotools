@@ -22,8 +22,8 @@
 
 //$Id$
 
-// #include <mapnik/datasource.hpp>
-#include "stdinc.hpp"   
+#include <mapnik/datasource.hpp>
+//#include "stdinc.hpp"   
 namespace mapnik {
     
     template <typename T> 

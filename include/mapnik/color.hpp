@@ -30,14 +30,14 @@
 #include <mapnik/global.hpp>
 
 //boost
-#include <boost/cstdint.hpp>
+//#include <boost/cstdint.hpp>
 
 // stl
-#include <sstream>
+//#include <sstream>
 //#include "stdinc.hpp"   
 namespace mapnik {
      
-    class MAPNIK_DECL color
+    class  color
     {
     private:
         boost::uint8_t red_;
