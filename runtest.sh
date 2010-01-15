@@ -1,4 +1,5 @@
- automake include/mapnik/Makefile;
+automake include/mapnik/Makefile;
+autoconf
 export CC=/usr/local/bin/g++
 export CXX=/usr/local/bin/g++
 ./myconfigure.sh;

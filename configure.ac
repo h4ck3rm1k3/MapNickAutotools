@@ -40,7 +40,7 @@ AC_ARG_ENABLE(gch,
 
 if [ ! test "x$enable_gch" != "xyes"]; then
   AC_DEFINE(USE_GCH, 1, [Define to enable gch build])
-  GCHFLAGS="-Winvalid-pch  -H  "
+  GCHFLAGS="-Winvalid-pch    "
   CXXFLAGS=$GCHFLAGS
   AC_MSG_RESULT(yes)
 else

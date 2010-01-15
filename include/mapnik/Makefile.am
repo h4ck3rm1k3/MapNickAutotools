@@ -181,7 +181,8 @@ CLEANFILES =$(GCH_FILES)
 # 	${LIBXML2_CFLAGS} \
 # 	${CAIRO_CFLAGS} $(CPPFLAGS) $< | sed '\"s/$*.o/& $@/g'\" > $@'
 
-include "alldeps.mak"
+# generated dependency file...
+include alldeps.mak
 
 %.hpp.gch: %.hpp
 	$(CXX)   -x c++-header -I ../.. -I .. -I 	${CXXFLAGS} ${PROFILING_CFLAGS} \
