@@ -34,6 +34,20 @@ else
 fi
 
 
+AC_ARG_ENABLE(gch,
+        [  --enable-gch=[no/yes]        enables gch/pch precompiled headers build (default=yes)],,
+                 enable_gch=yes)
+
+if [ ! test "x$enable_gch" != "xyes"]; then
+  AC_DEFINE(USE_GCH, 1, [Define to enable gch build])
+  GCHFLAGS="-Winvalid-pch  -H  "
+  CXXFLAGS=$GCHFLAGS
+  AC_MSG_RESULT(yes)
+else
+  AC_MSG_RESULT(no)
+fi
+
+
 dnl Check for option to enable profiling
 AC_MSG_CHECKING(whether to enable profiling)
 AC_ARG_ENABLE(profiling,
@@ -325,8 +339,6 @@ demo/Makefile
 demo/c++/Makefile
 include/Makefile
 include/mapnik/Makefile
-include/boost/Makefile
-include/stdio/Makefile
 agg/Makefile
 agg/src/Makefile
 agg/include/Makefile

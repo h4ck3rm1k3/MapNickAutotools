@@ -1,7 +1,7 @@
 #ifndef INC_STDINC_HPP
 #define INC_STDINC_HPP
 
-#include "boostinc.hpp";
+#include "boostinc.hpp"
 
 #include <mapnik/query.hpp>
 #include <mapnik/attribute_collector.hpp>

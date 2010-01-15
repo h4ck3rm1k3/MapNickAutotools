@@ -179,12 +179,12 @@ namespace mapnik
          *
          * @param ds The datasource to attach.
          */
-        void set_datasource(datasource_ptr const& ds);
+      void set_datasource(PlugIn::datasource_ptr const& ds);
         
         /*!
          * @return the datasource attached to this layer.
          */
-        datasource_ptr datasource() const;
+      PlugIn::datasource_ptr datasource() const;
         
         /*!
          * @return the geographic envelope/bounding box of the data in the layer.
@@ -206,7 +206,7 @@ namespace mapnik
         bool queryable_;
         bool clear_label_cache_;
         std::vector<std::string>  styles_;
-        datasource_ptr ds_;
+      PlugIn::datasource_ptr ds_;
     };
 }
 

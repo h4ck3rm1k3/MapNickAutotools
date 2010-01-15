@@ -103,7 +103,7 @@ private:
 	//wall_clock_progress_timer timer(clog, "end layer rendering: ");
 #endif
 	p.start_layer_processing(lay);
-	boost::shared_ptr<datasource> ds=lay.datasource();
+	PlugIn::datasource_ptr ds=lay.datasource();
 	if (ds)
 	{
 	    box2d<double> ext = m_.get_buffered_extent();

@@ -47,15 +47,19 @@ struct ltstr
   // }
 };
 
-typedef std::set<std::string, ltstr> TNameSet;
+  //typedef std::set<std::string, ltstr> TNameSet;
+  //typedef TNameSet& TNameSetRef;
+typedef std::set<std::basic_string<char> > TNameSet;
 typedef TNameSet& TNameSetRef;
 
 
 struct expression_attributes : boost::static_visitor<void>
 {
 
-    explicit expression_attributes(TNameSet & names)
-	: names_(names) {}
+
+
+    explicit expression_attributes(TNameSetRef names)
+  	: names_(names) {}
     
   template <class T> void operator() (T const& x) const ;
 
@@ -177,20 +181,20 @@ public:
 	: names_(names) {}
 	
     template <typename RuleType>
-    void operator() (RuleType const& r)
-    {
-	typename RuleType::symbolizers const& symbols = r.get_symbolizers();
-	typename RuleType::symbolizers::const_iterator symIter=symbols.begin();
-	symbolizer_attributes s_attr(names_);
-	while (symIter != symbols.end())
-	{
-	    boost::apply_visitor(s_attr,*symIter++);
-	}
+    void operator() (RuleType const& r);
+    // {
+    // 	typename RuleType::symbolizers const& symbols = r.get_symbolizers();
+    // 	typename RuleType::symbolizers::const_iterator symIter=symbols.begin();
+    // 	symbolizer_attributes s_attr(names_);
+    // 	while (symIter != symbols.end())
+    // 	{
+    // 	    boost::apply_visitor(s_attr,*symIter++);
+    // 	}
 	    
-	expression_ptr const& expr = r.get_filter();
-	expression_attributes f_attr(names_);
-	boost::apply_visitor(f_attr,*expr);
-    } 	
+    // 	expression_ptr const& expr = r.get_filter();
+    // 	expression_attributes f_attr(names_);
+    // 	boost::apply_visitor(f_attr,*expr);
+    // } 	
 };   
 
 } // namespace mapnik

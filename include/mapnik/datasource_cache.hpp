@@ -26,14 +26,15 @@
 #define DATASOURCE_CACHE_HPP
 
 // mapnik
-#include <mapnik/utils.hpp>
-#include <mapnik/params.hpp>
-#include <mapnik/plugin.hpp>
 #include <mapnik/datasource.hpp>
-// boost
-#include <boost/shared_ptr.hpp>
-// stl
-#include <map>
+// #include <mapnik/utils.hpp>
+// #include <mapnik/params.hpp>
+// #include <mapnik/plugin.hpp>
+
+// // boost
+// #include <boost/shared_ptr.hpp>
+// // stl
+// #include <map>
 //#include "stdinc.hpp"   
 namespace mapnik {
     class  datasource_cache : 
@@ -51,7 +52,7 @@ namespace mapnik {
     public:
         static std::vector<std::string> plugin_names ();
         static void register_datasources(const std::string& path);
-        static boost::shared_ptr<datasource> create(parameters const& params);
+      static PlugIn::datasource create(datasource::parameters const& params);
     };
 }
 

@@ -38,12 +38,7 @@ bin_PROGRAMS = cppdemo$(EXEEXT)
 subdir = demo/c++
 DIST_COMMON = $(srcdir)/Makefile.am $(srcdir)/Makefile.in
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
-am__aclocal_m4_deps = $(top_srcdir)/config/ax_libjpeg.m4 \
-	$(top_srcdir)/config/ax_libltdl.m4 \
-	$(top_srcdir)/config/ax_libproj.m4 \
-	$(top_srcdir)/config/ax_libtiff.m4 \
-	$(top_srcdir)/config/ax_python.m4 \
-	$(top_srcdir)/m4/ax_boost_base.m4 \
+am__aclocal_m4_deps = $(top_srcdir)/m4/ax_boost_base.m4 \
 	$(top_srcdir)/m4/ax_boost_thread.m4 \
 	$(top_srcdir)/m4/ax_boost_filesystem.m4 \
 	$(top_srcdir)/m4/ax_boost_regex.m4 \
@@ -96,14 +91,8 @@ AUTOHEADER = ${SHELL} /home/mdupont/2010/01/mapnik/mapnik/missing --run autohead
 AUTOMAKE = ${SHELL} /home/mdupont/2010/01/mapnik/mapnik/missing --run automake-1.11
 AWK = gawk
 BOOST_CPPFLAGS = -I/usr/local/include
-BOOST_FILESYSTEM_LIB = @BOOST_FILESYSTEM_LIB@
-BOOST_IOSTREAMS_LIB = @BOOST_IOSTREAMS_LIB@
 BOOST_LDFLAGS = -L/usr/local/lib
 BOOST_PROGRAM_OPTIONS_LIB = -lboost_program_options
-BOOST_PYTHON_LIB = @BOOST_PYTHON_LIB@
-BOOST_REGEX_LIB = @BOOST_REGEX_LIB@
-BOOST_SERIALIZATION_LIB = @BOOST_SERIALIZATION_LIB@
-BOOST_THREAD_LIB = @BOOST_THREAD_LIB@
 CAIRO_CFLAGS = -D_REENTRANT -I/usr/include/cairomm-1.0 -I/usr/include/cairo -I/usr/include/sigc++-2.0 -I/usr/lib/sigc++-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/directfb -I/usr/include/libpng12  
 CAIRO_LIBS = -lcairomm-1.0 -lcairo -lsigc-2.0  
 CC = /usr/local/bin/g++
@@ -112,9 +101,9 @@ CFLAGS = -g -O2
 CPP = /usr/local/bin/g++ -E
 CPPFLAGS = 
 CXX = g++
-CXXCPP = /usr/local/bin/g++ -E
+CXXCPP = g++ -E
 CXXDEPMODE = depmode=gcc3
-CXXFLAGS = -ggdb -O0 -DDEBUG
+CXXFLAGS = -Winvalid-pch  -H  
 CYGPATH_W = echo
 DEFS = -DHAVE_CONFIG_H
 DEPDIR = .deps
@@ -140,8 +129,6 @@ INSTALL_DATA = ${INSTALL} -m 644
 INSTALL_PROGRAM = ${INSTALL}
 INSTALL_SCRIPT = ${INSTALL}
 INSTALL_STRIP_PROGRAM = $(install_sh) -c -s
-JPEG_CFLAGS = 
-JPEG_LIBS = -ljpeg
 LD = /usr/bin/ld
 LDFLAGS = 
 LIBOBJS = 
@@ -151,8 +138,6 @@ LIBXML2_CFLAGS = -I/usr/include/libxml2
 LIBXML2_LIBS = -lxml2  
 LIPO = 
 LN_S = ln -s
-LTDL_CFLAGS = 
-LTDL_LIBS = -lltdl
 LTLIBOBJS = 
 MAINT = #
 MAKEINFO = ${SHELL} /home/mdupont/2010/01/mapnik/mapnik/missing --run makeinfo
@@ -180,35 +165,28 @@ PACKAGE_TARNAME = mapnik
 PACKAGE_URL = 
 PACKAGE_VERSION = 0.6.0
 PATH_SEPARATOR = :
-PG_CONFIG = @PG_CONFIG@
+PG_CONFIG = /usr/bin/pg_config
 PKG_CONFIG = /usr/bin/pkg-config
 PNG_CFLAGS = -I/usr/include/libpng12  
 PNG_LIBS = -lpng12  
-POSTGRESQL_CFLAGS = @POSTGRESQL_CFLAGS@
-POSTGRESQL_LDFLAGS = @POSTGRESQL_LDFLAGS@
-POSTGRESQL_VERSION = @POSTGRESQL_VERSION@
+POSTGRESQL_CFLAGS = -I/usr/include/postgresql
+POSTGRESQL_LDFLAGS = -L/usr/lib -lpq
+POSTGRESQL_VERSION = 8.4.2
 PROFILING_CFLAGS =  -pg
-PROJ_CFLAGS = 
-PROJ_LIBS = -lproj
-PYTHON = @PYTHON@
-PYTHON_BIN = @PYTHON_BIN@
-PYTHON_EXEC_PREFIX = @PYTHON_EXEC_PREFIX@
-PYTHON_INCLUDE_DIR = @PYTHON_INCLUDE_DIR@
-PYTHON_LIB = @PYTHON_LIB@
-PYTHON_PLATFORM = @PYTHON_PLATFORM@
-PYTHON_PREFIX = @PYTHON_PREFIX@
-PYTHON_VERSION = @PYTHON_VERSION@
+PYTHON = /usr/bin/python
+PYTHON_EXEC_PREFIX = ${exec_prefix}
+PYTHON_PLATFORM = linux2
+PYTHON_PREFIX = ${prefix}
+PYTHON_VERSION = 2.6
 RANLIB = ranlib
 SED = /bin/sed
 SET_MAKE = 
 SHELL = /bin/bash
-SQLITE3_CFLAGS = @SQLITE3_CFLAGS@
-SQLITE3_LDFLAGS = @SQLITE3_LDFLAGS@
-SQLITE3_VERSION = @SQLITE3_VERSION@
+SQLITE3_CFLAGS = -I/usr/include
+SQLITE3_LDFLAGS = -L/usr/lib -lsqlite3
+SQLITE3_VERSION = 3.6.16
 STRIP = strip
 SYSTEM_FONTS_DIR = /usr/local/share/fonts
-TIFF_CFLAGS = 
-TIFF_LIBS = -ltiff
 TRACING_CFLAGS = -DMAPNIK_DEBUG
 VERSION = 0.6.0
 abs_builddir = /home/mdupont/2010/01/mapnik/mapnik/demo/c++
@@ -216,7 +194,7 @@ abs_srcdir = /home/mdupont/2010/01/mapnik/mapnik/demo/c++
 abs_top_builddir = /home/mdupont/2010/01/mapnik/mapnik
 abs_top_srcdir = /home/mdupont/2010/01/mapnik/mapnik
 ac_ct_CC = /usr/local/bin/g++
-ac_ct_CXX = 
+ac_ct_CXX = g++
 ac_ct_DUMPBIN = 
 am__include = include
 am__leading_dot = .
@@ -253,13 +231,13 @@ mandir = ${datarootdir}/man
 mkdir_p = /bin/mkdir -p
 oldincludedir = /usr/include
 pdfdir = ${docdir}
-pkgpyexecdir = @pkgpyexecdir@
-pkgpythondir = @pkgpythondir@
+pkgpyexecdir = ${pyexecdir}/mapnik
+pkgpythondir = ${pythondir}/mapnik
 prefix = /usr/local
 program_transform_name = s,x,x,
 psdir = ${docdir}
-pyexecdir = @pyexecdir@
-pythondir = @pythondir@
+pyexecdir = ${exec_prefix}/lib/python2.6/dist-packages
+pythondir = ${prefix}/lib/python2.6/dist-packages
 sbindir = ${exec_prefix}/sbin
 sharedstatedir = ${prefix}/com
 srcdir = .
@@ -272,7 +250,7 @@ cppdemo_SOURCES = rundemo.cpp
 cppdemo_CXXFLAGS = \
   -Wall \
   $(DEFINES) $(INCLUDE) -Wall \
-  ${PROFILING_CFLAGS} \
+  ${PROFILING_CFLAGS} ${GCH_CFLAGS}\
   ${TRACING_CFLAGS} \
 	-I../../include \
 	${LIBXML2_CFLAGS} \

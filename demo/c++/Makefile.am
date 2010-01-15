@@ -7,7 +7,7 @@ CXX = g++
 cppdemo_CXXFLAGS = \
   -Wall \
   $(DEFINES) $(INCLUDE) -Wall \
-  ${PROFILING_CFLAGS} \
+  ${PROFILING_CFLAGS} ${GCH_CFLAGS}\
   ${TRACING_CFLAGS} \
 	-I../../include \
 	${LIBXML2_CFLAGS} \
