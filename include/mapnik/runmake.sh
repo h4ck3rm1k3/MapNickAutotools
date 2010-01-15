@@ -1,0 +1,16 @@
+make 	stdioinc.hpp.gch 
+make	boostinc.hpp.gch 
+make	freetype.hpp.gch 
+make	 stdinc.hpp.gch 
+make	 config.hpp.gch
+make	unicode.hpp.gch 
+make	config_error.hpp.gch 
+make	coord.hpp.gch 
+make	box2d.hpp.gch 
+make	color.hpp.gch 
+make	vertex.hpp.gch 
+make	vertex_vector.hpp.gch 
+make	geometry.hpp.gch 
+make	feature.hpp.gch 
+make	 layer.hpp.gch 
+make	value.hpp.gch 
