@@ -132,17 +132,17 @@ AX_BOOST_PROGRAM_OPTIONS
 AM_CONDITIONAL(HAVE_BOOST_PROGRAM_OPTIONS, test "x$ax_cv_boost_program_options" = "xyes")
 
 dnl dnl check to build python bindings
-dnl AX_BOOST_PYTHON
+#AX_BOOST_PYTHON
 
-dnl AM_PATH_PYTHON([2.4])
+AM_PATH_PYTHON([2.4])
 
-dnl AX_LIB_POSTGRESQL
-dnl if test "x$found_postgresql" = "xyes"; then
-dnl   echo "checking whether to enable postgresql... yes"
-dnl else
-dnl   echo "checking whether to enable postgresql... no"
-dnl fi
-dnl AM_CONDITIONAL(HAVE_POSTGRESQL, test "x$found_postgresql" = "xyes")
+AX_LIB_POSTGRESQL
+if test "x$found_postgresql" = "xyes"; then
+  echo "checking whether to enable postgresql... yes"
+else
+  echo "checking whether to enable postgresql... no"
+fi
+AM_CONDITIONAL(HAVE_POSTGRESQL, test "x$found_postgresql" = "xyes")
 
 AC_ARG_WITH(gdal-config,
 [  --with-gdal-config=GDAL_CONFIG    use gdal-config specified ],
@@ -187,12 +187,12 @@ if test "x$link_ltdl" = "xno"; then
   exit
 fi
 
-dnl ## test for optional sqlite3 support
-dnl AX_LIB_SQLITE3
-dnl if [ test "x$success" = "xyes"]; then
-dnl   found_sqlite3="yes"
-dnl fi
-dnl AM_CONDITIONAL(HAVE_SQLITE3, test "x$success" = "xyes")
+## test for optional sqlite3 support
+AX_LIB_SQLITE3
+if [ test "x$success" = "xyes"]; then
+  found_sqlite3="yes"
+fi
+AM_CONDITIONAL(HAVE_SQLITE3, test "x$success" = "xyes")
 
 PKG_CHECK_MODULES(PNG, libpng)
 AC_SUBST(PNG_CFLAGS)
