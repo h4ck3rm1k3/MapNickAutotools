@@ -27,10 +27,10 @@
 
  // // #include <mapnik/geometry.hpp>""
  // // #include <mapnik/ctrans.hpp>
- // // #include <mapnik/feature.hpp>
+
 
 #include "stdinc_feature.hpp"
-
+#include <mapnik/feature.hpp>
 namespace mapnik
 {
 

@@ -171,17 +171,17 @@ report.txt:
 
 CLEANFILES =$(GCH_FILES)
 
-%.d: %.hpp
-	$(SHELL) -ec '$(CXX) -M ${CXXFLAGS} ${PROFILING_CFLAGS} \
-	${TRACING_CFLAGS} \
-	${PNG_CFLAGS} \
-	${FREETYPE2_CFLAGS} \
-	${AGG_CFLAGS} \
-	${BOOST_CPPFLAGS}  \
-	${LIBXML2_CFLAGS} \
-	${CAIRO_CFLAGS} $(CPPFLAGS) $< | sed '\"s/$*.o/& $@/g'\" > $@'
+# %.d: %.hpp
+# 	$(SHELL) -ec '$(CXX) -M ${CXXFLAGS} ${PROFILING_CFLAGS} \
+# 	${TRACING_CFLAGS} \
+# 	${PNG_CFLAGS} \
+# 	${FREETYPE2_CFLAGS} \
+# 	${AGG_CFLAGS} \
+# 	${BOOST_CPPFLAGS}  \
+# 	${LIBXML2_CFLAGS} \
+# 	${CAIRO_CFLAGS} $(CPPFLAGS) $< | sed '\"s/$*.o/& $@/g'\" > $@'
 
-include $(sources:.hpp=.d)
+include "alldeps.mak"
 
 %.hpp.gch: %.hpp
 	$(CXX)   -x c++-header -I ../.. -I .. -I 	${CXXFLAGS} ${PROFILING_CFLAGS} \
