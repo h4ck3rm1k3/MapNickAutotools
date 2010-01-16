@@ -34,16 +34,17 @@
 
 namespace mapnik
 {
+  class PlugIn; // defined in datasource... an interface to access the plugin datasources without dl
    class PluginInfo : boost::noncopyable
    {         
     private:
          std::string name_;
-         lt_dlhandle module_;     
+     //         lt_dlhandle module_;     
     public:
-         PluginInfo (const std::string& name,const lt_dlhandle module);
-         ~PluginInfo();
-         const std::string& name() const;
-         lt_dlhandle handle() const;
+     PluginInfo (const std::string& name,PlugIn* module);
+     ~PluginInfo();
+     const std::string& name() const;
+     PlugIn* handle() const;
    };
 }
 

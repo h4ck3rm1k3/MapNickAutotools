@@ -24,6 +24,8 @@
 // mapnik
 #include <mapnik/datasource_cache.hpp>
 
+#include <mapnik/datasource.hpp>
+
 #include <mapnik/config_error.hpp>
 
 // boost
@@ -32,7 +34,7 @@
 #include <boost/algorithm/string.hpp>
 
 // ltdl
-#include <ltdl.h>
+//#include <ltdl.h>
 
 // stl
 #include <algorithm>
@@ -51,18 +53,18 @@ namespace mapnik
 
    datasource_cache::datasource_cache()
    {
-      if (lt_dlinit()) throw std::runtime_error("lt_dlinit() failed");
+     //if (lt_dlinit()) throw std::runtime_error("lt_dlinit() failed");
    }
 
    datasource_cache::~datasource_cache()
    {
-      lt_dlexit();
+     //lt_dlexit();
    }
 
    std::map<string,boost::shared_ptr<PluginInfo> > datasource_cache::plugins_;
    bool datasource_cache::registered_=false;
     
-   datasource_ptr datasource_cache::create(const parameters& params) 
+  PlugIn * datasource_cache::create(const datasource::parameters& params) 
    {
        boost::optional<std::string> type = params.get<std::string>("type");
        if ( ! type)
@@ -71,7 +73,7 @@ namespace mapnik
                    "parameter 'type' is missing");
        }
 
-       datasource_ptr ds;
+       PlugIn::datasource_ptr ds;
        map<string,boost::shared_ptr<PluginInfo> >::iterator itr=plugins_.find(*type);
        if ( itr == plugins_.end() )
        {
@@ -81,34 +83,34 @@ namespace mapnik
        if ( ! itr->second->handle())
        {
            throw std::runtime_error(string("Cannot load library: ") + 
-                   lt_dlerror());
+				    "lt_dlerror()");
        }
 
-       create_ds* create_datasource = 
-           (create_ds*) lt_dlsym(itr->second->handle(), "create");
+       PlugIn * plugin = itr->second->handle();
+	 //lt_dlsym(itr->second->handle(), "create");
 
-       if ( ! create_datasource)
+       if ( ! plugin)
        {
            throw std::runtime_error(string("Cannot load symbols: ") + 
-                   lt_dlerror());
+				    "lt_dlerror()");
        }
 #ifdef MAPNIK_DEBUG
        std::clog << "size = " << params.size() << "\n";
-       parameters::const_iterator i = params.begin();
+       datasource::parameters::const_iterator i = params.begin();
        for (;i!=params.end();++i)
        {
           std::clog << i->first << "=" << i->second << "\n";  
        }
 #endif
-       ds=datasource_ptr(create_datasource(params), datasource_deleter());
+       //       ds=PlugIn::datasource_ptr(plugincreate_datasource(params), datasource_deleter());
 
 #ifdef MAPNIK_DEBUG
        std::clog<<"datasource="<<ds<<" type="<<type<<std::endl;
 #endif
-       return ds;
+       return plugin;
    }
 
-   bool datasource_cache::insert(const std::string& type,const lt_dlhandle module)
+   bool datasource_cache::insert(const std::string& type, PlugIn * module)
    {
       return plugins_.insert(make_pair(type,boost::shared_ptr<PluginInfo>
                                        (new PluginInfo(type,module)))).second;     
@@ -141,31 +143,32 @@ namespace mapnik
          {
 
 #if BOOST_VERSION < 103400 
-            if (!is_directory( *itr )  && is_input_plugin(itr->leaf()))      
+	   if (!is_directory( *itr )  && is_input_plugin(itr->leaf()))      
 #else
-            if (!is_directory( *itr )  && is_input_plugin(itr->path().leaf()))   
+	     if (!is_directory( *itr )  && is_input_plugin(itr->path().leaf()))   
 #endif
 
             {
                try 
-               {
-                  lt_dlhandle module=lt_dlopen(itr->string().c_str());
-                  if (module)
-                  {
-                     datasource_name* ds_name = 
-                        (datasource_name*) lt_dlsym(module, "datasource_name");
-                     if (ds_name && insert(ds_name(),module))
-                     {            
-#ifdef MAPNIK_DEBUG
-                        std::clog << "registered datasource : " << ds_name() << std::endl;
-#endif 
-                        registered_=true;
-                     }
-                  }
-                  else
-                  {
-                     std::clog << "Problem loading plugin library: " << itr->string().c_str() << " (libtool error: " << lt_dlerror() << ")" << std::endl;
-                  }
+		 {
+		   // lt_dlhandle module=lt_dlopen(itr->string().c_str());
+// 		   //if (module)
+//                   {
+// 		    //PlugIn::datasource_name* ds_name = 
+// 		      //(PlugIn::datasource_name*) lt_dlsym(module, "datasource_name");
+		    
+//       //                if (ds_name && insert(ds_name(),module))
+// //                      {            
+// // #ifdef MAPNIK_DEBUG
+// //                         std::clog << "registered datasource : " << ds_name() << std::endl;
+// // #endif 
+// //                         registered_=true;
+// //                      }
+//                   }
+//                   else
+//                   {
+//                      std::clog << "Problem loading plugin library: " << itr->string().c_str() << " (libtool error: " << lt_dlerror() << ")" << std::endl;
+//                   }
                }
                catch (...) {}
             }

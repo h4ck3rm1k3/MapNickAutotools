@@ -196,10 +196,11 @@ if test "x$link_proj" = "xno"; then
   exit
 fi
 
-AX_CHECK_LTDL
-if test "x$link_ltdl" = "xno"; then
-  exit
-fi
+## dynamic loading disabled.
+#AX_CHECK_LTDL
+#if test "x$link_ltdl" = "xno"; then
+#  exit
+#fi
 
 ## test for optional sqlite3 support
 AX_LIB_SQLITE3

@@ -27,9 +27,8 @@
 
 // mapnik
 #include <mapnik/datasource.hpp>
-// #include <mapnik/utils.hpp>
-// #include <mapnik/params.hpp>
-// #include <mapnik/plugin.hpp>
+#include <mapnik/utils.hpp>
+ #include <mapnik/plugin.hpp>
 
 // // boost
 // #include <boost/shared_ptr.hpp>
@@ -37,6 +36,12 @@
 // #include <map>
 //#include "stdinc.hpp"   
 namespace mapnik {
+
+  //class module
+  //{
+  //  
+  //};
+
     class  datasource_cache : 
         public singleton <datasource_cache,CreateStatic>
     {
@@ -48,11 +53,11 @@ namespace mapnik {
         datasource_cache& operator=(const datasource_cache&);
         static std::map<std::string,boost::shared_ptr<PluginInfo> > plugins_;
         static bool registered_;
-        static bool insert(const std::string&  name,const lt_dlhandle module);
+        static bool insert(const std::string&  name, PlugIn * module);
     public:
-        static std::vector<std::string> plugin_names ();
-        static void register_datasources(const std::string& path);
-      static PlugIn::datasource create(datasource::parameters const& params);
+      static std::vector<std::string> plugin_names ();
+      static void register_datasources(const std::string& path);
+      static PlugIn * create(datasource::parameters const& params);
     };
 }
 

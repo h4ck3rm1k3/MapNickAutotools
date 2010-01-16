@@ -185,10 +185,10 @@ CLEANFILES =$(GCH_FILES)
 include alldeps.mak
 
 %.hpp.gch: %.hpp
-	$(CXX)   -x c++-header -I ../.. -I .. -I 	${CXXFLAGS} ${PROFILING_CFLAGS} \
+	$(CXX)   -x c++-header -I ../.. -I .. -I -DHAVE_CONFIG_H	${CXXFLAGS} ${PROFILING_CFLAGS} \
 	${TRACING_CFLAGS} \
 	${PNG_CFLAGS} \
-	${FREETYPE2_CFLAGS} \
+	${FREETYPE2_CFLAGS} -DMAPNIK_DEBUG \
 	${AGG_CFLAGS} \
 	${BOOST_CPPFLAGS}  \
 	${LIBXML2_CFLAGS} \

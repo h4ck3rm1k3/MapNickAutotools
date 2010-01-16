@@ -5,7 +5,7 @@
 INCLUDES = 
 
 AM_CXXFLAGS =\
-	 -Wall 
+	 -Wall  
 
 lib_LTLIBRARIES = \
 	libmapnik.la
@@ -79,7 +79,7 @@ libmapnik_la_LIBADD = \
 	${CAIRO_LIBS}
 
 libmapnik_la_CXXFLAGS = \
-	-I../include        \
+	-I../ -static -DHAVE_CONFIG_H -DMAPNIK_DEBUGinclude        \
 	${PROFILING_CFLAGS} \
 	${TRACING_CFLAGS} \
 	${PNG_CFLAGS} \

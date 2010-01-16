@@ -41,12 +41,7 @@
 //#include <mapnik/params.hpp>
 #include <mapnik/feature_layer_desc.hpp>
 
-
-
 namespace mapnik {    
-
-
-
 
     typedef  boost::shared_ptr<Feature> feature_ptr;
     
@@ -180,6 +175,7 @@ namespace mapnik {
         parameters params_;
     };
     
+  // base class for all plugins
   class PlugIn
   {
   public:
