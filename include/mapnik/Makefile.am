@@ -184,15 +184,18 @@ CLEANFILES =$(GCH_FILES)
 # generated dependency file...
 include alldeps.mak
 
+#/usr/local/bin/g++ -DHAVE_CONFIG_H -I. -I.. -I../include -pg -DMAPNIK_DEBUG -I/usr/include/libpng12 -I/usr/include/freetype2 -I/media/NewFoundSpace/2010/01/mapnik/agg/include -I/usr/local/include -I/usr/include/libxml2 -D_REENTRANT -I/usr/include/cairomm-1.0 -I/usr/include/cairo -I/usr/include/sigc++-2.0 -I/usr/lib/sigc++-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/directfb -I/usr/include/libpng12 -Winvalid-pch -MT libmapnik_la-agg_renderer.lo -MD -MP  
+# $(CXX)   -x c++-header -I ../.. -I .. -I -DHAVE_CONFIG_H	${CXXFLAGS} ${PROFILING_CFLAGS} 
+# ${TRACING_CFLAGS} 
+# ${PNG_CFLAGS} 
+# ${FREETYPE2_CFLAGS} -DMAPNIK_DEBUG 
+# ${AGG_CFLAGS} 
+# ${BOOST_CPPFLAGS}  
+# ${LIBXML2_CFLAGS} 
+# ${CAIRO_CFLAGS}
+
 %.hpp.gch: %.hpp
-	$(CXX)   -x c++-header -I ../.. -I .. -I -DHAVE_CONFIG_H	${CXXFLAGS} ${PROFILING_CFLAGS} \
-	${TRACING_CFLAGS} \
-	${PNG_CFLAGS} \
-	${FREETYPE2_CFLAGS} -DMAPNIK_DEBUG \
-	${AGG_CFLAGS} \
-	${BOOST_CPPFLAGS}  \
-	${LIBXML2_CFLAGS} \
-	${CAIRO_CFLAGS} -c $< 
+	/usr/local/bin/g++ -DHAVE_CONFIG_H -I. -I.. -I../include -pg -DMAPNIK_DEBUG -I/usr/include/libpng12 -I/usr/include/freetype2 -I/media/NewFoundSpace/2010/01/mapnik/agg/include -I/usr/local/include -I/usr/include/libxml2 -D_REENTRANT -I/usr/include/cairomm-1.0 -I/usr/include/cairo -I/usr/include/sigc++-2.0 -I/usr/lib/sigc++-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/directfb -I/usr/include/libpng12 -Winvalid-pch -dD  -c $< 
 
 # ${JPEG_CFLAGS} 
 # ${TIFF_CFLAGS} 
