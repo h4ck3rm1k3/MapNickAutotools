@@ -26,16 +26,18 @@
 
 //#include "stdinc.hpp"
 #include "boostinc.hpp"
+#include <mapnik/symbolizer_base.hpp> //
 
 namespace mapnik
 {
-    struct raster_symbolizer {
-        explicit raster_symbolizer()
-            : mode_("normal"),
-              scaling_("fast"),
-              opacity_(1.0) {}
-
-        std::string const& get_mode() const
+  struct raster_symbolizer  : public symbolizer_base 
+  {
+    explicit raster_symbolizer()
+      : mode_("normal"),
+	scaling_("fast"),
+	opacity_(1.0) {}
+    
+    std::string const& get_mode() const
         {
             return mode_;
         }

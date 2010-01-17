@@ -75,6 +75,12 @@ namespace mapnik {
       void start_map_processing(Map const& map);
       void start_layer_processing(layer const& lay);
       void end_layer_processing(layer const& lay);
+
+     template <class T> void process(T const& sym,
+                   Feature const& feature,
+                   proj_transform const& prj_trans);
+
+     /*
       void process(point_symbolizer const& sym,
                    Feature const& feature,
                    proj_transform const& prj_trans);
@@ -105,6 +111,8 @@ namespace mapnik {
       void process(markers_symbolizer const& sym,
                    Feature const& feature,
                    proj_transform const& prj_trans);
+     */
+
      protected:
       Map const& m_;
       Cairo::RefPtr<Cairo::Context> context_;

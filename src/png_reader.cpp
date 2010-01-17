@@ -24,7 +24,8 @@
 //$Id: png_reader.cpp 33 2005-04-04 13:01:03Z pavlenko $
 
 #include <mapnik/image_reader.hpp>
-
+//#include <mapnik/png_io.hpp>
+/*
 extern "C"
 {
 #include <png.h>
@@ -36,7 +37,7 @@ extern "C"
 #ifdef MAPNIK_DEBUG
 #include <iostream>
 #endif
-
+ */
 namespace mapnik
 {
     class png_reader : public image_reader, boost::noncopyable

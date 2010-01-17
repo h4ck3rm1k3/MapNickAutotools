@@ -40,6 +40,7 @@
 // // stl
 // #include <string>
 //#include "stdinc.hpp"
+#include <mapnik/symbolizer_base.hpp> //: public symbolizer_base {
 
 namespace mapnik
 {
@@ -94,7 +95,7 @@ namespace mapnik
 
    typedef boost::tuple<double,double> position;
 
-   struct  text_symbolizer
+  struct  text_symbolizer : public symbolizer_base
    {
          text_symbolizer(expression_ptr name, std::string const& face_name,
                          unsigned size, color const& fill);

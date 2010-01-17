@@ -27,6 +27,8 @@
 // mapnik
 #include <mapnik/config.hpp>
 #include <mapnik/path_expression_grammar.hpp>
+#include <mapnik/symbolizer_base.hpp>
+
 
 // // stl
 // #include <string>
@@ -34,7 +36,10 @@
 namespace mapnik 
 {
 
-class symbolizer_with_image {
+  class symbolizer_with_image 
+    : public              symbolizer_base
+
+  {
 public:
     path_expression_ptr get_filename() const;
     void set_filename(path_expression_ptr filename);

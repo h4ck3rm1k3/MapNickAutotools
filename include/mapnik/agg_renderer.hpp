@@ -44,6 +44,12 @@ namespace mapnik {
       void end_map_processing(Map const& map);
       void start_layer_processing(layer const& lay);
       void end_layer_processing(layer const& lay);
+
+     template <class T2> void process(T2 const& sym,
+                   Feature const& feature,
+                   proj_transform const& prj_trans);
+
+     /*
       void process(point_symbolizer const& sym,
                    Feature const& feature,
                    proj_transform const& prj_trans);
@@ -74,6 +80,8 @@ namespace mapnik {
       void process(markers_symbolizer const& sym,
                    Feature const& feature,
                    proj_transform const& prj_trans);
+*/
+
      private:
       T & pixmap_;
       unsigned width_;

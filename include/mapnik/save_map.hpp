@@ -30,8 +30,10 @@
 //#include "stdinc.hpp"
 namespace mapnik
 {
+  template <class Map>
      void save_map(Map const& map, std::string const& filename, bool explicit_defaults = false);
 
+  template <class Map>
      std::string save_map_to_string(Map const& map, bool explicit_defaults = false);
 
 }

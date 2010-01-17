@@ -25,10 +25,13 @@
 #ifndef MARKERS_SYMBOLIZER_HPP
 #define MARKERS_SYMBOLIZER_HPP
 
+
+#include <mapnik/symbolizer_base.hpp> //
+
 namespace mapnik {
    
-   struct  markers_symbolizer
-   {
+   struct  markers_symbolizer : public symbolizer_base {
+
      public:
       markers_symbolizer() 
          : allow_overlap_(false) {}

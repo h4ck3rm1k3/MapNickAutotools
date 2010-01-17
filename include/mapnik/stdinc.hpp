@@ -214,6 +214,7 @@ extern "C"
 #include <mapnik/config.hpp>
 #include <mapnik/path_expression_grammar.hpp>
 
+#include <mapnik/symbolizer_base.hpp>
 #include <mapnik/symbolizer.hpp>
 
 
@@ -283,5 +284,9 @@ extern "C"
 #include <mapnik/feature_style_processor.hpp>
 
 
+// png stuff
+#include <mapnik/image_util.hpp>
+#include <mapnik/png_io.hpp>
+#include <mapnik/jpeg_io.hpp>
 
 #endif

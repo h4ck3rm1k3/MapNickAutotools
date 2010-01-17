@@ -25,11 +25,11 @@
 #define LINE_SYMBOLIZER_HPP
 
 #include <mapnik/stroke.hpp>
+#include <mapnik/symbolizer_base.hpp> 
 
 namespace mapnik 
 {
-    struct  line_symbolizer
-    {
+    struct  line_symbolizer : public symbolizer_base {
         explicit line_symbolizer()
             : stroke_() {}
         

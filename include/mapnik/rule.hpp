@@ -20,8 +20,8 @@
  *
  *****************************************************************************/
 
-#ifndef RULE_HPP
-#define RULE_HPP
+#ifndef INC_RULE_HPP
+#define INC_RULE_HPP
 // // mapnik
 
 // #include "stdinc.hpp"
@@ -126,7 +126,7 @@ template <typename FeatureT>
 class rule
 {    
 public:
-  //    typedef std::vector<symbolizer> symbolizers;
+  //  typedef std::vector<symbolizer_base> symbolizers;
 private:
     
     std::string name_;

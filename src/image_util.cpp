@@ -23,15 +23,13 @@
 
 //$Id: image_util.cpp 36 2005-04-05 14:32:18Z pavlenko $
 
-extern "C"
+/*extern "C"
 {
 #include <png.h>
 }
 
 // mapnik
-#include <mapnik/image_util.hpp>
-#include <mapnik/png_io.hpp>
-#include <mapnik/jpeg_io.hpp>
+
 #include <mapnik/graphics.hpp>
 #include <mapnik/memory.hpp>
 #include <mapnik/image_view.hpp>
@@ -41,6 +39,8 @@ extern "C"
 #include <iostream>
 #include <fstream>
 #include <sstream>
+*/
+
 
 namespace mapnik
 {    
@@ -79,11 +79,12 @@ namespace mapnik
                       std::string const& filename,
                       std::string const& type)
     {
-        std::ofstream file (filename.c_str(), std::ios::out| std::ios::trunc|std::ios::binary);
+      // todo!
+      /* std::ofstream file (filename.c_str(), std::ios::out| std::ios::trunc|std::ios::binary);
         if (file)
         {
             //all this should go into image_writer factory
-            if (type=="png")  save_as_png(file,image);
+	  if (type=="png")  save_as_png<T,std::ofstream>(image,file);
             else if (type == "png256") save_as_png256(file,image);
             else if (boost::algorithm::istarts_with(type,std::string("jpeg")))
             {
@@ -105,6 +106,7 @@ namespace mapnik
             }
             else throw ImageWriterException("unknown file type: " + type);
         } 
+      */
     }
 	
     template <typename T>

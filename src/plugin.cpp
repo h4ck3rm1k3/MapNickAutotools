@@ -36,7 +36,8 @@ namespace mapnik
     {
         if (module_)
         {
-            lt_dlclose(module_),module_=0;
+	  //lt_dlclose(module_),module_=0;
+	  // TODO: close modulemodule->
         }
     }
 

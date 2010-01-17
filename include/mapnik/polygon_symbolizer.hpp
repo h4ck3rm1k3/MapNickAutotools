@@ -27,10 +27,14 @@
 
 #include <mapnik/color.hpp>
 //#include "stdinc.hpp"
+#include <mapnik/symbolizer_base.hpp> //
+
 namespace mapnik 
 {
     struct  polygon_symbolizer
-    {
+: public symbolizer_base {
+
+  
         explicit polygon_symbolizer() 
             : fill_(color(128,128,128)),
               opacity_(1.0) {}

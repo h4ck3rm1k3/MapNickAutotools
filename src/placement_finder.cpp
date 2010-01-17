@@ -161,7 +161,7 @@ placement::~placement() {}
 
       double total_distance = get_total_distance<T>(shape_path);
       shape_path.rewind(0);
-
+      double distance = 0.0; // distance from last label
       if (distance == 0) //Point data, not a line
       {
          double x, y;
@@ -179,7 +179,7 @@ placement::~placement() {}
       if (num_labels <= 0)
          num_labels = 1;
 
-      double distance = 0.0; // distance from last label
+
       double spacing = total_distance / num_labels;
       double target_distance = spacing / 2; // first label should be placed at half the spacing
 
