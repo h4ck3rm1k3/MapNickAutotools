@@ -1,3 +1,4 @@
+#include <mapnik/stdinc.hpp>
 /*****************************************************************************
  *
  * This file is part of Mapnik (c++ mapping toolkit)
