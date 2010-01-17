@@ -447,13 +447,13 @@ namespace mapnik
 
     }
 
-    void serialize_datasource( ptree & layer_node, datasource_ptr datasource)
+    void serialize_datasource( ptree & layer_node, PlugIn::datasource_ptr datasource)
     {
         ptree & datasource_node = layer_node.push_back(
                 ptree::value_type("Datasource", ptree()))->second;
 
-        parameters::const_iterator it = datasource->params().begin();
-        parameters::const_iterator end = datasource->params().end();
+        datasource::parameters::const_iterator it = datasource->params().begin();
+        datasource::parameters::const_iterator end = datasource->params().end();
         for (; it != end; ++it)
         {
             boost::property_tree::ptree & param_node = datasource_node.push_back(
@@ -523,7 +523,7 @@ namespace mapnik
             style_node.put_value( style_names[i] );
         }
 
-        datasource_ptr datasource = layer.datasource();
+	PlugIn::datasource_ptr datasource = layer.datasource();
         if ( datasource )
         {
             serialize_datasource( layer_node, datasource );

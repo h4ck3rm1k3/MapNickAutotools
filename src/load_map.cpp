@@ -99,7 +99,7 @@ namespace mapnik
          bool strict_;
          std::string filename_;
          bool relative_to_xml_;
-         std::map<std::string,parameters> datasource_templates_;
+     std::map<std::string,datasource::parameters> datasource_templates_;
          freetype_engine font_engine_;
          face_manager<freetype_engine> font_manager_;
          std::map<std::string,std::string> file_sources_;
@@ -247,7 +247,7 @@ namespace mapnik
                 else if (v.first == "Datasource")
                 {
                     std::string name = get_attr(v.second, "name", string("Unnamed"));
-                    parameters params;
+                    datasource::parameters params;
                     ptree::const_iterator paramIter = v.second.begin();
                     ptree::const_iterator endParam = v.second.end();
                     for (; paramIter != endParam; ++paramIter)
@@ -443,11 +443,11 @@ namespace mapnik
                 }
                 else if (child.first == "Datasource")
                 {
-                    parameters params;
+                    datasource::parameters params;
                     optional<std::string> base = get_opt_attr<std::string>( child.second, "base" );
                     if( base )
                     {
-                       std::map<std::string,parameters>::const_iterator base_itr = datasource_templates_.find(*base);
+                       std::map<std::string,datasource::parameters>::const_iterator base_itr = datasource_templates_.find(*base);
                        if (base_itr!=datasource_templates_.end())
                           params = base_itr->second;
                     }
@@ -495,9 +495,14 @@ namespace mapnik
                     //now we are ready to create datasource
                     try
                     {
-                        boost::shared_ptr<datasource> ds =
-                            datasource_cache::instance()->create(params);
-                        lyr.set_datasource(ds);
+		      
+		      mapnik::PlugIn* /*
+					boost::shared_ptr<datasource> */ 
+			ds =
+			datasource_cache::instance()->create(params);
+		      //		      datasource  dsp =
+		      PlugIn::datasource_ptr dsp1 (ds->create(params));
+                        lyr.set_datasource(dsp1);
                     }
 
                     // catch problem at datasource registration

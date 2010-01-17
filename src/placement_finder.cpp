@@ -27,6 +27,7 @@
 #include <mapnik/placement_finder.hpp>
 #include <mapnik/geometry.hpp>
 #include <mapnik/text_path.hpp>
+#include <mapnik/shield_symbolizer.hpp>
 
 // agg
 #include "agg_path_length.h"
@@ -49,7 +50,7 @@
 
 namespace mapnik
 {
-placement::placement(string_info & info_, shield_symbolizer const& sym, 
+  placement::placement(string_info & info_,text_symbolizer/* shield_symbolizer*/ const& sym, 
 		     unsigned w, unsigned h, bool has_dimensions_)
     : info(info_),
       displacement_(sym.get_displacement()),

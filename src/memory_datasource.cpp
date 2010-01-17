@@ -55,7 +55,7 @@ namespace mapnik {
     };
     
     memory_datasource::memory_datasource()
-        : datasource(parameters()) {}
+        : datasource(datasource::parameters()) {}
     memory_datasource::~memory_datasource() {}
     
     void memory_datasource::push(feature_ptr feature)

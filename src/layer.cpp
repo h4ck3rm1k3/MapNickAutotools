@@ -193,12 +193,12 @@ namespace mapnik
         return queryable_;
     }
 
-    datasource_ptr layer::datasource() const
+    PlugIn::datasource_ptr layer::datasource() const
     {
         return ds_;
     }
     
-    void layer::set_datasource(datasource_ptr const& ds)
+    void layer::set_datasource(PlugIn::datasource_ptr const& ds)
     {
         ds_ = ds;
     }

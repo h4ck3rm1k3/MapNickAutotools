@@ -459,7 +459,7 @@ namespace mapnik
                 prj_trans.backward(minx,miny,z);
                 prj_trans.backward(maxx,maxy,z);
                 double tol = (maxx - minx) / width_ * 3;
-                mapnik::datasource_ptr ds = layer.datasource();
+                mapnik::PlugIn::datasource_ptr ds = layer.datasource();
                 if (ds)
                 {
 #ifdef MAPNIK_DEBUG
@@ -504,7 +504,7 @@ namespace mapnik
                 prj_trans.backward(minx,miny,z);
                 prj_trans.backward(maxx,maxy,z);
                 double tol = (maxx - minx) / width_ * 3;
-                mapnik::datasource_ptr ds = layer.datasource();
+                mapnik::PlugIn::datasource_ptr ds = layer.datasource();
                 if (ds)
                 {
 #ifdef MAPNIK_DEBUG

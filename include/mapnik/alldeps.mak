@@ -106,3 +106,5 @@ color.hpp.gch:config.hpp global.hpp boostinc.hpp stdioinc.hpp
 graphics.hpp.gch:color.hpp config.hpp global.hpp boostinc.hpp stdioinc.hpp gamma.hpp image_data.hpp box2d.hpp coord.hpp image_view.hpp
 unicode.hpp.gch:config.hpp
 markers_converter.hpp.gch:box2d.hpp coord.hpp boostinc.hpp stdioinc.hpp
+
+include alldeps2.mak

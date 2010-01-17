@@ -39,7 +39,8 @@ namespace mapnik
    {         
     private:
          std::string name_;
-     //         lt_dlhandle module_;     
+     //         lt_dlhandle module_;  
+     PlugIn* module_;
     public:
      PluginInfo (const std::string& name,PlugIn* module);
      ~PluginInfo();

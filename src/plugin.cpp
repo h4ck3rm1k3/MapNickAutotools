@@ -23,12 +23,12 @@
 //$Id: plugin.cpp 17 2005-03-08 23:58:43Z pavlenko $
 
 #include <mapnik/plugin.hpp>
-#include <ltdl.h>
+//#include <ltdl.h>
 
 namespace mapnik
 {
 
-    PluginInfo::PluginInfo (const std::string& name,const lt_dlhandle module)
+  PluginInfo::PluginInfo (const std::string& name, mapnik::PlugIn * module/*const lt_dlhandle module*/)
         :name_(name),module_(module) {}
 
     PluginInfo::~PluginInfo()
@@ -44,7 +44,7 @@ namespace mapnik
         return name_;
     }
 
-    lt_dlhandle PluginInfo::handle() const
+  mapnik::PlugIn*  PluginInfo::handle() const
     {
         return module_;
     }
