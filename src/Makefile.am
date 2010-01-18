@@ -5,7 +5,7 @@
 INCLUDES = 
 
 AM_CXXFLAGS =\
-	 -Wall  
+	 -Wall  -I../include
 
 lib_LTLIBRARIES = \
 	libmapnik.la
