@@ -20,6 +20,8 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *
  *****************************************************************************/
+#include<fstream>
+//#include <mapnik/png_io.hpp>
 
 //$Id: image_util.cpp 36 2005-04-05 14:32:18Z pavlenko $
 
@@ -74,19 +76,34 @@ namespace mapnik
         return ss.str();
     }
 
+  void test(std::string const& filename)
+  {
+    std::ofstream afile (filename.c_str(), std::ios::out| std::ios::trunc|std::ios::binary);
+    if (afile)
+      {
+
+      }
+  }
     template <typename T>
     void save_to_file(T const& image,
                       std::string const& filename,
                       std::string const& type)
     {
       // todo!
-      /* std::ofstream file (filename.c_str(), std::ios::out| std::ios::trunc|std::ios::binary);
-        if (file)
+
+      
+    std::ofstream afile (filename.c_str(), std::ios::out| std::ios::trunc|std::ios::binary);
+    if (afile)
+      {
+	save_as_png<T>(image,filename);
+      }
+   
         {
             //all this should go into image_writer factory
-	  if (type=="png")  save_as_png<T,std::ofstream>(image,file);
-            else if (type == "png256") save_as_png256(file,image);
-            else if (boost::algorithm::istarts_with(type,std::string("jpeg")))
+	  //if (type=="png")  
+	  // save_as_png<T>(image,file);
+          //  else if (type == "png256") save_as_png256(file,image);
+	  /* else if (boost::algorithm::istarts_with(type,std::string("jpeg")))
             {
                 int quality = 85;
                 try 
@@ -103,10 +120,10 @@ namespace mapnik
                 {
                     throw ImageWriterException("invalid jpeg quality: " + type.substr(4) + " not a number");
                 }
-            }
-            else throw ImageWriterException("unknown file type: " + type);
+		}*/
+	  //else throw ImageWriterException("unknown file type: " + type);
         } 
-      */
+      
     }
 	
     template <typename T>

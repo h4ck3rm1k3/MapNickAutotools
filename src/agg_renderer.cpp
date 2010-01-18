@@ -913,13 +913,6 @@ bool y_order(segment_t const& first,segment_t const& second)
 // 	}
 //     }
 // }
-template class agg_renderer<image_32>;
-
-template <> template <>
-void mapnik::feature_style_processor<mapnik::agg_renderer<mapnik::image_32> >::apply_to_layer(mapnik::layer const&, mapnik::agg_renderer<mapnik::image_32>&, mapnik::projection const&, double)
-{
-
-}
 
 
 }
