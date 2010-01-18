@@ -63,7 +63,7 @@ cppdemo_OBJECTS = $(am_cppdemo_OBJECTS)
 cppdemo_LDADD = $(LDADD)
 cppdemo_LINK = $(LIBTOOL) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
 	--mode=link $(CXXLD) $(cppdemo_CXXFLAGS) $(CXXFLAGS) \
-	$(cppdemo_LDFLAGS) $(LDFLAGS) -lboost_system -o $@
+	$(cppdemo_LDFLAGS) $(LDFLAGS) -o $@
 DEFAULT_INCLUDES = -I. -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles

@@ -60,7 +60,9 @@ font_set.hpp.gch:config.hpp
 raster_symbolizer.hpp.gch:
 color_factory.hpp.gch:config.hpp color.hpp global.hpp boostinc.hpp stdioinc.hpp config_error.hpp css_color_grammar.hpp
 css_color_grammar.hpp.gch:color.hpp config.hpp global.hpp boostinc.hpp stdioinc.hpp
-stdinc.hpp.gch:config.hpp coord.hpp boostinc.hpp stdioinc.hpp box2d.hpp config_error.hpp color.hpp global.hpp css_color_grammar.hpp color_factory.hpp coord_array.hpp projection.hpp proj_transform.hpp ctrans.hpp stdinc_ctrans.hpp image_data.hpp raster.hpp graphics.hpp gamma.hpp image_view.hpp value.hpp stdinc_value.hpp vertex_vector.hpp vertex.hpp geom_util.hpp geometry.hpp stdinc_geometry.hpp feature.hpp stdinc_feature.hpp feature_layer_desc.hpp params.hpp query.hpp datasource.hpp stdinc_datasource.hpp unicode.hpp memory_datasource.hpp enumeration.hpp expression_node.hpp expression_grammar.hpp utils.hpp stdinc.hpp text_path.hpp font_set.hpp font_engine_freetype.hpp layer.hpp octree.hpp plugin.hpp quad_tree.hpp stroke.hpp path_expression_grammar.hpp symbolizer.hpp text_symbolizer.hpp raster_symbolizer.hpp scale_denominator.hpp shield_symbolizer.hpp stdinc_symbolizer.hpp point_symbolizer.hpp polygon_symbolizer.hpp placement_finder.hpp label_collision_detector.hpp line_pattern_symbolizer.hpp line_symbolizer.hpp markers_symbolizer.hpp polygon_pattern_symbolizer.hpp attribute_collector.hpp stdinc_attribute_collector.hpp rule.hpp feature_type_style.hpp map.hpp expression_evaluator.hpp attribute_collector.hpp feature_style_processor.hpp stdinc_feature_style_processor.hpp
+
+
+
 version.hpp.gch:
 stdinc_attribute_collector.hpp.gch:raster.hpp graphics.hpp color.hpp config.hpp global.hpp boostinc.hpp stdioinc.hpp gamma.hpp image_data.hpp box2d.hpp coord.hpp image_view.hpp expression_node.hpp value.hpp stdinc_value.hpp path_expression_grammar.hpp unicode.hpp feature.hpp stdinc_feature.hpp geometry.hpp stdinc_geometry.hpp vertex_vector.hpp vertex.hpp ctrans.hpp stdinc_ctrans.hpp config_error.hpp css_color_grammar.hpp color_factory.hpp coord_array.hpp projection.hpp proj_transform.hpp geom_util.hpp placement_finder.hpp label_collision_detector.hpp quad_tree.hpp text_symbolizer.hpp symbolizer.hpp enumeration.hpp font_set.hpp text_path.hpp line_pattern_symbolizer.hpp line_symbolizer.hpp stroke.hpp markers_symbolizer.hpp polygon_pattern_symbolizer.hpp shield_symbolizer.hpp stdinc_symbolizer.hpp
 polygon_symbolizer.hpp.gch:color.hpp config.hpp global.hpp boostinc.hpp stdioinc.hpp
@@ -107,4 +109,9 @@ graphics.hpp.gch:color.hpp config.hpp global.hpp boostinc.hpp stdioinc.hpp gamma
 unicode.hpp.gch:config.hpp
 markers_converter.hpp.gch:box2d.hpp coord.hpp boostinc.hpp stdioinc.hpp
 
+stdinc.hpp.gch:freetype.hpp
+#config.hpp coord.hpp boostinc.hpp stdioinc.hpp 
+# box2d.hpp config_error.hpp color.hpp global.hpp css_color_grammar.hpp color_factory.hpp coord_array.hpp projection.hpp proj_transform.hpp ctrans.hpp stdinc_ctrans.hpp image_data.hpp raster.hpp graphics.hpp gamma.hpp image_view.hpp value.hpp stdinc_value.hpp vertex_vector.hpp vertex.hpp geom_util.hpp geometry.hpp stdinc_geometry.hpp feature.hpp stdinc_feature.hpp feature_layer_desc.hpp params.hpp query.hpp datasource.hpp stdinc_datasource.hpp unicode.hpp memory_datasource.hpp enumeration.hpp expression_node.hpp expression_grammar.hpp utils.hpp stdinc.hpp text_path.hpp font_set.hpp font_engine_freetype.hpp layer.hpp octree.hpp plugin.hpp quad_tree.hpp stroke.hpp path_expression_grammar.hpp symbolizer.hpp text_symbolizer.hpp raster_symbolizer.hpp scale_denominator.hpp shield_symbolizer.hpp stdinc_symbolizer.hpp point_symbolizer.hpp polygon_symbolizer.hpp placement_finder.hpp label_collision_detector.hpp line_pattern_symbolizer.hpp line_symbolizer.hpp markers_symbolizer.hpp polygon_pattern_symbolizer.hpp attribute_collector.hpp stdinc_attribute_collector.hpp rule.hpp feature_type_style.hpp map.hpp expression_evaluator.hpp attribute_collector.hpp feature_style_processor.hpp stdinc_feature_style_processor.hpp
+
 include alldeps2.mak
+

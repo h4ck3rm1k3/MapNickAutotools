@@ -46,6 +46,9 @@ GCH_FILES=  \
 stdioinc.hpp.gch				\
 boostinc.hpp.gch				\
 freetype.hpp.gch				\
+stdinc.hpp.gch					
+
+ALT_GCH_FILES=  \
 config.hpp.gch					\
 unicode.hpp.gch					\
 config_error.hpp.gch				\
@@ -150,12 +153,13 @@ label_placement.hpp.gch				\
 ptree_helpers.hpp.gch				\
 ptree_helpers.hpp.gch				\
 stdinc.hpp.gch					\
-agg_renderer.hpp.gch 	\
-stdinc.hpp.gch					
+agg_renderer.hpp.gch 	
 
 
 
-BUILT_SOURCES = report.txt $(GCH_FILES) $(patsubst %.hpp, %.hpp.gch ,$(libmapnik_HEADERS))
+BUILT_SOURCES = report.txt $(GCH_FILES) 
+
+test_files=$(patsubst %.hpp, %.hpp.gch ,$(libmapnik_HEADERS))
 
 
 #BUILT_SOURCES = $(subst .hpp, hpp.gch ,	$(libmapnik_HEADERS))
@@ -182,7 +186,7 @@ CLEANFILES =$(GCH_FILES)
 # 	${CAIRO_CFLAGS} $(CPPFLAGS) $< | sed '\"s/$*.o/& $@/g'\" > $@'
 
 # generated dependency file...
-include alldeps.mak
+#include alldeps.mak
 
 #/usr/local/bin/g++ -DHAVE_CONFIG_H -I. -I.. -I../include -pg -DMAPNIK_DEBUG -I/usr/include/libpng12 -I/usr/include/freetype2 -I/media/NewFoundSpace/2010/01/mapnik/agg/include -I/usr/local/include -I/usr/include/libxml2 -D_REENTRANT -I/usr/include/cairomm-1.0 -I/usr/include/cairo -I/usr/include/sigc++-2.0 -I/usr/lib/sigc++-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/directfb -I/usr/include/libpng12 -Winvalid-pch -MT libmapnik_la-agg_renderer.lo -MD -MP  
 # $(CXX)   -x c++-header -I ../.. -I .. -I -DHAVE_CONFIG_H	${CXXFLAGS} ${PROFILING_CFLAGS} 

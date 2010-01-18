@@ -1,4 +1,5 @@
 #include <mapnik/stdinc.hpp>
+#include <mapnik/agg_renderer.hpp>
 
 namespace mapnik 
 {
@@ -22,17 +23,34 @@ void mapnik::rule<mapnik::feature<mapnik::geometry<mapnik::vertex<double, 2> >, 
 
 }
 
+template <class T> 
+void mapnik::feature_style_processor< T>::apply_to_layer(mapnik::layer const&, T &, mapnik::projection const&, double)
+{};
+
+template <> 
+void mapnik::feature_style_processor< mapnik::agg_renderer<mapnik::image_32> >::apply_to_layer(mapnik::layer const&, mapnik::agg_renderer<mapnik::image_32> &, mapnik::projection const&, double)
+{};
+
+/*
+
+
+
+typedef mapnik::agg_renderer<mapnik::image_32> T1;
 template <> template <>
-mapnik::feature_style_processor<mapnik::agg_renderer<mapnik::image_32> >::apply_to_layer(mapnik::layer const&, mapnik::agg_renderer<mapnik::image_32>&, mapnik::projection const&, double)
+void mapnik::feature_style_processor<T1 >::apply_to_layer(
+						mapnik::layer const& lay, 
+						T1 & p, 
+						mapnik::projection const& proj0,
+						double scale_denom)
 {
 
 }
-
+*/
 
 }
 
-
-icu_4_0::UnicodeString::UnicodeString(icu_4_0::UnicodeString const&)
+/*mapnik::feature_style_processor<mapnik::agg_renderer<mapnik::image_32> >::apply_to_layer(mapnik::layer const&, mapnik::agg_renderer<mapnik::image_32>&, mapnik::projection const&, double)
 {
 
-}
+}*/
+
