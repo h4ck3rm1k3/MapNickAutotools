@@ -1,6 +1,6 @@
 bin_PROGRAMS = cppdemo 
 
-cppdemo_SOURCES= rundemo.cpp
+cppdemo_SOURCES= rundemo.cpp missing.cpp
 
 CXX = g++
 
@@ -15,7 +15,7 @@ cppdemo_CXXFLAGS = \
 	${FT2_CFLAGS}
 
 cppdemo_LDFLAGS = \
-	${LIBXML2_LIBS} ${FT2_LIBS} \
+	${LIBXML2_LIBS} ${FT2_LIBS} -lboost_system \
 	`pkg-config --libs  cairomm-1.0` \
 	../../src/libmapnik.la 
 

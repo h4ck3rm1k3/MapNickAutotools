@@ -57,12 +57,13 @@ CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
-am_cppdemo_OBJECTS = cppdemo-rundemo.$(OBJEXT)
+am_cppdemo_OBJECTS = cppdemo-rundemo.$(OBJEXT) \
+	cppdemo-missing.$(OBJEXT)
 cppdemo_OBJECTS = $(am_cppdemo_OBJECTS)
 cppdemo_LDADD = $(LDADD)
 cppdemo_LINK = $(LIBTOOL) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
 	--mode=link $(CXXLD) $(cppdemo_CXXFLAGS) $(CXXFLAGS) \
-	$(cppdemo_LDFLAGS) $(LDFLAGS) -o $@
+	$(cppdemo_LDFLAGS) $(LDFLAGS) -lboost_system -o $@
 DEFAULT_INCLUDES = -I. -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
@@ -81,14 +82,14 @@ DIST_SOURCES = $(cppdemo_SOURCES)
 ETAGS = etags
 CTAGS = ctags
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
-ACLOCAL = ${SHELL} /home/mdupont/2010/01/extern/mapnik/missing --run aclocal-1.11
-AGG_CFLAGS = -I/home/mdupont/2010/01/extern/mapnik/agg/include
-AGG_LIBS = /home/mdupont/2010/01/extern/mapnik/agg/src/libagg.la
-AMTAR = ${SHELL} /home/mdupont/2010/01/extern/mapnik/missing --run tar
+ACLOCAL = ${SHELL} /home/mdupont/2010/01/mapnik/mapnik/missing --run aclocal-1.11
+AGG_CFLAGS = -I/home/mdupont/2010/01/mapnik/mapnik/agg/include
+AGG_LIBS = /home/mdupont/2010/01/mapnik/mapnik/agg/src/libagg.la
+AMTAR = ${SHELL} /home/mdupont/2010/01/mapnik/mapnik/missing --run tar
 AR = ar
-AUTOCONF = ${SHELL} /home/mdupont/2010/01/extern/mapnik/missing --run autoconf
-AUTOHEADER = ${SHELL} /home/mdupont/2010/01/extern/mapnik/missing --run autoheader
-AUTOMAKE = ${SHELL} /home/mdupont/2010/01/extern/mapnik/missing --run automake-1.11
+AUTOCONF = ${SHELL} /home/mdupont/2010/01/mapnik/mapnik/missing --run autoconf
+AUTOHEADER = ${SHELL} /home/mdupont/2010/01/mapnik/mapnik/missing --run autoheader
+AUTOMAKE = ${SHELL} /home/mdupont/2010/01/mapnik/mapnik/missing --run automake-1.11
 AWK = gawk
 BOOST_CPPFLAGS = -I/usr/local/include
 BOOST_LDFLAGS = -L/usr/local/lib
@@ -140,7 +141,7 @@ LIPO =
 LN_S = ln -s
 LTLIBOBJS = 
 MAINT = #
-MAKEINFO = ${SHELL} /home/mdupont/2010/01/extern/mapnik/missing --run makeinfo
+MAKEINFO = ${SHELL} /home/mdupont/2010/01/mapnik/mapnik/missing --run makeinfo
 MKDIR_P = /bin/mkdir -p
 NM = /usr/bin/nm -B
 NMEDIT = 
@@ -189,10 +190,10 @@ STRIP = strip
 SYSTEM_FONTS_DIR = /usr/local/share/fonts
 TRACING_CFLAGS = -DMAPNIK_DEBUG
 VERSION = 0.6.0
-abs_builddir = /home/mdupont/2010/01/extern/mapnik/demo/c++
-abs_srcdir = /home/mdupont/2010/01/extern/mapnik/demo/c++
-abs_top_builddir = /home/mdupont/2010/01/extern/mapnik
-abs_top_srcdir = /home/mdupont/2010/01/extern/mapnik
+abs_builddir = /home/mdupont/2010/01/mapnik/mapnik/demo/c++
+abs_srcdir = /home/mdupont/2010/01/mapnik/mapnik/demo/c++
+abs_top_builddir = /home/mdupont/2010/01/mapnik/mapnik
+abs_top_srcdir = /home/mdupont/2010/01/mapnik/mapnik
 ac_ct_CC = /usr/local/bin/g++
 ac_ct_CXX = 
 ac_ct_DUMPBIN = 
@@ -221,7 +222,7 @@ host_vendor = pc
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-install_sh = ${SHELL} /home/mdupont/2010/01/extern/mapnik/install-sh
+install_sh = ${SHELL} /home/mdupont/2010/01/mapnik/mapnik/install-sh
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
@@ -246,7 +247,7 @@ target_alias =
 top_build_prefix = ../../
 top_builddir = ../..
 top_srcdir = ../..
-cppdemo_SOURCES = rundemo.cpp
+cppdemo_SOURCES = rundemo.cpp missing.cpp
 cppdemo_CXXFLAGS = \
   -Wall \
   $(DEFINES) $(INCLUDE) -Wall \
@@ -349,6 +350,7 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
+include ./$(DEPDIR)/cppdemo-missing.Po
 include ./$(DEPDIR)/cppdemo-rundemo.Po
 
 .cpp.o:
@@ -385,6 +387,20 @@ cppdemo-rundemo.obj: rundemo.cpp
 #	source='rundemo.cpp' object='cppdemo-rundemo.obj' libtool=no \
 #	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
 #	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(cppdemo_CXXFLAGS) $(CXXFLAGS) -c -o cppdemo-rundemo.obj `if test -f 'rundemo.cpp'; then $(CYGPATH_W) 'rundemo.cpp'; else $(CYGPATH_W) '$(srcdir)/rundemo.cpp'; fi`
+
+cppdemo-missing.o: missing.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(cppdemo_CXXFLAGS) $(CXXFLAGS) -MT cppdemo-missing.o -MD -MP -MF $(DEPDIR)/cppdemo-missing.Tpo -c -o cppdemo-missing.o `test -f 'missing.cpp' || echo '$(srcdir)/'`missing.cpp
+	$(am__mv) $(DEPDIR)/cppdemo-missing.Tpo $(DEPDIR)/cppdemo-missing.Po
+#	source='missing.cpp' object='cppdemo-missing.o' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(cppdemo_CXXFLAGS) $(CXXFLAGS) -c -o cppdemo-missing.o `test -f 'missing.cpp' || echo '$(srcdir)/'`missing.cpp
+
+cppdemo-missing.obj: missing.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(cppdemo_CXXFLAGS) $(CXXFLAGS) -MT cppdemo-missing.obj -MD -MP -MF $(DEPDIR)/cppdemo-missing.Tpo -c -o cppdemo-missing.obj `if test -f 'missing.cpp'; then $(CYGPATH_W) 'missing.cpp'; else $(CYGPATH_W) '$(srcdir)/missing.cpp'; fi`
+	$(am__mv) $(DEPDIR)/cppdemo-missing.Tpo $(DEPDIR)/cppdemo-missing.Po
+#	source='missing.cpp' object='cppdemo-missing.obj' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(cppdemo_CXXFLAGS) $(CXXFLAGS) -c -o cppdemo-missing.obj `if test -f 'missing.cpp'; then $(CYGPATH_W) 'missing.cpp'; else $(CYGPATH_W) '$(srcdir)/missing.cpp'; fi`
 
 mostlyclean-libtool:
 	-rm -f *.lo

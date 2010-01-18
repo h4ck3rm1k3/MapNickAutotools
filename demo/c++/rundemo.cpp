@@ -44,6 +44,14 @@
 #include <mapnik/agg_renderer.hpp>
 #include <mapnik/image_util.hpp>
 
+template <class P, class R> void run_set_datasource(P p, R lyr)
+{
+   mapnik::PlugIn* p2 = mapnik::datasource_cache::instance()->create(p);
+   mapnik::datasource * ret= p2->create(p);
+   mapnik::PlugIn::datasource_ptr r (ret);
+   lyr.set_datasource(r);
+}
+
 int main ( int argc , char** argv)
 {    
     if (argc != 2)
@@ -181,56 +189,61 @@ int main ( int argc , char** argv)
         // layers
         // Provincial  polygons
         {
-            parameters p;
+	  datasource::parameters p;
             p["type"]="shape";
             p["file"]="../data/boundaries";
             
             layer lyr("Provinces"); 
-            lyr.set_datasource(datasource_cache::instance()->create(p));
+
+	     mapnik::PlugIn* p2 = datasource_cache::instance()->create(p);
+	     mapnik::datasource * ret= p2->create(p);
+	     mapnik::PlugIn::datasource_ptr r (ret);
+
+            lyr.set_datasource(r);
             lyr.add_style("provinces");    
             m.addLayer(lyr);
         }
         
         // Drainage
         {
-            parameters p;
+            datasource::parameters p;
             p["type"]="shape";
             p["file"]="../data/qcdrainage";
             layer lyr("Quebec Hydrography");
-            lyr.set_datasource(datasource_cache::instance()->create(p));
+            run_set_datasource(p,lyr);
             lyr.add_style("drainage");    
             m.addLayer(lyr);
         }
         
         {
-            parameters p;
+            datasource::parameters p;
             p["type"]="shape";
             p["file"]="../data/ontdrainage";
             
             layer lyr("Ontario Hydrography"); 
-            lyr.set_datasource(datasource_cache::instance()->create(p));
+            run_set_datasource(p,lyr);
             lyr.add_style("drainage");    
             m.addLayer(lyr);
         }
         
         // Provincial boundaries
         {
-            parameters p;
+            datasource::parameters p;
             p["type"]="shape";
             p["file"]="../data/boundaries_l";
             layer lyr("Provincial borders"); 
-            lyr.set_datasource(datasource_cache::instance()->create(p));
+            run_set_datasource(p,lyr);
             lyr.add_style("provlines");    
             m.addLayer(lyr);
         }
         
         // Roads
         {
-            parameters p;
+            datasource::parameters p;
             p["type"]="shape";
             p["file"]="../data/roads";        
             layer lyr("Roads"); 
-            lyr.set_datasource(datasource_cache::instance()->create(p));
+            run_set_datasource(p,lyr);
             lyr.add_style("smallroads");
             lyr.add_style("road-border");
             lyr.add_style("road-fill");
@@ -241,12 +254,12 @@ int main ( int argc , char** argv)
         }
         // popplaces
         {
-            parameters p;
+            datasource::parameters p;
             p["type"]="shape";
             p["file"]="../data/popplaces";
             p["encoding"] = "latin1";
             layer lyr("Populated Places");
-            lyr.set_datasource(datasource_cache::instance()->create(p));
+            run_set_datasource(p,lyr);
             lyr.add_style("popplaces");    
             m.addLayer(lyr);
         }
