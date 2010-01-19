@@ -1,17 +1,23 @@
+#include <mapnik/stdinc.hpp>
+#include <mapnik/datasource_cache.hpp>
+#include <mapnik/load_map.hpp>
+#include <mapnik/agg_renderer.hpp>
+/*
 #include <mapnik/map.hpp>
 #include <mapnik/layer.hpp>
 #include <mapnik/box2d.hpp>
-#include <mapnik/agg_renderer.hpp>
+
 #include <mapnik/image_util.hpp>
-#include <mapnik/load_map.hpp>
-#include <mapnik/datasource_cache.hpp>
+
+
 #include <mapnik/font_engine_freetype.hpp>
 #include <mapnik/projection.hpp>
-
-using namespace mapnik;
-
 #include <iostream>
 #include <cmath>
+
+*/
+using namespace mapnik;
+
 using namespace std;
 
 
@@ -33,14 +39,17 @@ int main(int argc,char *argv[])
 	
 	if(argc>6)
 	{
-		parameters p;
+	  datasource::parameters p;
 		p["type"] = "osm";
 		p["file"] = argv[6];
 		for(int count=0; count<m.layerCount(); count++)
 		{
-			parameters q = m.getLayer(count).datasource()->params();
-			m.getLayer(count).set_datasource(datasource_cache::instance()->
-				create(p));
+		  datasource::parameters q = m.getLayer(count).datasource()->params();
+		  mapnik::PlugIn* plg= datasource_cache::instance()->create(p);
+		  mapnik::PlugIn::datasource_ptr ptr(plg-> create(p));
+
+		  //		  void mapnik::layer::set_datasource()
+			m.getLayer(count).set_datasource(ptr);
 		}
 	}
 

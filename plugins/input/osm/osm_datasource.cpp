@@ -19,18 +19,21 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *
  *****************************************************************************/
-
+#include <mapnik/stdinc.hpp>
+/*
 #include <iostream>
 #include <fstream>
 #include <stdexcept>
 #include <mapnik/geom_util.hpp>
 #include <mapnik/query.hpp>
+#include <set>
+*/
+
 #include "osm_datasource.hpp"
 #include "osm_featureset.hpp"
 #include "dataset_deliverer.h"
 #include "osmtagtypes.h"
 #include "osmparser.h"
-#include <set>
 
 DATASOURCE_PLUGIN(osm_datasource)
 

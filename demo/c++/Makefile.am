@@ -4,8 +4,6 @@ cppdemo_SOURCES= rundemo.cpp missing.cpp
 
 CXX = g++
 
-#/usr/lib/libicudata.so.40  /usr/lib/libicuio.so.40  /usr/lib/libiculx.so.40  /usr/lib/libicuuc.so.40 /usr/lib/libicui18n.so.40  /usr/lib/libicule.so.40  /usr/lib/libicutu.so.40
-
 cppdemo_CXXFLAGS = \
   -Wall \
   $(DEFINES) $(INCLUDE) -Wall \
@@ -16,7 +14,7 @@ cppdemo_CXXFLAGS = \
 	`pkg-config --cflags cairomm-1.0` \
 	${FT2_CFLAGS}
 
-# 	-lsicudata -lsicui18n -lsicuio -lsicule -lsiculx -lsicuuc \
+# 	-lsicudata -lsicui18n -lsicuio -lsicule -lsiculx -lsicuuc 
 
 cppdemo_LDFLAGS = \
 	/usr/lib/libicu*.so.40 \

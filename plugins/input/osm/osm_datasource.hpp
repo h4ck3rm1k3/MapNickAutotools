@@ -32,7 +32,7 @@
 
 
 using mapnik::datasource;
-using mapnik::parameters;
+//using mapnik::datasource::parameters;
 using mapnik::query;
 using mapnik::featureset_ptr;
 using mapnik::layer_descriptor;
@@ -42,7 +42,7 @@ using mapnik::box2d;
 class osm_datasource : public datasource
 {
    public:
-      osm_datasource(const parameters &params);
+      osm_datasource(const datasource::parameters &params);
       virtual ~osm_datasource();
     
 	  // these must be overridden
