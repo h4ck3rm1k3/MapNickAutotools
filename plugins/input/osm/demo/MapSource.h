@@ -9,8 +9,8 @@ using namespace std;
 #include <boost/tokenizer.hpp>
 #include <mapnik/map.hpp>
 #include <mapnik/layer.hpp>
-#include <mapnik/envelope.hpp>
-#include <mapnik/agg_renderer.hpp>
+//#include <mapnik/envelope.hpp>
+//#include <mapnik/agg_renderer.hpp>
 #include <mapnik/image_util.hpp>
 #include <mapnik/load_map.hpp>
 #include <mapnik/datasource_cache.hpp>
@@ -37,7 +37,7 @@ private:
     int zoom_start,zoom_end;
     bool srtm;
 
-    static void setOSMLayers(Map& m, const parameters &p);
+    static void setOSMLayers(Map& m, const datasource::parameters &p);
     static void addSRTMLayers(Map& m,double w,double s,double e,double n);
 
 public:

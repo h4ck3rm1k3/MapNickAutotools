@@ -1,6 +1,19 @@
+#include <mapnik/stdinc.hpp>
 #include "MapSource.h"
 #include <gd.h>
+#include <mapnik/agg_renderer.hpp>
+#include <mapnik/layer.hpp>
 
+//            m.getLayer(count).set_datasource
+//                    (datasource_cache::instance()->create(p));
+
+mapnik::PlugIn::datasource_ptr create(const datasource::parameters & p )
+{
+//		  datasource::parameters q = m.getLayer(count).datasource()->params();
+  mapnik::PlugIn* plg= datasource_cache::instance()->create(p);
+  mapnik::PlugIn::datasource_ptr ptr(plg-> create(p));
+  return ptr;
+}
 
 void MapSource::process_cmd_line_args(int argc,char *argv[])
 {
@@ -184,7 +197,7 @@ void MapSource::generateMaps()
 					   e1 = max(bottomR_LL.x+0.01,topR_LL.x+0.01),
 					   n1 = max(topL_LL.y+0.01,topR_LL.y+0.01);
 
-                parameters p;
+				datasource::parameters p;
                 if(getSource()=="api")
                 {
                     std::ostringstream str;
@@ -284,7 +297,7 @@ void MapSource::generateMaps()
     {
         // standard rendering
         Map m(width,height);
-        parameters p;
+        datasource::parameters p;
         p["type"] = "osm";
         p["file"] = osmfile;
         load_map(m,xmlfile);
@@ -311,16 +324,16 @@ void MapSource::generateMaps()
     }
 }
 
-void MapSource::setOSMLayers(Map& m, const parameters &p)
+void MapSource::setOSMLayers(Map& m, const datasource::parameters &p)
 {
-    parameters q;
+    datasource::parameters q;
     for(int count=0; count<m.layerCount(); count++)
     {
         q = m.getLayer(count).datasource()->params();
         if(boost::get<std::string>(q["type"])=="osm")
         {
             m.getLayer(count).set_datasource
-                    (datasource_cache::instance()->create(p));
+                    (create(p));
         }
     }
 }
@@ -328,7 +341,7 @@ void MapSource::setOSMLayers(Map& m, const parameters &p)
 void MapSource::addSRTMLayers(Map& m,double w,double s,double e,double n)
 {
     // Get the layers from the map
-    vector<Layer> layers=m.layers();
+    vector<layer> layers=m.layers();
     cerr<<"***addSRTMLayers():w s e n="<<w<<" "<<s<<" "<<e<<" "<<n<<endl;
     int i=0;
 
@@ -343,7 +356,7 @@ void MapSource::addSRTMLayers(Map& m,double w,double s,double e,double n)
 
     // Set the specific latlon shapefile for the first SRTM layer
 
-    parameters p;    
+    datasource::parameters p;    
     p["type"] = "shape";
     std::stringstream str;
     int lon=floor(w),lat=floor(s);
@@ -353,7 +366,7 @@ void MapSource::addSRTMLayers(Map& m,double w,double s,double e,double n)
                         <<(lon>=0 ? lon:-lon)<<"c10";
     p["file"] = str.str();
     cerr<<"ADDING SRTM LAYER: " << p["file"] << endl;
-    m.getLayer(i).set_datasource(datasource_cache::instance()->create(p));
+    m.getLayer(i).set_datasource(create(p));
 
     // do we have more than one srtm layer?
     if(floor(w) != floor(e) || floor(s) != floor(n))
@@ -372,7 +385,7 @@ void MapSource::addSRTMLayers(Map& m,double w,double s,double e,double n)
                 // SRTM layer for it
                 if(lon!=floor(w) || lat!=floor(s))
                 {
-                    parameters p;    
+                    datasource::parameters p;    
                     p["type"] = "shape";
                     std::stringstream str;
                     str<<(lat<0 ? "S":"N")<<setw(2)<<setfill('0')<<
@@ -385,7 +398,7 @@ void MapSource::addSRTMLayers(Map& m,double w,double s,double e,double n)
                     lyr.add_style("contours");
                     lyr.add_style("contours-text");
                     lyr.set_datasource
-                        (datasource_cache::instance()->create(p));
+                        (create(p));
                     m.addLayer(lyr);
                 }
             }

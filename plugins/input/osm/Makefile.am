@@ -4,6 +4,10 @@ if HAVE_LIBXML2
 
 pkglib_LTLIBRARIES = osm.la
 
+SUBDIRS=demo render
+
+
+
 osm_la_SOURCES = \
 	basiccurl.cpp\
 	basiccurl.h\
@@ -17,8 +21,8 @@ osm_la_SOURCES = \
 	osm_featureset.hpp \
 	osmparser.cpp\
 	osmparser.h\
-	osmtagtypes.h\
-	render.cpp
+	osmtagtypes.h
+
 
 osm_la_CXXFLAGS = \
   -Wall \

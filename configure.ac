@@ -355,6 +355,8 @@ plugins/input/postgis/Makefile
 plugins/input/raster/Makefile
 plugins/input/shape/Makefile
 plugins/input/osm/Makefile
+plugins/input/osm/demo/Makefile
+plugins/input/osm/render/Makefile
 plugins/input/ogr/Makefile
 plugins/input/sqlite/Makefile
 plugins/input/kismet/Makefile
