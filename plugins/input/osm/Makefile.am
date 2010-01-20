@@ -1,10 +1,12 @@
 pkglibdir = $(libdir)/mapnik/input
 
+SUBDIRS=demo render
+
 if HAVE_LIBXML2
 
 pkglib_LTLIBRARIES = osm.la
 
-SUBDIRS=demo render
+
 
 
 

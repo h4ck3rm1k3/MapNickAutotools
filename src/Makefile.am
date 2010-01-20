@@ -81,7 +81,7 @@ libmapnik_la_LIBADD = \
 	${CAIRO_LIBS}
 
 libmapnik_la_CXXFLAGS = \
-	-I../ -static -DHAVE_CONFIG_H -DMAPNIK_DEBUGinclude        \
+	-I../include -static -DHAVE_CONFIG_H -DMAPNIK_DEBUG        \
 	${PROFILING_CFLAGS} \
 	${TRACING_CFLAGS} \
 	${PNG_CFLAGS} \

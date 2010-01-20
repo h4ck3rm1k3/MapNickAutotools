@@ -157,4 +157,18 @@ namespace mapnik
     template std::string save_to_string<image_view<image_data_32> > (image_view<image_data_32> const&,
                                                                    std::string const&);
 
+
+template <> 
+void save_as_png< image_view<ImageData<unsigned int> > >(image_view<ImageData<unsigned int> > const&, std::string const&)
+{
+
+}
+
+template <> 
+void save_as_png<mapnik::ImageData<unsigned int> >(mapnik::ImageData<unsigned int> const&,  std::string const&)
+{
+
+}
+
+
 }
