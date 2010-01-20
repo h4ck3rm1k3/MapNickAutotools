@@ -34,6 +34,8 @@
 #include <mapnik/font_set.hpp>
 #include <mapnik/path_expression_grammar.hpp>
 
+#include <mapnik/graphics.hpp> // image32
+
 // agg
 #define AGG_RENDERING_BUFFER row_ptr_cache<int8u>
 #include "agg_rendering_buffer.h"
@@ -914,5 +916,10 @@ bool y_order(segment_t const& first,segment_t const& second)
 //     }
 // }
 
+// try at explicit instantiation
+template class agg_renderer<mapnik::image_32>;
+
 
 }
+
+

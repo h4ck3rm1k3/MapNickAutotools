@@ -26,6 +26,8 @@ libmapnik_la_SOURCES = \
 	arrow.cpp \
 	${cairo_src} \
 	color.cpp \
+	rule.cpp \
+	feature_style_processor.cpp \
 	datasource_cache.cpp \
 	distance.cpp \
 	filter_factory.cpp \
