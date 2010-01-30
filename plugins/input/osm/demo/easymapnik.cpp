@@ -72,11 +72,11 @@ void help()
     exit(1);
 }
 
-namespace mapnik
-{
+// namespace mapnik
+// {
 
-template <>
-void save_as_png<mapnik::ImageData<unsigned int> >(mapnik::ImageData<unsigned int> const&, std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
-{}
+// template <>
+// void save_as_png<mapnik::ImageData<unsigned int> >(mapnik::ImageData<unsigned int> const&, std::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+// {}
 
-}
+// }
