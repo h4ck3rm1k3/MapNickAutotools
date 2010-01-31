@@ -33,6 +33,8 @@ else
   AC_MSG_RESULT(no)
 fi
 
+CXXFLAGS=${CXXFLAGS-"-I${packagesrcdir}/include"}
+
 
 AC_ARG_ENABLE(gch,
         [  --enable-gch=[no/yes]        enables gch/pch precompiled headers build (default=yes)],,
@@ -56,7 +58,7 @@ AC_ARG_ENABLE(profiling,
 
 if [ ! test "x$enable_profiling" != "xyes"]; then
   AC_DEFINE(PROFILING, 1, [Define to enable profiling build])
-  PROFILING_CFLAGS="$PROFILING_CFLAGS -ggdb -O1 -DDEBUG -pg"
+  PROFILING_CFLAGS="$PROFILING_CFLAGS -ggdb -O0 -DDEBUG -pg"
   AC_SUBST(PROFILING_CFLAGS)
 else
   AC_MSG_RESULT(no)

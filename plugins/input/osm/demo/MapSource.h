@@ -61,15 +61,7 @@ public:
     }
 
 
-    bool isValid()
-    {
-        return xmlfile!="" && ((tiled==false&&outfile!="" &&
-            width>0 && height>0) || 
-        (tiled==true&&zoom_start>=0)) &&
-         ((source=="osm" && osmfile!=""  && width>0 && height>0) ||    
-            (source=="api" && hasBbox() && zoom_start>=0 && tiled==true));
-    }
-
+    bool isValid();
     void setSource(const std::string & src)
     {
         if(src=="api" || src=="osm")

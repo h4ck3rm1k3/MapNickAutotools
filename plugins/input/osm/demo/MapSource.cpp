@@ -409,3 +409,115 @@ void MapSource::addSRTMLayers(Map& m,double w,double s,double e,double n)
     }
 
 }
+
+bool MapSource::isValid()
+{
+  
+  cerr << "values ";
+  cerr << "xmlfile:"    << xmlfile << "\t";
+  cerr << "tiled:"      << tiled  << "\t";
+  cerr << "outfile:"    << outfile  << "\t";
+  cerr << "width:"      << width  << "\t";
+  cerr << "height:"     << height  << "\t";
+  cerr << "zoom_start:" << zoom_start  << "\t";
+  cerr << "source:"     << source  << "\t";
+  cerr << "osmfile:"    << osmfile << "\t";
+
+
+  if (  xmlfile!="")
+    {
+      if (  tiled==false)
+	{
+	  if (outfile!="")
+	    {	      
+	      if (width>0 && height>0) 
+		{
+		  return 1;
+		}
+	      else
+		{
+		  cerr << "no width an height";
+		  //		  return 0;
+		}
+	    }
+	  else
+	    {
+	      cerr << "outfile must be empty, it is :\"" << outfile <<  "\"" ;
+	    }
+	}
+      else	
+	{
+	  cerr << "tiled is false... must be true";
+	}
+    }
+
+  if (tiled==true)
+    {
+      if (zoom_start>=0)
+	{
+	  if (source=="osm")
+	    {
+	      if (osmfile!="")
+		{
+		  
+		  if (width>0 && height>0) 
+		    {
+		      return 1;
+		    }
+		  else
+		    {
+		      cerr << "no width an height";
+		      //			      return 0;
+		    }		 		  
+		}
+	      else
+		{
+		  cerr << "no osm file";
+		}
+	    }
+	  else
+	    {
+	      cerr << "no source";
+	    }
+	}
+      else // zoom start
+	{
+	  cerr << "no zoomstart";
+	}
+    }
+  
+  if (source=="api")
+    {
+      if (hasBbox())
+	{
+	  if (zoom_start>=0)
+	    {
+	      if (tiled==true)
+		{
+		  return 1;
+		}
+	      else
+		{
+		  cerr << "not tiled";
+		}  	  
+	    }
+	  else // zoom start
+	    {
+	      cerr << "no zoomstart";
+	    }		      
+	}
+      else
+	{
+	  cerr << "no bbox";
+	}
+    }
+  else
+    {
+      cerr << "unknown source:" << source << "\n";
+    }
+   
+
+  return 0;
+  
+
+}

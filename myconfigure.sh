@@ -1,1 +1,1 @@
-./configure -C --disable-dynamic --enable-static --disable-shared --enable-tracing=yes --enable-profiling=yes --enable-debug=yes --enable-libxml2=yes --disable-boost-python CC=/usr/local/bin/g++
+./configure -C --disable-dynamic --enable-static --disable-shared --enable-tracing=yes --enable-profiling=yes --enable-debug=yes --enable-libxml2=yes --disable-boost-python CC=/usr/local/bin/g++ CXXFLAGS="-I/media/NewFoundSpace/2010/01/mapnik/include -ggdb -O0 -DDEBUG -pg"
