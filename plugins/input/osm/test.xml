@@ -73,28 +73,28 @@
   <Style name="text">
     <Rule>
       <Filter>[place] = 'city'</Filter>
-      <TextSymbolizer name="name" face_name="Bitstream Vera Sans Roman" size="16" fill="#000" halo_radius="2" wrap_width="0"/>
+      <TextSymbolizer name="[name]" face_name="Bitstream Vera Sans Roman" size="16" fill="#000" halo_radius="2" wrap_width="0"/>
     </Rule>
     <Rule>
       <Filter>[place] = 'town'</Filter>
-      <TextSymbolizer name="name" face_name="Bitstream Vera Sans Roman" size="14" fill="#000" halo_radius="2" wrap_width="20"/>
+      <TextSymbolizer name="[name]" face_name="Bitstream Vera Sans Roman" size="14" fill="#000" halo_radius="2" wrap_width="20"/>
     </Rule>
      <Rule>
       <Filter>[place] = 'village' or [place] = 'suburb'</Filter>
-      <TextSymbolizer name="name" face_name="Bitstream Vera Sans Roman" size="13" fill="#000" halo_radius="1" wrap_width="0"/>
+      <TextSymbolizer name="[name]" face_name="Bitstream Vera Sans Roman" size="13" fill="#000" halo_radius="1" wrap_width="0"/>
     </Rule>
      <Rule>
       <Filter>[place] = 'hamlet'</Filter>
-      <TextSymbolizer name="name" face_name="Bitstream Vera Sans Roman" size="12" fill="#000" halo_radius="1" wrap_width="0"/>
+      <TextSymbolizer name="[name]" face_name="Bitstream Vera Sans Roman" size="12" fill="#000" halo_radius="1" wrap_width="0"/>
     </Rule>
      <Rule>
       <Filter>[natural] = 'peak'</Filter>
-      <TextSymbolizer name="name" face_name="Bitstream Vera Sans Roman" size="11" fill="#000" halo_radius="1" wrap_width="0"/>
+      <TextSymbolizer name="[name]" face_name="Bitstream Vera Sans Roman" size="11" fill="#000" halo_radius="1" wrap_width="0"/>
     </Rule>
 	<Rule>
 	  <Filter>[natural] = 'wood' or [natural] = 'water' or [natural] = 'heath'
 	  or [leisure] = 'golf_course' </Filter>
-	  <TextSymbolizer name="name" face_name="Bitstream Vera Sans Roman" 
+	  <TextSymbolizer name="[name]" face_name="Bitstream Vera Sans Roman" 
 	  size="10" fill="#000" halo_radius="2" wrap_width="0" />
 	</Rule>
   </Style>
@@ -108,7 +108,7 @@
         <CssParameter name="stroke-linejoin">round</CssParameter>
         <CssParameter name="stroke-linecap">round</CssParameter>
       </LineSymbolizer>
-      <TextSymbolizer name="name" face_name="Bitstream Vera Sans Roman" size="9" fill="white" placement="line"/>
+      <TextSymbolizer name="[name]" face_name="Bitstream Vera Sans Roman" size="9" fill="white" placement="line"/>
     </Rule>
   </Style>
    <Style name="stream">
@@ -120,7 +120,7 @@
         <CssParameter name="stroke-linejoin">round</CssParameter>
         <CssParameter name="stroke-linecap">round</CssParameter>
       </LineSymbolizer>
-      <TextSymbolizer name="name" face_name="Bitstream Vera Sans Roman" size="9" fill="white" placement="line"/>
+      <TextSymbolizer name="[name]" face_name="Bitstream Vera Sans Roman" size="9" fill="white" placement="line"/>
     </Rule>
   </Style>
   
@@ -476,7 +476,7 @@
 
   <Style name="contours-text">
     <Rule>
-      <TextSymbolizer name="height" face_name="Bitstream Vera Sans Roman" 
+      <TextSymbolizer name="[height]" face_name="Bitstream Vera Sans Roman" 
 	  	size="8" fill="#fb9b67" halo_radius="0" placement="line"/>
     </Rule>
   </Style>

@@ -275,17 +275,33 @@ void MapSource::generateMaps()
                            save_to_file<image_data_32>(buf.data(),
                             "tmp.png","png");
                             FILE *in=fopen("tmp.png","r");
-                            FILE *out=fopen(str.str().c_str(),"w");
-
-                            gdImagePtr image, image2;
-                            image=gdImageCreateTrueColor(256,256);
-                            image2=gdImageCreateFromPng(in);
-                            gdImageCopy(image,image2,0,0,32,32,256,256);
-                            gdImagePng(image,out);
-                            gdImageDestroy(image2);
-                            gdImageDestroy(image);
-                            fclose(out);
-                            fclose(in);
+			    if (in)
+			      {
+				FILE *out=fopen(str.str().c_str(),"w");
+				
+				gdImagePtr image, image2;
+				image=gdImageCreateTrueColor(256,256);
+				image2=gdImageCreateFromPng(in);
+				if (image2)
+				  {
+				    gdImageCopy(image,image2,0,0,32,32,256,256);
+				    gdImagePng(image,out);
+				    gdImageDestroy(image2);
+				    gdImageDestroy(image);
+				    fclose(out);
+				    fclose(in);
+				    
+				  }
+				else
+				  {
+				    std::cerr << "could not load tmp.png" << std::endl;
+				  }
+			      }
+			    else
+			      {
+				std::cerr << "could not find tmp.png" << std::endl;
+			      }
+			
                         }
                     }
                     metres_per_pixel /= 2;
