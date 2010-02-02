@@ -6,13 +6,17 @@ namespace mapnik
 
 template <class T> 
 void mapnik::feature_style_processor< T>::apply_to_layer(mapnik::layer const&, T &, mapnik::projection const&, double)
-{};
+{
+  std::cerr << "TODO! void mapnik::feature_style_processor< T>::apply_to_layer(mapnik::layer const&, T &, mapnik::projection const&, double)" << std::endl;
+};
 
 
 
 template <> 
 void mapnik::feature_style_processor< mapnik::agg_renderer<mapnik::image_32> >::apply_to_layer(mapnik::layer const&, mapnik::agg_renderer<mapnik::image_32> &, mapnik::projection const&, double)
-{};
+{
+  std::cerr << "TODO! void mapnik::feature_style_processor< mapnik::agg_renderer<mapnik::image_32> >::apply_to_layer(mapnik::layer const&, mapnik::agg_renderer<mapnik::image_32> &, mapnik::projection const&, double)" << std::endl;
+};
 
 
   // explicit
