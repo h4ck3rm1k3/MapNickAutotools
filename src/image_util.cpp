@@ -95,14 +95,16 @@ namespace mapnik
     std::ofstream afile (filename.c_str(), std::ios::out| std::ios::trunc|std::ios::binary);
     if (afile)
       {
-	save_as_png<T>(image,filename);
+	save_as_png(afile,image);
       }
    
         {
             //all this should go into image_writer factory
-	  //if (type=="png")  
-	  // save_as_png<T>(image,file);
-          //  else if (type == "png256") save_as_png256(file,image);
+	  if (type=="png")  
+	    {
+	      save_as_png(afile,image);
+	    }
+	  //else if (type == "png256") save_as_png256(file,image);
 	  /* else if (boost::algorithm::istarts_with(type,std::string("jpeg")))
             {
                 int quality = 85;
@@ -120,9 +122,9 @@ namespace mapnik
                 {
                     throw ImageWriterException("invalid jpeg quality: " + type.substr(4) + " not a number");
                 }
-		}*/
-	  //else throw ImageWriterException("unknown file type: " + type);
-        } 
+	  */
+	  else throw ImageWriterException("unknown file type: " + type);
+        }
       
     }
 	
@@ -158,17 +160,23 @@ namespace mapnik
                                                                    std::string const&);
 
 
-template <> 
-void save_as_png< image_view<ImageData<unsigned int> > >(image_view<ImageData<unsigned int> > const&, std::string const&)
-{
+// template <> 
 
-}
+// void save_as_png< 
+//   image_view<ImageData<unsigned int> > 
+//   >(image_view<ImageData<unsigned int> > const& image, std::string const& file)
+// {
+//   std::cerr <<<  "void save_as_png< image_view<ImageData<unsigned int> > >(image_view<ImageData<unsigned int> > const&, std::string const&)" << std::endl;
+//   save_as_png(file ,  image);
+// }
 
-template <> 
-void save_as_png<mapnik::ImageData<unsigned int> >(mapnik::ImageData<unsigned int> const&,  std::string const&)
-{
+// template <> 
+// void save_as_png<mapnik::ImageData<unsigned int> >(mapnik::ImageData<unsigned int> const& image,  std::string const& file)
+// {
+//   std::cerr <<<  "void save_as_png<mapnik::ImageData<unsigned int> >(mapnik::ImageData<unsigned int> const&,  std::string const&)" << std::endl;
+//   //  save_as_png(file ,  image);
 
-}
+// }
 
 
 }
