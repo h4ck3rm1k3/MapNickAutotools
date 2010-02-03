@@ -1,4 +1,5 @@
 #include "MapSource.h"
+#include "../osm_datasource.hpp"
 
 void usage();
 void help();
@@ -11,6 +12,26 @@ void help();
 //
 // render live data in 256x256 tiles:
 // Input: XMLfile bbox
+//template <class T>
+namespace mapnik
+{
+  class OSMPlugIn : public PlugIn
+  {
+    
+
+    
+    std::string datasource_name()				     {
+      return "OSM";
+    }
+    
+    datasource* create(const datasource::parameters &params) 
+    {
+      return new osm_datasource (params);
+      //      return & aDataSource;
+    }
+    
+  };
+}
 
 int main(int argc,char *argv[])
 {
@@ -34,10 +55,12 @@ int main(int argc,char *argv[])
 
     // TODO register the data sources
     //    PlugIn module = 
-    //    datasource_cache::instance()->insert("osm",module);
 
-    datasource_cache::instance()->register_datasources
-        ("/usr/local/lib/mapnik/input");
+    OSMPlugIn module;
+    //    PluginInfo ("osm",&module);
+    datasource_cache::instance()->insert("osm",&module);
+
+    //    datasource_cache::instance()->register_datasources        ("/usr/local/lib/mapnik/input");
     freetype_engine::register_font
         ("/usr/local/lib/mapnik/fonts/DejaVuSans.ttf");
 

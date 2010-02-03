@@ -4,13 +4,10 @@ SUBDIRS=demo render
 
 if HAVE_LIBXML2
 
-pkglib_LTLIBRARIES = osm.la
+pkglib_LTLIBRARIES = libosm.la
 
 
-
-
-
-osm_la_SOURCES = \
+libosm_la_SOURCES = \
 	basiccurl.cpp\
 	basiccurl.h\
 	dataset_deliverer.cpp\
@@ -26,7 +23,7 @@ osm_la_SOURCES = \
 	osmtagtypes.h
 
 
-osm_la_CXXFLAGS = \
+libosm_la_CXXFLAGS = \
   -Wall \
   ${PROFILING_CFLAGS} \
   ${TRACING_CFLAGS} \
@@ -47,10 +44,10 @@ osm_la_CXXFLAGS = \
 	-D_REENTRANT -I/usr/include/cairomm-1.0 -I/usr/include/cairo -I/usr/include/sigc++-2.0 -I/usr/lib/sigc++-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/directfb -I/usr/include/libpng12 \
 	${FT2_CFLAGS}
 
-osm_la_LIBADD = \
+libosm_la_LIBADD = \
 	${LIBXML2_LIBS} ${FT2_LIBS}
 
-osm_la_LDFLAGS = \
+libosm_la_LDFLAGS = \
 	-module \
 	-avoid-version \
 	-shrext .input

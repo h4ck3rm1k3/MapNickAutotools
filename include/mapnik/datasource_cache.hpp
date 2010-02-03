@@ -53,12 +53,14 @@ namespace mapnik {
         datasource_cache& operator=(const datasource_cache&);
         static std::map<std::string,boost::shared_ptr<PluginInfo> > plugins_;
         static bool registered_;
+    public:
         static bool insert(const std::string&  name, PlugIn * module);
     public:
       static std::vector<std::string> plugin_names ();
       static void register_datasources(const std::string& path);
       static PlugIn * create(datasource::parameters const& params);
     };
+
 }
 
 #endif   //DATASOURCE_CACHE_HPP
