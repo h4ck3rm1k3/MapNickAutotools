@@ -497,7 +497,7 @@
     <Datasource>
       <Parameter name="type">osm</Parameter>
       <Parameter name="parser">libxml2</Parameter>
-      <Parameter name="file">test2.osm</Parameter>
+      <Parameter name="file">../test2.osm</Parameter>
     </Datasource>
    </Layer>
 </Map>

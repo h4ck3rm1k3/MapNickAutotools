@@ -37,7 +37,7 @@ class feature_style_processor
 {
   //typedef rule<Feature> rule_type;
   // rule_vector std::vector<rule_type*>
-
+public:
     struct symbol_dispatch : public boost::static_visitor<>
     {
 	symbol_dispatch (Processor & output,

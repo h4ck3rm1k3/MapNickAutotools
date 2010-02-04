@@ -11,7 +11,7 @@ render_CXXFLAGS =   -Wall   $(DEFINES) $(INCLUDE)  ${PROFILING_CFLAGS} ${GCH_CFL
   -Wall \
   ${PROFILING_CFLAGS} \
   ${TRACING_CFLAGS} \
-	-I../../../include \
+	-I../../../../include \
 	${LIBXML2_CFLAGS} \
 	${PROFILING_CFLAGS} \
 	${TRACING_CFLAGS} \
