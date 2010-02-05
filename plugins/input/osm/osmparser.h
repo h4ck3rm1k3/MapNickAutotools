@@ -25,5 +25,6 @@ public:
     static void endElement(const xmlChar* name);
     static bool parse(osm_dataset *ds, const char* filename);
     static bool parse(osm_dataset *ds, char* data,int nbytes);
+    ~osmparser(); // cleanup
 };
 

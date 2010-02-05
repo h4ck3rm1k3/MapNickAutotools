@@ -43,6 +43,14 @@ namespace mapnik
 public:
     path_expression_ptr get_filename() const;
     void set_filename(path_expression_ptr filename);
+
+
+
+  virtual void symbol_dispatch (
+				feature_style_processor_base *  output,
+				Feature const& f, 
+				proj_transform const& prj_trans) const =0;
+
 protected:
     symbolizer_with_image(path_expression_ptr filename);
     symbolizer_with_image(symbolizer_with_image const& rhs);

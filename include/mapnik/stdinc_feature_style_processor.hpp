@@ -3,6 +3,8 @@
 
 #include "boostinc.hpp"
 
+#include "feature_style_processor_base.hpp"
+
 #include <mapnik/query.hpp>
 #include <mapnik/attribute_collector.hpp>
 

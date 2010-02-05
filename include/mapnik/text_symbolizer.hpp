@@ -165,6 +165,12 @@ namespace mapnik
          void set_justify_alignment(justify_alignment_e valign);
          justify_alignment_e get_justify_alignment() const;
 
+     virtual void symbol_dispatch (
+				   feature_style_processor_base *  output,
+				   Feature const& f, 
+				   proj_transform const& prj_trans) const ;
+     
+
       private:
 	 expression_ptr name_;
          std::string face_name_;

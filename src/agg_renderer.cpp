@@ -177,7 +177,7 @@ void agg_renderer<T>::process(polygon_symbolizer const& sym,
 			      Feature const& feature,
 			      proj_transform const& prj_trans)
 {
-    typedef  coord_transform2<CoordTransform,geometry2d> path_type;
+
     typedef agg::renderer_base<agg::pixfmt_rgba32_plain> ren_base;
     typedef agg::renderer_scanline_aa_solid<ren_base> renderer;
 
@@ -915,6 +915,175 @@ bool y_order(segment_t const& first,segment_t const& second)
 // 	}
 //     }
 // }
+// template <>
+// template <>
+// void mapnik::agg_renderer<mapnik::image_32>::
+// process<mapnik::symbolizer_base2>(
+// 				  mapnik::symbolizer_base2 const&, 
+// 				  mapnik::feature<mapnik::geometry<mapnik::vertex<double, 2> >, 
+// 				  boost::shared_ptr<mapnik::raster> > const&, 
+// 				  mapnik::proj_transform const&)
+// {
+
+//   typedef  coord_transform2<CoordTransform,geometry2d> path_type;
+//   typedef agg::renderer_base<agg::pixfmt_rgba32_plain> ren_base;
+//   typedef agg::renderer_scanline_aa_solid<ren_base> renderer;
+  
+//   color const& fill_ = sym.get_fill();
+//   agg::scanline_u8 sl;
+  
+//   agg::rendering_buffer buf(pixmap_.raw_data(),width_,height_, width_ * 4);
+//   agg::pixfmt_rgba32_plain pixf(buf);
+  
+//     ren_base renb(pixf);
+//     unsigned r=fill_.red();
+//     unsigned g=fill_.green();
+//     unsigned b=fill_.blue();
+//     unsigned a=fill_.alpha();
+//     renderer ren(renb);
+
+//     ras_ptr->reset();
+
+//     for (unsigned i=0;i<feature.num_geometries();++i)
+//     {
+// 	geometry2d const& geom=feature.get_geometry(i);
+// 	if (geom.num_points() > 2)
+// 	{
+//             path_type path(t_,geom,prj_trans);
+//             ras_ptr->add_path(path);
+// 	}
+//     }
+//     ren.color(agg::rgba8(r, g, b, int(a * sym.get_opacity())));
+//     agg::render_scanlines(*ras_ptr, sl, ren);
+
+
+// }
+
+
+  void symbolizer_base::symbol_dispatch (
+				    feature_style_processor_base *  output,
+				    Feature const& f, 
+				    proj_transform const& prj_trans) const 
+  {
+
+  }
+
+typedef  coord_transform2<CoordTransform,geometry2d> path_type;
+
+class TRenderWrapper
+{
+public: 
+  TRenderWrapper( feature_style_processor_base *);
+  void reset();
+  void add_path(const path_type & path);
+  void color(const color & color, float alpha); 
+  void render();
+  CoordTransform const & transform();
+};
+
+  void mapnik::polygon_symbolizer::symbol_dispatch (
+				    feature_style_processor_base *  output_,
+				    Feature const& feature, 
+				    proj_transform const& prj_trans) const 
+  {
+
+    typedef  coord_transform2<CoordTransform,geometry2d> path_type;
+    color const& fill_ = get_fill();
+    TRenderWrapper output(output_);
+    output.reset();
+    for (unsigned i=0;i<feature.num_geometries();++i)
+    {
+	geometry2d const& geom=feature.get_geometry(i);
+	if (geom.num_points() > 2)
+	{
+	  path_type path(output.transform(),geom,prj_trans);
+	  output.add_path(path);
+	}
+    }
+    output.color(fill_,get_opacity());
+    output.render();
+
+  }
+
+  void raster_symbolizer::symbol_dispatch (
+				    feature_style_processor_base *  output,
+				    Feature const& f, 
+				    proj_transform const& prj_trans) const 
+  {
+
+  }
+
+void
+mapnik::building_symbolizer::symbol_dispatch (
+				    feature_style_processor_base *  output,
+				    Feature const& f, 
+				    proj_transform const& prj_trans) const 
+  {
+
+  }
+
+void
+mapnik::markers_symbolizer::symbol_dispatch (
+				    feature_style_processor_base *  output,
+				    Feature const& f, 
+				    proj_transform const& prj_trans) const 
+  {
+
+  }
+
+void
+mapnik::point_symbolizer::symbol_dispatch (
+				    feature_style_processor_base *  output,
+				    Feature const& f, 
+				    proj_transform const& prj_trans) const 
+  {
+
+  }
+
+void
+mapnik::line_pattern_symbolizer::symbol_dispatch (
+				    feature_style_processor_base *  output,
+				    Feature const& f, 
+				    proj_transform const& prj_trans) const 
+  {
+
+  }
+
+void
+mapnik::polygon_pattern_symbolizer::symbol_dispatch (
+				    feature_style_processor_base *  output,
+				    Feature const& f, 
+				    proj_transform const& prj_trans) const 
+  {
+
+  }
+
+void
+mapnik::shield_symbolizer::symbol_dispatch (
+				    feature_style_processor_base *  output,
+				    Feature const& f, 
+				    proj_transform const& prj_trans) const 
+  {
+
+  }
+
+void
+mapnik::text_symbolizer::symbol_dispatch (
+				    feature_style_processor_base *  output,
+				    Feature const& f, 
+				    proj_transform const& prj_trans) const 
+  {
+
+  }
+
+void
+mapnik::line_symbolizer::symbol_dispatch (
+				    feature_style_processor_base *  output,
+				    Feature const& f, 
+				    proj_transform const& prj_trans) const 
+  {
+
+  }
 
 // try at explicit instantiation
 template class agg_renderer<mapnik::image_32>;

@@ -59,6 +59,11 @@ namespace mapnik
         {
             return opacity_;
         }
+      virtual void symbol_dispatch (
+				    feature_style_processor_base *  output,
+				    Feature const& f, 
+				    proj_transform const& prj_trans) const ;
+
     private:
         color fill_;
         float opacity_;
@@ -76,7 +81,12 @@ namespace mapnik
           : fill_(fill),
           height_(height),
           opacity_(1.0) {}
-       
+
+      virtual void symbol_dispatch (
+				    feature_style_processor_base *  output,
+				    Feature const& f, 
+				    proj_transform const& prj_trans) const ;
+
         color const& get_fill() const
         {
             return fill_;

@@ -25,7 +25,12 @@
 //mapnik
 #include <mapnik/symbolizer.hpp>
 
+// implementation
+#include <mapnik/agg_renderer.hpp>
+
 namespace mapnik {
+
+
 
 symbolizer_with_image::symbolizer_with_image(path_expression_ptr file)
     : image_filename_( file ) {}

@@ -61,6 +61,13 @@ namespace mapnik
         {
             return opacity_;
         }
+
+      virtual void symbol_dispatch (
+				    feature_style_processor_base *  output,
+				    Feature const& f, 
+				    proj_transform const& prj_trans) const ;
+
+
     private:
         std::string mode_;
         std::string scaling_;

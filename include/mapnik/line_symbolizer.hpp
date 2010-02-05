@@ -49,6 +49,12 @@ namespace mapnik
             stroke_ = stroke;
         }
 
+      virtual void symbol_dispatch (
+				    feature_style_processor_base *  output,
+				    Feature const& f, 
+				    proj_transform const& prj_trans) const ;
+      
+
     private:
         stroke stroke_;
     };

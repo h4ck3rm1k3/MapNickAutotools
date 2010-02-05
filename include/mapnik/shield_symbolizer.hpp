@@ -52,6 +52,12 @@ struct  shield_symbolizer : public text_symbolizer,
     void set_unlock_image(bool unlock_image);
     bool get_no_text() const;                   // do no render text
     void set_no_text(bool unlock_image);
+
+      virtual void symbol_dispatch (
+				    feature_style_processor_base *  output,
+				    Feature const& f, 
+				    proj_transform const& prj_trans) const ;
+
     
 private:
     bool unlock_image_;

@@ -115,6 +115,8 @@
 #include <mapnik/config.hpp>
 #include <mapnik/path_expression_grammar.hpp>
 
+#include "feature_style_processor_base.hpp"
+
 #include <mapnik/symbolizer_base.hpp>
 #include <mapnik/symbolizer.hpp>
 

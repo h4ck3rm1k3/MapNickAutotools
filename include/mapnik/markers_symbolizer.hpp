@@ -35,6 +35,13 @@ namespace mapnik {
      public:
       markers_symbolizer() 
          : allow_overlap_(false) {}
+      virtual void symbol_dispatch (
+				    feature_style_processor_base *  output,
+				    Feature const& f, 
+				    proj_transform const& prj_trans) const ;
+      
+
+
      private:
       bool allow_overlap_;
       

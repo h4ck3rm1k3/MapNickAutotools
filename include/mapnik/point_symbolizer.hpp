@@ -39,6 +39,14 @@ struct  point_symbolizer :
     bool get_allow_overlap() const;
     void set_opacity(float opacity);
     float get_opacity() const;
+
+      virtual void symbol_dispatch (
+				    feature_style_processor_base *  output,
+				    Feature const& f, 
+				    proj_transform const& prj_trans) const ;
+      
+
+  
 private:
     float opacity_;
     bool overlap_;

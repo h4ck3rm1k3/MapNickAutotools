@@ -23,6 +23,7 @@ endif
 
 libmapnik_la_SOURCES = \
 	agg_renderer.cpp \
+	process.cpp \
 	arrow.cpp \
 	${cairo_src} \
 	color.cpp \

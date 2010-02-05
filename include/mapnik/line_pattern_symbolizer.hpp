@@ -36,6 +36,12 @@ namespace mapnik
     {
         line_pattern_symbolizer(path_expression_ptr file);
         line_pattern_symbolizer(line_pattern_symbolizer const& rhs);
+
+      virtual void symbol_dispatch (
+				    feature_style_processor_base *  output,
+				    Feature const& f, 
+				    proj_transform const& prj_trans) const ;
+      
     };    
 }
 

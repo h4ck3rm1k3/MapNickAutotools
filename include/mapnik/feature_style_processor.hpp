@@ -33,7 +33,7 @@
 namespace mapnik
 {       
 template <typename Processor>
-class feature_style_processor 
+class feature_style_processor  : public feature_style_processor_base
 {
   //typedef rule<Feature> rule_type;
   // rule_vector std::vector<rule_type*>

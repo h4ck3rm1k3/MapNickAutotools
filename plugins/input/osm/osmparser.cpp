@@ -155,3 +155,13 @@ int osmparser::do_parse(xmlTextReaderPtr reader)
 	}
 	return ret;
 }
+
+osmparser::~osmparser()
+{
+
+  for ( std::map<long,osm_node*>::iterator  it=tmp_node_store.begin() ; it != tmp_node_store.end(); it++ )
+    {
+      delete (*it).second;
+      (*it).second=0;
+    }
+}

@@ -11,12 +11,25 @@ void mapnik::feature_style_processor< T>::apply_to_layer(mapnik::layer const&, T
 };
 
 
-
+  // TODO: new stub
 // operator
 template <>
 void mapnik::attribute_collector::operator()
-<mapnik::rule<mapnik::feature<mapnik::geometry<mapnik::vertex<double, 2> >, boost::shared_ptr<mapnik::raster> > > >
-(mapnik::rule<mapnik::feature<mapnik::geometry<mapnik::vertex<double, 2> >, boost::shared_ptr<mapnik::raster> > > const&)
+<mapnik::rule<
+   mapnik::feature<
+     mapnik::geometry<
+       mapnik::vertex<
+	 double, 2> >, boost::shared_ptr<mapnik::raster> > > >
+(
+ mapnik::rule<
+ mapnik::feature<
+ mapnik::geometry<
+ mapnik::vertex<double, 2> 
+ >, 
+ 
+
+ boost::shared_ptr<mapnik::raster> > 
+   > const& sym )
 {
 
 }
@@ -25,47 +38,69 @@ class symbolizer_base2
 {
 public:
 
-  template<typename Visitor> 
-  typename Visitor::result_type 
-  apply_visitor(const Visitor & ) const;
-
-  template<typename Visitor, typename Variant> 
-  typename Visitor::result_type 
-  apply_visitor(Visitor & visitor, Variant & operand);
+  //U void mapnik::agg_renderer<mapnik::image_32>::process<mapnik::symbolizer_base2>(mapnik::symbolizer_base2 const&, mapnik::feature<mapnik::geometry<mapnik::vertex<double, 2> >, boost::shared_ptr<mapnik::raster> > const&, mapnik::proj_transform const&)
 
 
-  template<typename Visitor, typename Variant> 
-  typename Visitor::result_type 
-  apply_visitor(const Visitor & visitor, Variant & operand);
+  //template <class Processor> 
+  virtual void symbol_dispatch (
+			mapnik::agg_renderer<mapnik::image_32>&  output,
+			Feature const& f, 
+			proj_transform const& prj_trans) const =0;
+  //  {
+  //  process(output,f,prj_trans);
+  //}
+  // virtual void process(	mapnik::agg_renderer<mapnik::image_32>&  output,
+  // 		   Feature const& f, 
+  // 			proj_transform const& prj_trans) const =0;
+  // template<typename Visitor> 
+  // typename Visitor::result_type 
+  // apply_visitor(const Visitor & ) const;
+
+  // template<typename Visitor, typename Variant> 
+  // typename Visitor::result_type 
+  // apply_visitor(Visitor & visitor, Variant & operand);
 
 
-  template<typename BinaryVisitor, typename Variant1, typename Variant2> 
-  typename BinaryVisitor::result_type 
-  apply_visitor(BinaryVisitor & visitor, Variant1 & operand1, 
-                Variant2 & operand2);
+  // template<typename Visitor, typename Variant> 
+  // typename Visitor::result_type 
+  // apply_visitor(const Visitor & visitor, Variant & operand);
 
 
-  template<typename BinaryVisitor, typename Variant1, typename Variant2> 
-  typename BinaryVisitor::result_type 
-  apply_visitor(const BinaryVisitor & visitor, Variant1 & operand1, 
-                Variant2 & operand2);
+  // template<typename BinaryVisitor, typename Variant1, typename Variant2> 
+  // typename BinaryVisitor::result_type 
+  // apply_visitor(BinaryVisitor & visitor, Variant1 & operand1, 
+  //               Variant2 & operand2);
+
+
+  // template<typename BinaryVisitor, typename Variant1, typename Variant2> 
+  // typename BinaryVisitor::result_type 
+  // apply_visitor(const BinaryVisitor & visitor, Variant1 & operand1, 
+  //               Variant2 & operand2);
 
 };
 
 
-//symbol dispatch
-template <>
-mapnik::feature_style_processor<mapnik::agg_renderer<mapnik::image_32> >::symbol_dispatch::result_type 
-mapnik::symbolizer_base2::apply_visitor<mapnik::feature_style_processor<mapnik::agg_renderer<mapnik::image_32> >
-::symbol_dispatch>(
-		   mapnik::feature_style_processor<mapnik::agg_renderer<mapnik::image_32> >::symbol_dispatch const&) const
-{
-}
+// // apply visitor
+// template <>
+// mapnik::feature_style_processor<mapnik::agg_renderer<mapnik::image_32> >::symbol_dispatch::result_type 
+// mapnik::symbolizer_base2::apply_visitor<
+//   mapnik::feature_style_processor<    mapnik::agg_renderer<      mapnik::image_32>     >
+//   ::symbol_dispatch
+//   >
+// (
+//  mapnik::feature_style_processor<mapnik::agg_renderer<mapnik::image_32> >::symbol_dispatch const&) const
+// {
+  
+// }
 
 
 // get the symbolizers
 template <> template <>
-std::vector<mapnik::symbolizer_base2, std::allocator<mapnik::symbolizer_base2> > const& mapnik::rule<mapnik::feature<mapnik::geometry<mapnik::vertex<double, 2> >, boost::shared_ptr<mapnik::raster> > >::get_symbolizers<std::vector<mapnik::symbolizer_base2, std::allocator<mapnik::symbolizer_base2> > >() const
+std::vector<mapnik::symbolizer_base2, std::allocator<mapnik::symbolizer_base2> > const& 
+mapnik::rule<mapnik::feature<mapnik::geometry<mapnik::vertex<double, 2> >, boost::shared_ptr<mapnik::raster> > >::
+get_symbolizers
+<std::vector<mapnik::symbolizer_base2, std::allocator<mapnik::symbolizer_base2> > >
+() const
 {
 }
 
@@ -181,7 +216,8 @@ apply_to_layer(
 			    for (;itr != end;++itr)
 			    {
 				expression_ptr const& expr=(*itr)->get_filter();    
-				value_type result = boost::apply_visitor(evaluate<Feature,value_type>(*feature),*expr);
+				//				value_type result = *expr.evaluate<Feature,value_type>(*feature);
+ 				value_type result = boost::apply_visitor(evaluate<Feature,value_type>(*feature),*expr);
 				if (result.to_bool())
 				{   
 				  do_else=false;
@@ -192,8 +228,8 @@ apply_to_layer(
 				  rule_type_symbolizers::const_iterator symEnd =symbols.end();
 				  for (;symIter != symEnd;++symIter)
 				    {   
-				      boost::apply_visitor
-					(symbol_dispatch(p,*feature,prj_trans),*symIter);
+				      //boost::apply_visitor
+				      symIter->symbol_dispatch(p,*feature,prj_trans);
 				    }
 				}			    
 			    }
@@ -212,8 +248,8 @@ apply_to_layer(
 				    
 				    for (;symIter!=symEnd;++symIter)
 				      {
-					boost::apply_visitor
-					  (symbol_dispatch(p,*feature,prj_trans),*symIter);
+					//boost::apply_visitor
+					symIter->symbol_dispatch(p,*feature,prj_trans);
 				      } 				  
 				  }
 			    }	  
