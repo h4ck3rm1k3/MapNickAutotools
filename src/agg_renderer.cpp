@@ -90,6 +90,8 @@ namespace mapnik
     TRenderWrapper( feature_style_processor_base *);
     void reset();
     void add_path(const path_type & path);
+
+
     void set_color(const color & acolor, float alpha); 
     void set_color(const color & acolor, double multiplier,float alpha); 
     void set_color(int r, int g, int b, int alpha);
@@ -114,6 +116,37 @@ namespace mapnik
     };
     
     PixMap & getPixMap();// gets the pixmap for writing
+
+
+    class conv_dash
+    {
+    public:
+      conv_dash(path_type & rpath);
+      template <class T>void add_dash(T&,T&);
+    };
+    typedef enum drawing_types {
+      miter_join,
+      round_join,
+      bevel_join,
+      butt_cap,
+      square_cap,
+      round_cap,
+      
+    } t_drawing_types;
+    class conv_stroke
+    {
+    public:
+      conv_stroke  (path_type & rpath);
+      conv_stroke  (conv_dash&);
+      conv_stroke & generator();
+      void line_join (mapnik::TRenderWrapper::drawing_types);
+      void line_cap (mapnik::TRenderWrapper::drawing_types);
+      void miter_limit (double);
+      void width (double);
+      //      void line_join (t_drawing_types & form);
+    };
+
+    void add_path(conv_stroke&);    
     
   };
 
@@ -208,43 +241,6 @@ void agg_renderer<T>::end_layer_processing(layer const&)
 }
 
   /*
-todo : get the signature right
-template <typename T>
-void agg_renderer<T>::process(polygon_symbolizer const& sym,
-			      Feature const& feature,
-			      proj_transform const& prj_trans)
-{
-
-    typedef agg::renderer_base<agg::pixfmt_rgba32_plain> ren_base;
-    typedef agg::renderer_scanline_aa_solid<ren_base> renderer;
-
-    color const& fill_ = sym.get_fill();
-    agg::scanline_u8 sl;
-
-    agg::rendering_buffer buf(pixmap_.raw_data(),width_,height_, width_ * 4);
-    agg::pixfmt_rgba32_plain pixf(buf);
-
-    ren_base renb(pixf);
-    unsigned r=fill_.red();
-    unsigned g=fill_.green();
-    unsigned b=fill_.blue();
-    unsigned a=fill_.alpha();
-    renderer ren(renb);
-
-    ras_ptr->reset();
-
-    for (unsigned i=0;i<feature.num_geometries();++i)
-    {
-	geometry2d const& geom=feature.get_geometry(i);
-	if (geom.num_points() > 2)
-	{
-            path_type path(output.transform(),geom,prj_trans);
-            ras_ptr->add_path(path);
-	}
-    }
-    ren.color(agg::rgba8(r, g, b, int(a * sym.get_opacity())));
-    agg::render_scanlines(*ras_ptr, sl, ren);
-}
 
   */
 
@@ -256,105 +252,6 @@ bool y_order(segment_t const& first,segment_t const& second)
     return  miny0 > miny1;
 }
 
-// template <typename T>
-// void agg_renderer<T>::process(line_symbolizer const& sym,
-//                               Feature const& feature,
-//                               proj_transform const& prj_trans)
-// {
-//     typedef agg::renderer_base<agg::pixfmt_rgba32_plain> ren_base;
-//     typedef coord_transform2<CoordTransform,geometry2d> path_type;
-//     typedef agg::renderer_outline_aa<ren_base> renderer_oaa;
-//     typedef agg::rasterizer_outline_aa<renderer_oaa> rasterizer_outline_aa;
-//     typedef agg::renderer_scanline_aa_solid<ren_base> renderer;
-
-//     agg::rendering_buffer buf(pixmap_.raw_data(),width_,height_, width_ * 4);
-//     agg::pixfmt_rgba32_plain pixf(buf);
-
-//     ren_base renb(pixf);
-//     mapnik::stroke const&  stroke_ = sym.get_stroke();
-//     color const& col = stroke_.get_color();
-//     unsigned r=col.red();
-//     unsigned g=col.green();
-//     unsigned b=col.blue();
-//     unsigned a=col.alpha();
-//     renderer ren(renb);
-//     ras_ptr->reset();
-//     agg::scanline_p8 sl;
-
-//     for (unsigned i=0;i<feature.num_geometries();++i)
-//     {
-// 	geometry2d const& geom = feature.get_geometry(i);
-// 	if (geom.num_points() > 1)
-// 	{
-//             path_type path(output.transform,geom,prj_trans);
-
-//             if (stroke_.has_dash())
-//             {
-// 		agg::conv_dash<path_type> dash(path);
-// 		dash_array const& d = stroke_.get_dash_array();
-// 		dash_array::const_iterator itr = d.begin();
-// 		dash_array::const_iterator end = d.end();
-// 		for (;itr != end;++itr)
-// 		{
-// 		    dash.add_dash(itr->first, itr->second);
-// 		}
-
-// 		agg::conv_stroke<agg::conv_dash<path_type > > stroke(dash);
-
-// 		line_join_e join=stroke_.get_line_join();
-// 		if ( join == MITER_JOIN)
-// 		    stroke.generator().line_join(agg::miter_join);
-// 		else if( join == MITER_REVERT_JOIN)
-// 		    stroke.generator().line_join(agg::miter_join);
-// 		else if( join == ROUND_JOIN)
-// 		    stroke.generator().line_join(agg::round_join);
-// 		else
-// 		    stroke.generator().line_join(agg::bevel_join);
-
-// 		line_cap_e cap=stroke_.get_line_cap();
-// 		if (cap == BUTT_CAP)
-// 		    stroke.generator().line_cap(agg::butt_cap);
-// 		else if (cap == SQUARE_CAP)
-// 		    stroke.generator().line_cap(agg::square_cap);
-// 		else
-// 		    stroke.generator().line_cap(agg::round_cap);
-
-// 		stroke.generator().miter_limit(4.0);
-// 		stroke.generator().width(stroke_.get_width());
-
-// 		ras_ptr->add_path(stroke);
-
-//             }
-//             else
-//             {
-// 		agg::conv_stroke<path_type>  stroke(path);
-// 		line_join_e join=stroke_.get_line_join();
-// 		if ( join == MITER_JOIN)
-// 		    stroke.generator().line_join(agg::miter_join);
-// 		else if( join == MITER_REVERT_JOIN)
-// 		    stroke.generator().line_join(agg::miter_join);
-// 		else if( join == ROUND_JOIN)
-// 		    stroke.generator().line_join(agg::round_join);
-// 		else
-// 		    stroke.generator().line_join(agg::bevel_join);
-
-// 		line_cap_e cap=stroke_.get_line_cap();
-// 		if (cap == BUTT_CAP)
-// 		    stroke.generator().line_cap(agg::butt_cap);
-// 		else if (cap == SQUARE_CAP)
-// 		    stroke.generator().line_cap(agg::square_cap);
-// 		else
-// 		    stroke.generator().line_cap(agg::round_cap);
-
-// 		stroke.generator().miter_limit(4.0);
-// 		stroke.generator().width(stroke_.get_width());
-// 		ras_ptr->add_path(stroke);
-//             }
-// 	}
-//     }
-//     ren.color(agg::rgba8(r, g, b, int(a*stroke_.get_opacity())));
-//     agg::render_scanlines(*ras_ptr, sl, ren);
-// }
 
 // template <typename T>
 // void agg_renderer<T>::process(point_symbolizer const& sym,
@@ -846,7 +743,45 @@ bool y_order(segment_t const& first,segment_t const& second)
 
 
 
+/*
+todo : get the signature right
+template <typename T>
+void agg_renderer<T>::process(polygon_symbolizer const& sym,
+			      Feature const& feature,
+			      proj_transform const& prj_trans)
+{
 
+    typedef agg::renderer_base<agg::pixfmt_rgba32_plain> ren_base;
+    typedef agg::renderer_scanline_aa_solid<ren_base> renderer;
+
+    color const& fill_ = sym.get_fill();
+    agg::scanline_u8 sl;
+
+    agg::rendering_buffer buf(pixmap_.raw_data(),width_,height_, width_ * 4);
+    agg::pixfmt_rgba32_plain pixf(buf);
+
+    ren_base renb(pixf);
+    unsigned r=fill_.red();
+    unsigned g=fill_.green();
+    unsigned b=fill_.blue();
+    unsigned a=fill_.alpha();
+    renderer ren(renb);
+
+    ras_ptr->reset();
+
+    for (unsigned i=0;i<feature.num_geometries();++i)
+    {
+	geometry2d const& geom=feature.get_geometry(i);
+	if (geom.num_points() > 2)
+	{
+            path_type path(output.transform(),geom,prj_trans);
+            ras_ptr->add_path(path);
+	}
+    }
+    ren.color(agg::rgba8(r, g, b, int(a * sym.get_opacity())));
+    agg::render_scanlines(*ras_ptr, sl, ren);
+}
+*/
   void mapnik::polygon_symbolizer::symbol_dispatch (
 				    feature_style_processor_base *  output_,
 				    Feature const& feature, 
@@ -1264,12 +1199,208 @@ mapnik::text_symbolizer::symbol_dispatch (
 
   }
 
+
+// template <typename T>
+// void agg_renderer<T>::process(line_symbolizer const& sym,
+//                               Feature const& feature,
+//                               proj_transform const& prj_trans)
+// {
+//     typedef agg::renderer_base<agg::pixfmt_rgba32_plain> ren_base;
+//     typedef coord_transform2<CoordTransform,geometry2d> path_type;
+//     typedef agg::renderer_outline_aa<ren_base> renderer_oaa;
+//     typedef agg::rasterizer_outline_aa<renderer_oaa> rasterizer_outline_aa;
+//     typedef agg::renderer_scanline_aa_solid<ren_base> renderer;
+
+//     agg::rendering_buffer buf(pixmap_.raw_data(),width_,height_, width_ * 4);
+//     agg::pixfmt_rgba32_plain pixf(buf);
+
+//     ren_base renb(pixf);
+//     mapnik::stroke const&  stroke_ = sym.get_stroke();
+//     color const& col = stroke_.get_color();
+//     unsigned r=col.red();
+//     unsigned g=col.green();
+//     unsigned b=col.blue();
+//     unsigned a=col.alpha();
+//     renderer ren(renb);
+//     ras_ptr->reset();
+//     agg::scanline_p8 sl;
+
+//     for (unsigned i=0;i<feature.num_geometries();++i)
+//     {
+// 	geometry2d const& geom = feature.get_geometry(i);
+// 	if (geom.num_points() > 1)
+// 	{
+//             path_type path(output.transform,geom,prj_trans);
+
+//             if (stroke_.has_dash())
+//             {
+// 		agg::conv_dash<path_type> dash(path);
+// 		dash_array const& d = stroke_.get_dash_array();
+// 		dash_array::const_iterator itr = d.begin();
+// 		dash_array::const_iterator end = d.end();
+// 		for (;itr != end;++itr)
+// 		{
+// 		    dash.add_dash(itr->first, itr->second);
+// 		}
+
+// 		agg::conv_stroke<agg::conv_dash<path_type > > stroke(dash);
+
+// 		line_join_e join=stroke_.get_line_join();
+// 		if ( join == MITER_JOIN)
+// 		    stroke.generator().line_join(agg::miter_join);
+// 		else if( join == MITER_REVERT_JOIN)
+// 		    stroke.generator().line_join(agg::miter_join);
+// 		else if( join == ROUND_JOIN)
+// 		    stroke.generator().line_join(agg::round_join);
+// 		else
+// 		    stroke.generator().line_join(agg::bevel_join);
+
+// 		line_cap_e cap=stroke_.get_line_cap();
+// 		if (cap == BUTT_CAP)
+// 		    stroke.generator().line_cap(agg::butt_cap);
+// 		else if (cap == SQUARE_CAP)
+// 		    stroke.generator().line_cap(agg::square_cap);
+// 		else
+// 		    stroke.generator().line_cap(agg::round_cap);
+
+// 		stroke.generator().miter_limit(4.0);
+// 		stroke.generator().width(stroke_.get_width());
+
+// 		ras_ptr->add_path(stroke);
+
+//             }
+//             else
+//             {
+// 		agg::conv_stroke<path_type>  stroke(path);
+// 		line_join_e join=stroke_.get_line_join();
+// 		if ( join == MITER_JOIN)
+// 		    stroke.generator().line_join(agg::miter_join);
+// 		else if( join == MITER_REVERT_JOIN)
+// 		    stroke.generator().line_join(agg::miter_join);
+// 		else if( join == ROUND_JOIN)
+// 		    stroke.generator().line_join(agg::round_join);
+// 		else
+// 		    stroke.generator().line_join(agg::bevel_join);
+
+// 		line_cap_e cap=stroke_.get_line_cap();
+// 		if (cap == BUTT_CAP)
+// 		    stroke.generator().line_cap(agg::butt_cap);
+// 		else if (cap == SQUARE_CAP)
+// 		    stroke.generator().line_cap(agg::square_cap);
+// 		else
+// 		    stroke.generator().line_cap(agg::round_cap);
+
+// 		stroke.generator().miter_limit(4.0);
+// 		stroke.generator().width(stroke_.get_width());
+// 		ras_ptr->add_path(stroke);
+//             }
+// 	}
+//     }
+//     ren.color(agg::rgba8(r, g, b, int(a*stroke_.get_opacity())));
+//     agg::render_scanlines(*ras_ptr, sl, ren);
+// }
+
 void
 mapnik::line_symbolizer::symbol_dispatch (
-				    feature_style_processor_base *  output,
-				    Feature const& f, 
+				    feature_style_processor_base *  output_,
+				    Feature const& feature, 
 				    proj_transform const& prj_trans) const 
   {
+
+    //typedef agg::renderer_base<agg::pixfmt_rgba32_plain> ren_base;
+    //typedef coord_transform2<CoordTransform,geometry2d> path_type;
+    //typedef agg::renderer_outline_aa<ren_base> renderer_oaa;
+    //typedef agg::rasterizer_outline_aa<renderer_oaa> rasterizer_outline_aa;
+    //typedef agg::renderer_scanline_aa_solid<ren_base> renderer;
+
+    //    agg::rendering_buffer buf(pixmap_.raw_data(),width_,height_, width_ * 4);
+    // agg::pixfmt_rgba32_plain pixf(buf);
+    TRenderWrapper output(output_);
+    //ren_base renb(pixf);
+    mapnik::stroke const&  stroke_ = get_stroke();
+    color const& col = stroke_.get_color();
+    //    unsigned r=col.red();
+    //unsigned g=col.green();
+    //unsigned b=col.blue();
+    //unsigned a=col.alpha();
+    //    renderer ren(renb);
+    output.reset();
+    //    agg::scanline_p8 sl;
+
+    for (unsigned i=0;i<feature.num_geometries();++i)
+    {
+	geometry2d const& geom = feature.get_geometry(i);
+	if (geom.num_points() > 1)
+	{
+	  path_type path(output.transform(),geom,prj_trans);
+
+            if (stroke_.has_dash())
+            {
+	      TRenderWrapper::conv_dash dash(path);
+	      dash_array const& d = stroke_.get_dash_array();
+		dash_array::const_iterator itr = d.begin();
+		dash_array::const_iterator end = d.end();
+		for (;itr != end;++itr)
+		{
+		    dash.add_dash(itr->first, itr->second);
+		}
+
+		TRenderWrapper::conv_stroke stroke(dash);
+
+		line_join_e join=stroke_.get_line_join();
+		if ( join == MITER_JOIN)
+		    stroke.generator().line_join(output.miter_join);
+		else if( join == MITER_REVERT_JOIN)
+		    stroke.generator().line_join(output.miter_join);
+		else if( join == ROUND_JOIN)
+		    stroke.generator().line_join(output.round_join);
+		else
+		    stroke.generator().line_join(output.bevel_join);
+
+		line_cap_e cap=stroke_.get_line_cap();
+		if (cap == BUTT_CAP)
+		    stroke.generator().line_cap(output.butt_cap);
+		else if (cap == SQUARE_CAP)
+		    stroke.generator().line_cap(output.square_cap);
+		else
+		    stroke.generator().line_cap(output.round_cap);
+
+		stroke.generator().miter_limit(4.0);
+		stroke.generator().width(stroke_.get_width());
+
+		output.add_path(stroke);
+
+            }
+            else
+            {
+	      TRenderWrapper::conv_stroke  stroke(path);
+	      line_join_e join=stroke_.get_line_join();
+		if ( join == MITER_JOIN)
+		    stroke.generator().line_join(output.miter_join);
+		else if( join == MITER_REVERT_JOIN)
+		    stroke.generator().line_join(output.miter_join);
+		else if( join == ROUND_JOIN)
+		    stroke.generator().line_join(output.round_join);
+		else
+		    stroke.generator().line_join(output.bevel_join);
+
+		line_cap_e cap=stroke_.get_line_cap();
+		if (cap == BUTT_CAP)
+		    stroke.generator().line_cap(output.butt_cap);
+		else if (cap == SQUARE_CAP)
+		    stroke.generator().line_cap(output.square_cap);
+		else
+		    stroke.generator().line_cap(output.round_cap);
+
+		stroke.generator().miter_limit(4.0);
+		stroke.generator().width(stroke_.get_width());
+		output.add_path(stroke);
+            }
+	}
+    }
+    output.set_color(col, stroke_.get_opacity());
+//    agg::render_scanlines(*ras_ptr, sl, ren);
+    output.render();
 
   }
 
