@@ -81,36 +81,73 @@
 
 namespace mapnik
 {
-class pattern_source : private boost::noncopyable
-{
-public:
-    pattern_source(image_data_32 const& pattern)
-	: pattern_(pattern) {}
 
+  typedef  coord_transform2<CoordTransform,geometry2d> path_type;
+  
+  class TRenderWrapper
+  {
+  public: 
+    TRenderWrapper( feature_style_processor_base *);
+    void reset();
+    void add_path(const path_type & path);
+    void set_color(const color & acolor, float alpha); 
+    void set_color(const color & acolor, double multiplier,float alpha); 
+    void set_color(int r, int g, int b, int alpha);
+
+    void render();
+    CoordTransform const & transform();
+    
+    class PixMap
+    {
+    public:
+      void Divide(mapnik::image_data_32&, int&, int&, float);
+      void Divide2(mapnik::image_data_32&, int&, int&, float);
+      void HardLight(mapnik::image_data_32&, int&, int&, float);
+      void MergeGrain(mapnik::image_data_32&, int&, int&, float);
+      void MergeGrain2(mapnik::image_data_32&, int&, int&, float);
+      void Multiply(mapnik::image_data_32&, int&, int&, float);
+      void Multiply2(mapnik::image_data_32&, int&, int&, float);
+      void Screen(mapnik::image_data_32&, int&, int&, float);
+      
+      void set_rectangle(int&, int&, mapnik::image_data_32&);
+      void set_rectangle_alpha2(mapnik::image_data_32&, int&, int&, float);
+    };
+    
+    PixMap & getPixMap();// gets the pixmap for writing
+    
+  };
+
+
+  class pattern_source : private boost::noncopyable
+  {
+  public:
+    pattern_source(image_data_32 const& pattern)
+      : pattern_(pattern) {}
+    
     unsigned int width() const
     {
-	return pattern_.width();
+      return pattern_.width();
     }
     unsigned int height() const
     {
-	return pattern_.height();
+      return pattern_.height();
     }
     agg::rgba8 pixel(int x, int y) const
     {
-	unsigned c = pattern_(x,y);
-	return agg::rgba8(c & 0xff,
-			  (c >> 8) & 0xff,
-			  (c >> 16) & 0xff,
-			  (c >> 24) & 0xff);
+      unsigned c = pattern_(x,y);
+      return agg::rgba8(c & 0xff,
+			(c >> 8) & 0xff,
+			(c >> 16) & 0xff,
+			(c >> 24) & 0xff);
     }
-private:
+  private:
     image_data_32 const& pattern_;
-};
-
-struct rasterizer :  agg::rasterizer_scanline_aa<>, boost::noncopyable {};
-
-template <typename T>
-agg_renderer<T>::agg_renderer(Map const& m, T & pixmap, unsigned offset_x, unsigned offset_y)
+  };
+  
+  struct rasterizer :  agg::rasterizer_scanline_aa<>, boost::noncopyable {};
+  
+  template <typename T>
+  agg_renderer<T>::agg_renderer(Map const& m, T & pixmap, unsigned offset_x, unsigned offset_y)
     : feature_style_processor<agg_renderer>(m),
       pixmap_(pixmap),
       width_(pixmap_.width()),
@@ -201,7 +238,7 @@ void agg_renderer<T>::process(polygon_symbolizer const& sym,
 	geometry2d const& geom=feature.get_geometry(i);
 	if (geom.num_points() > 2)
 	{
-            path_type path(t_,geom,prj_trans);
+            path_type path(output.transform(),geom,prj_trans);
             ras_ptr->add_path(path);
 	}
     }
@@ -218,112 +255,6 @@ bool y_order(segment_t const& first,segment_t const& second)
     double miny1 = std::min(second.get<1>(),second.get<3>());
     return  miny0 > miny1;
 }
-
-// template <typename T> 
-// void agg_renderer<T>::process<building_symbolizer> (building_symbolizer const& sym,
-// 			      Feature const& feature,
-// 			      proj_transform const& prj_trans)
-// {
-//     typedef  coord_transform2<CoordTransform,geometry2d> path_type;
-//     typedef  coord_transform3<CoordTransform,geometry2d> path_type_roof;
-//     typedef agg::renderer_base<agg::pixfmt_rgba32_plain> ren_base;
-//     typedef agg::renderer_scanline_aa_solid<ren_base> renderer;
-
-//     agg::rendering_buffer buf(pixmap_.raw_data(),width_,height_, width_ * 4);
-//     agg::pixfmt_rgba32_plain pixf(buf);
-//     ren_base renb(pixf);
-
-//     color const& fill_  = sym.get_fill();
-//     unsigned r=fill_.red();
-//     unsigned g=fill_.green();
-//     unsigned b=fill_.blue();
-//     unsigned a=fill_.alpha();
-//     renderer ren(renb);
-//     agg::scanline_u8 sl;
-
-//     ras_ptr->reset();
-//     double height = 0.7071 * sym.height(); // height in meters
-
-//     for (unsigned i=0;i<feature.num_geometries();++i)
-//     {
-// 	geometry2d const& geom = feature.get_geometry(i);
-// 	if (geom.num_points() > 2)
-// 	{
-//             boost::scoped_ptr<geometry2d> frame(new line_string_impl);
-//             boost::scoped_ptr<geometry2d> roof(new polygon_impl);
-//             std::deque<segment_t> face_segments;
-//             double x0(0);
-//             double y0(0);
-//             unsigned cm = geom.vertex(&x0,&y0);
-//             for (unsigned j=1;j<geom.num_points();++j)
-//             {
-// 		double x,y;
-// 		cm = geom.vertex(&x,&y);
-// 		if (cm == SEG_MOVETO)
-// 		{
-// 		    frame->move_to(x,y);
-// 		}
-// 		else if (cm == SEG_LINETO)
-// 		{
-// 		    frame->line_to(x,y);
-// 		}
-// 		if (j!=0)
-// 		{
-// 		    face_segments.push_back(segment_t(x0,y0,x,y));
-// 		}
-// 		x0 = x;
-// 		y0 = y;
-//             }
-//             std::sort(face_segments.begin(),face_segments.end(), y_order);
-//             std::deque<segment_t>::const_iterator itr=face_segments.begin();
-//             for (;itr!=face_segments.end();++itr)
-//             {
-// 		boost::scoped_ptr<geometry2d> faces(new polygon_impl);
-// 		faces->move_to(itr->get<0>(),itr->get<1>());
-// 		faces->line_to(itr->get<2>(),itr->get<3>());
-// 		faces->line_to(itr->get<2>(),itr->get<3>() + height);
-// 		faces->line_to(itr->get<0>(),itr->get<1>() + height);
-
-// 		path_type faces_path (t_,*faces,prj_trans);
-// 		ras_ptr->add_path(faces_path);
-// 		ren.color(agg::rgba8(int(r*0.8), int(g*0.8), int(b*0.8), int(a * sym.get_opacity())));
-// 		agg::render_scanlines(*ras_ptr, sl, ren);
-// 		ras_ptr->reset();
-
-// 		frame->move_to(itr->get<0>(),itr->get<1>());
-// 		frame->line_to(itr->get<0>(),itr->get<1>()+height);
-//             }
-
-//             geom.rewind(0);
-//             for (unsigned j=0;j<geom.num_points();++j)
-//             {
-// 		double x,y;
-// 		unsigned cm = geom.vertex(&x,&y);
-// 		if (cm == SEG_MOVETO)
-// 		{
-// 		    frame->move_to(x,y+height);
-// 		    roof->move_to(x,y+height);
-// 		}
-// 		else if (cm == SEG_LINETO)
-// 		{
-// 		    frame->line_to(x,y+height);
-// 		    roof->line_to(x,y+height);
-// 		}
-//             }
-//             path_type path(t_,*frame,prj_trans);
-//             agg::conv_stroke<path_type>  stroke(path);
-//             ras_ptr->add_path(stroke);
-//             ren.color(agg::rgba8(128, 128, 128, int(255 * sym.get_opacity())));
-//             agg::render_scanlines(*ras_ptr, sl, ren);
-//             ras_ptr->reset();
-
-//             path_type roof_path (t_,*roof,prj_trans);
-//             ras_ptr->add_path(roof_path);
-//             ren.color(agg::rgba8(r, g, b, int(a * sym.get_opacity())));
-//             agg::render_scanlines(*ras_ptr, sl, ren);
-// 	}
-//     }
-// }
 
 // template <typename T>
 // void agg_renderer<T>::process(line_symbolizer const& sym,
@@ -355,7 +286,7 @@ bool y_order(segment_t const& first,segment_t const& second)
 // 	geometry2d const& geom = feature.get_geometry(i);
 // 	if (geom.num_points() > 1)
 // 	{
-//             path_type path(t_,geom,prj_trans);
+//             path_type path(output.transform,geom,prj_trans);
 
 //             if (stroke_.has_dash())
 //             {
@@ -532,7 +463,7 @@ bool y_order(segment_t const& first,segment_t const& second)
 // 		geometry2d const& geom = feature.get_geometry(i);
 // 		if (geom.num_points() > 0 )
 // 		{
-// 		    path_type path(t_,geom,prj_trans);
+// 		    path_type path(output.transform,geom,prj_trans);
 
 // 		    label_placement_enum how_placed = sym.get_label_placement();
 // 		    if (how_placed == POINT_PLACEMENT || how_placed == VERTEX_PLACEMENT)
@@ -657,7 +588,7 @@ bool y_order(segment_t const& first,segment_t const& second)
 // 	geometry2d const& geom = feature.get_geometry(i);
 // 	if (geom.num_points() > 1)
 // 	{
-//             path_type path(t_,geom,prj_trans);
+//             path_type path(output.transform,geom,prj_trans);
 //             ras.add_path(path);
 // 	}
 //     }
@@ -709,7 +640,7 @@ bool y_order(segment_t const& first,segment_t const& second)
 //     unsigned num_geometries = feature.num_geometries();
 //     if (num_geometries>0)
 //     {
-// 	path_type path(t_,feature.get_geometry(0),prj_trans);
+// 	path_type path(output.transform,feature.get_geometry(0),prj_trans);
 // 	path.vertex(&x0,&y0);
 //     }
 //     unsigned offset_x = unsigned(width_-x0);
@@ -721,68 +652,13 @@ bool y_order(segment_t const& first,segment_t const& second)
 // 	geometry2d const& geom = feature.get_geometry(i);
 // 	if (geom.num_points() > 2)
 // 	{
-// 	    path_type path(t_,geom,prj_trans);
+// 	    path_type path(output.transform,geom,prj_trans);
 // 	    ras_ptr->add_path(path);
 // 	}
 //     }
 //     agg::render_scanlines(*ras_ptr, sl, rp);
 // }
 
-// template <typename T>
-// void agg_renderer<T>::process(raster_symbolizer const& sym,
-// 			      Feature const& feature,
-// 			      proj_transform const& prj_trans)
-// {
-//     raster_ptr const& raster=feature.get_raster();
-//     if (raster)
-//     {
-// 	box2d<double> ext=t_.forward(raster->ext_);
-// 	image_data_32 target(int(ceil(ext.width())),int(ceil(ext.height())));
-// 	int start_x = int(ext.minx()+0.5);
-// 	int start_y = int(ext.miny()+0.5);
-	
-// 	if (sym.get_scaling() == "fast") {
-// 	    scale_image<image_data_32>(target,raster->data_);
-// 	} else if (sym.get_scaling() == "bilinear"){
-// 	    scale_image_bilinear<image_data_32>(target,raster->data_);
-// 	} else if (sym.get_scaling() == "bilinear8"){
-// 	    scale_image_bilinear8<image_data_32>(target,raster->data_);
-// 	} else {
-// 	    scale_image<image_data_32>(target,raster->data_);
-// 	}
-	
-// 	if (sym.get_mode() == "normal"){
-// 	    if (sym.get_opacity() == 1.0) {
-// 		pixmap_.set_rectangle(start_x,start_y,target);
-// 	    } else {
-// 		pixmap_.set_rectangle_alpha2(target,start_x,start_y, sym.get_opacity());
-// 	    }
-// 	} else if (sym.get_mode() == "grain_merge"){
-// 	    pixmap_.template merge_rectangle<MergeGrain> (target,start_x,start_y, sym.get_opacity());
-// 	} else if (sym.get_mode() == "grain_merge2"){
-// 	    pixmap_.template merge_rectangle<MergeGrain2> (target,start_x,start_y, sym.get_opacity());
-// 	} else if (sym.get_mode() == "multiply"){
-// 	    pixmap_.template merge_rectangle<Multiply> (target,start_x,start_y, sym.get_opacity());
-// 	} else if (sym.get_mode() == "multiply2"){
-// 	    pixmap_.template merge_rectangle<Multiply2> (target,start_x,start_y, sym.get_opacity());
-// 	} else if (sym.get_mode() == "divide"){
-// 	    pixmap_.template merge_rectangle<Divide> (target,start_x,start_y, sym.get_opacity());
-// 	} else if (sym.get_mode() == "divide2"){
-// 	    pixmap_.template merge_rectangle<Divide2> (target,start_x,start_y, sym.get_opacity());
-// 	} else if (sym.get_mode() == "screen"){
-// 	    pixmap_.template merge_rectangle<Screen> (target,start_x,start_y, sym.get_opacity());
-// 	} else if (sym.get_mode() == "hard_light"){
-// 	    pixmap_.template merge_rectangle<HardLight> (target,start_x,start_y, sym.get_opacity());
-// 	} else {
-// 	    if (sym.get_opacity() == 1.0){
-// 		pixmap_.set_rectangle(start_x,start_y,target);
-// 	    } else {
-// 		pixmap_.set_rectangle_alpha2(target,start_x,start_y, sym.get_opacity());
-// 	    }
-// 	}
-// 	// TODO: other modes? (add,diff,sub,...)
-//     }
-// }
 
 // template <typename T>
 // void agg_renderer<T>::process(markers_symbolizer const& sym,
@@ -810,7 +686,7 @@ bool y_order(segment_t const& first,segment_t const& second)
 // 	geometry2d const& geom=feature.get_geometry(i);
 // 	if (geom.num_points() > 1)
 // 	{
-//             path_type path(t_,geom,prj_trans);
+//             path_type path(output.transform,geom,prj_trans);
 
 //             agg::conv_dash <path_type> dash(path);
 //             dash.add_dash(20.0,200.0);
@@ -881,7 +757,7 @@ bool y_order(segment_t const& first,segment_t const& second)
 // 		geometry2d const& geom = feature.get_geometry(i);
 // 		if (geom.num_points() > 0) // don't bother with empty geometries
 // 		{
-// 		    path_type path(t_,geom,prj_trans);
+// 		    path_type path(output.transform,geom,prj_trans);
 // 		    placement text_placement(info,sym);
 // 		    text_placement.avoid_edges = sym.get_avoid_edges();
 // 		    if (sym.get_label_placement() == POINT_PLACEMENT)
@@ -949,7 +825,7 @@ bool y_order(segment_t const& first,segment_t const& second)
 // 	geometry2d const& geom=feature.get_geometry(i);
 // 	if (geom.num_points() > 2)
 // 	{
-//             path_type path(t_,geom,prj_trans);
+//             path_type path(output.transform(),geom,prj_trans);
 //             ras_ptr->add_path(path);
 // 	}
 //     }
@@ -968,18 +844,8 @@ bool y_order(segment_t const& first,segment_t const& second)
 
   }
 
-typedef  coord_transform2<CoordTransform,geometry2d> path_type;
 
-class TRenderWrapper
-{
-public: 
-  TRenderWrapper( feature_style_processor_base *);
-  void reset();
-  void add_path(const path_type & path);
-  void color(const color & color, float alpha); 
-  void render();
-  CoordTransform const & transform();
-};
+
 
   void mapnik::polygon_symbolizer::symbol_dispatch (
 				    feature_style_processor_base *  output_,
@@ -987,7 +853,7 @@ public:
 				    proj_transform const& prj_trans) const 
   {
 
-    typedef  coord_transform2<CoordTransform,geometry2d> path_type;
+
     color const& fill_ = get_fill();
     TRenderWrapper output(output_);
     output.reset();
@@ -1000,25 +866,347 @@ public:
 	  output.add_path(path);
 	}
     }
-    output.color(fill_,get_opacity());
+    output.set_color(fill_,get_opacity());
     output.render();
 
   }
 
   void raster_symbolizer::symbol_dispatch (
-				    feature_style_processor_base *  output,
-				    Feature const& f, 
+				    feature_style_processor_base *  output_,
+				    Feature const& feature, 
 				    proj_transform const& prj_trans) const 
   {
+// template <typename T>
+// void agg_renderer<T>::process(raster_symbolizer const& sym,
+// 			      Feature const& feature,
+// 			      proj_transform const& prj_trans)
+// {
+//     raster_ptr const& raster=feature.get_raster();
+//     if (raster)
+//     {
+// 	box2d<double> ext=t_.forward(raster->ext_);
+// 	image_data_32 target(int(ceil(ext.width())),int(ceil(ext.height())));
+// 	int start_x = int(ext.minx()+0.5);
+// 	int start_y = int(ext.miny()+0.5);
+	
+// 	if (sym.get_scaling() == "fast") {
+// 	    scale_image<image_data_32>(target,raster->data_);
+// 	} else if (sym.get_scaling() == "bilinear"){
+// 	    scale_image_bilinear<image_data_32>(target,raster->data_);
+// 	} else if (sym.get_scaling() == "bilinear8"){
+// 	    scale_image_bilinear8<image_data_32>(target,raster->data_);
+// 	} else {
+// 	    scale_image<image_data_32>(target,raster->data_);
+// 	}
+	
+// 	if (sym.get_mode() == "normal"){
+// 	    if (sym.get_opacity() == 1.0) {
+// 		pixmap_.set_rectangle(start_x,start_y,target);
+// 	    } else {
+// 		pixmap_.set_rectangle_alpha2(target,start_x,start_y, sym.get_opacity());
+// 	    }
+// 	} else if (sym.get_mode() == "grain_merge"){
+// 	    pixmap_.template merge_rectangle<MergeGrain> (target,start_x,start_y, sym.get_opacity());
+// 	} else if (sym.get_mode() == "grain_merge2"){
+// 	    pixmap_.template merge_rectangle<MergeGrain2> (target,start_x,start_y, sym.get_opacity());
+// 	} else if (sym.get_mode() == "multiply"){
+// 	    pixmap_.template merge_rectangle<Multiply> (target,start_x,start_y, sym.get_opacity());
+// 	} else if (sym.get_mode() == "multiply2"){
+// 	    pixmap_.template merge_rectangle<Multiply2> (target,start_x,start_y, sym.get_opacity());
+// 	} else if (sym.get_mode() == "divide"){
+// 	    pixmap_.template merge_rectangle<Divide> (target,start_x,start_y, sym.get_opacity());
+// 	} else if (sym.get_mode() == "divide2"){
+// 	    pixmap_.template merge_rectangle<Divide2> (target,start_x,start_y, sym.get_opacity());
+// 	} else if (sym.get_mode() == "screen"){
+// 	    pixmap_.template merge_rectangle<Screen> (target,start_x,start_y, sym.get_opacity());
+// 	} else if (sym.get_mode() == "hard_light"){
+// 	    pixmap_.template merge_rectangle<HardLight> (target,start_x,start_y, sym.get_opacity());
+// 	} else {
+// 	    if (sym.get_opacity() == 1.0){
+// 		pixmap_.set_rectangle(start_x,start_y,target);
+// 	    } else {
+// 		pixmap_.set_rectangle_alpha2(target,start_x,start_y, sym.get_opacity());
+// 	    }
+// 	}
+// 	// TODO: other modes? (add,diff,sub,...)
+//     }
+// }
+
+    TRenderWrapper output(output_);
+    raster_ptr const& raster=feature.get_raster();
+    TRenderWrapper::PixMap pixmap_ = output.getPixMap();
+
+    if (raster)
+      {
+	box2d<double> ext=output.transform().forward(raster->ext_);
+	image_data_32 target(int(ceil(ext.width())),int(ceil(ext.height())));
+	int start_x = int(ext.minx()+0.5);
+	int start_y = int(ext.miny()+0.5);
+	
+	if (get_scaling() == "fast") {
+	  scale_image<image_data_32>(target,raster->data_);
+	} else if (get_scaling() == "bilinear"){
+	  scale_image_bilinear<image_data_32>(target,raster->data_);
+	} else if (get_scaling() == "bilinear8"){
+	    scale_image_bilinear8<image_data_32>(target,raster->data_);
+	} else {
+	    scale_image<image_data_32>(target,raster->data_);
+	}
+	
+	if (get_mode() == "normal"){
+	    if (get_opacity() == 1.0) {
+	      pixmap_.set_rectangle(start_x,start_y,target);
+	    } else {
+		pixmap_.set_rectangle_alpha2(target,start_x,start_y, get_opacity());
+	    }
+	} else if (get_mode() == "grain_merge"){
+	    pixmap_.MergeGrain (target,start_x,start_y, get_opacity());
+	} else if (get_mode() == "grain_merge2"){
+	    pixmap_.MergeGrain2 (target,start_x,start_y, get_opacity());
+	} else if (get_mode() == "multiply"){
+	    pixmap_.Multiply (target,start_x,start_y, get_opacity());
+	} else if (get_mode() == "multiply2"){
+	    pixmap_.Multiply2 (target,start_x,start_y, get_opacity());
+	} else if (get_mode() == "divide"){
+	    pixmap_.Divide (target,start_x,start_y, get_opacity());
+	} else if (get_mode() == "divide2"){
+	    pixmap_.Divide2 (target,start_x,start_y, get_opacity());
+	} else if (get_mode() == "screen"){
+	    pixmap_.Screen (target,start_x,start_y, get_opacity());
+	} else if (get_mode() == "hard_light"){
+	    pixmap_.HardLight (target,start_x,start_y, get_opacity());
+	} else {
+	    if (get_opacity() == 1.0){
+		pixmap_.set_rectangle(start_x,start_y,target);
+	    } else {
+		pixmap_.set_rectangle_alpha2(target,start_x,start_y, get_opacity());
+	    }
+	}
+	// TODO: other modes? (add,diff,sub,...)
+    }
 
   }
 
 void
 mapnik::building_symbolizer::symbol_dispatch (
-				    feature_style_processor_base *  output,
-				    Feature const& f, 
+				    feature_style_processor_base *  output_,
+				    Feature const& feature, 
 				    proj_transform const& prj_trans) const 
   {
+
+
+// template <typename T> 
+// void agg_renderer<T>::process<building_symbolizer> (building_symbolizer const& sym,
+// 			      Feature const& feature,
+// 			      proj_transform const& prj_trans)
+// {
+//     typedef  coord_transform2<CoordTransform,geometry2d> path_type;
+//     typedef  coord_transform3<CoordTransform,geometry2d> path_type_roof;
+//     typedef agg::renderer_base<agg::pixfmt_rgba32_plain> ren_base;
+//     typedef agg::renderer_scanline_aa_solid<ren_base> renderer;
+
+//     agg::rendering_buffer buf(pixmap_.raw_data(),width_,height_, width_ * 4);
+//     agg::pixfmt_rgba32_plain pixf(buf);
+//     ren_base renb(pixf);
+
+//     color const& fill_  = sym.get_fill();
+//     unsigned r=fill_.red();
+//     unsigned g=fill_.green();
+//     unsigned b=fill_.blue();
+//     unsigned a=fill_.alpha();
+//     renderer ren(renb);
+//     agg::scanline_u8 sl;
+
+//     ras_ptr->reset();
+//     double height = 0.7071 * sym.height(); // height in meters
+
+//     for (unsigned i=0;i<feature.num_geometries();++i)
+//     {
+// 	geometry2d const& geom = feature.get_geometry(i);
+// 	if (geom.num_points() > 2)
+// 	{
+//             boost::scoped_ptr<geometry2d> frame(new line_string_impl);
+//             boost::scoped_ptr<geometry2d> roof(new polygon_impl);
+//             std::deque<segment_t> face_segments;
+//             double x0(0);
+//             double y0(0);
+//             unsigned cm = geom.vertex(&x0,&y0);
+//             for (unsigned j=1;j<geom.num_points();++j)
+//             {
+// 		double x,y;
+// 		cm = geom.vertex(&x,&y);
+// 		if (cm == SEG_MOVETO)
+// 		{
+// 		    frame->move_to(x,y);
+// 		}
+// 		else if (cm == SEG_LINETO)
+// 		{
+// 		    frame->line_to(x,y);
+// 		}
+// 		if (j!=0)
+// 		{
+// 		    face_segments.push_back(segment_t(x0,y0,x,y));
+// 		}
+// 		x0 = x;
+// 		y0 = y;
+//             }
+//             std::sort(face_segments.begin(),face_segments.end(), y_order);
+//             std::deque<segment_t>::const_iterator itr=face_segments.begin();
+//             for (;itr!=face_segments.end();++itr)
+//             {
+// 		boost::scoped_ptr<geometry2d> faces(new polygon_impl);
+// 		faces->move_to(itr->get<0>(),itr->get<1>());
+// 		faces->line_to(itr->get<2>(),itr->get<3>());
+// 		faces->line_to(itr->get<2>(),itr->get<3>() + height);
+// 		faces->line_to(itr->get<0>(),itr->get<1>() + height);
+
+// 		path_type faces_path (output.transform(),*faces,prj_trans);
+// 		ras_ptr->add_path(faces_path);
+// 		ren.color(agg::rgba8(int(r*0.8), int(g*0.8), int(b*0.8), int(a * sym.get_opacity())));
+// 		agg::render_scanlines(*ras_ptr, sl, ren);
+// 		ras_ptr->reset();
+
+// 		frame->move_to(itr->get<0>(),itr->get<1>());
+// 		frame->line_to(itr->get<0>(),itr->get<1>()+height);
+//             }
+
+//             geom.rewind(0);
+//             for (unsigned j=0;j<geom.num_points();++j)
+//             {
+// 		double x,y;
+// 		unsigned cm = geom.vertex(&x,&y);
+// 		if (cm == SEG_MOVETO)
+// 		{
+// 		    frame->move_to(x,y+height);
+// 		    roof->move_to(x,y+height);
+// 		}
+// 		else if (cm == SEG_LINETO)
+// 		{
+// 		    frame->line_to(x,y+height);
+// 		    roof->line_to(x,y+height);
+// 		}
+//             }
+//             path_type path(output.transform,*frame,prj_trans);
+//             agg::conv_stroke<path_type>  stroke(path);
+//             ras_ptr->add_path(stroke);
+//             ren.color(agg::rgba8(128, 128, 128, int(255 * sym.get_opacity())));
+//             agg::render_scanlines(*ras_ptr, sl, ren);
+//             ras_ptr->reset();
+
+//             path_type roof_path (output.transform,*roof,prj_trans);
+//             ras_ptr->add_path(roof_path);
+//             ren.color(agg::rgba8(r, g, b, int(a * sym.get_opacity())));
+//             agg::render_scanlines(*ras_ptr, sl, ren);
+// 	}
+//     }
+// }
+
+
+// template <typename T> 
+// void agg_renderer<T>::process<building_symbolizer> (building_symbolizer const& sym,
+// 			      Feature const& feature,
+// 			      proj_transform const& prj_trans)
+// {
+    typedef  coord_transform2<CoordTransform,geometry2d> path_type;
+    typedef  coord_transform3<CoordTransform,geometry2d> path_type_roof;
+    TRenderWrapper output(output_);
+    //    typedef agg::renderer_base<agg::pixfmt_rgba32_plain> ren_base;
+    //    typedef agg::renderer_scanline_aa_solid<ren_base> renderer;
+    //agg::rendering_buffer buf(pixmap_.raw_data(),width_,height_, width_ * 4);
+    //agg::pixfmt_rgba32_plain pixf(buf);
+    //ren_base renb(pixf);
+
+    color const& fill_  = get_fill();
+    //    unsigned r=fill_.red();
+    //unsigned g=fill_.green();
+    //unsigned b=fill_.blue();
+    //unsigned a=fill_.alpha();
+    //renderer ren(renb);
+    //agg::scanline_u8 sl;
+
+    output.reset();
+    double dheight = 0.7071 * height(); // height in meters
+
+    for (unsigned i=0;i<feature.num_geometries();++i)
+    {
+	geometry2d const& geom = feature.get_geometry(i);
+	if (geom.num_points() > 2)
+	{
+            boost::scoped_ptr<geometry2d> frame(new line_string_impl);
+            boost::scoped_ptr<geometry2d> roof(new polygon_impl);
+            std::deque<segment_t> face_segments;
+            double x0(0);
+            double y0(0);
+            unsigned cm = geom.vertex(&x0,&y0);
+            for (unsigned j=1;j<geom.num_points();++j)
+            {
+		double x,y;
+		cm = geom.vertex(&x,&y);
+		if (cm == SEG_MOVETO)
+		{
+		    frame->move_to(x,y);
+		}
+		else if (cm == SEG_LINETO)
+		{
+		    frame->line_to(x,y);
+		}
+		if (j!=0)
+		{
+		    face_segments.push_back(segment_t(x0,y0,x,y));
+		}
+		x0 = x;
+		y0 = y;
+            }
+            std::sort(face_segments.begin(),face_segments.end(), y_order);
+            std::deque<segment_t>::const_iterator itr=face_segments.begin();
+            for (;itr!=face_segments.end();++itr)
+            {
+		boost::scoped_ptr<geometry2d> faces(new polygon_impl);
+		faces->move_to(itr->get<0>(),itr->get<1>());
+		faces->line_to(itr->get<2>(),itr->get<3>());
+		faces->line_to(itr->get<2>(),itr->get<3>() + dheight);
+		faces->line_to(itr->get<0>(),itr->get<1>() + dheight);
+
+		path_type faces_path (output.transform(),*faces,prj_trans);
+		output.add_path(faces_path);
+		output.set_color(fill_ , 0.8, get_opacity());
+		output.render();
+		output.reset();
+
+		frame->move_to(itr->get<0>(),itr->get<1>());
+		frame->line_to(itr->get<0>(),itr->get<1>()+dheight);
+            }
+
+            geom.rewind(0);
+            for (unsigned j=0;j<geom.num_points();++j)
+            {
+		double x,y;
+		unsigned cm = geom.vertex(&x,&y);
+		if (cm == SEG_MOVETO)
+		{
+		    frame->move_to(x,y+dheight);
+		    roof->move_to(x,y+dheight);
+		}
+		else if (cm == SEG_LINETO)
+		{
+		    frame->line_to(x,y+dheight);
+		    roof->line_to(x,y+dheight);
+		}
+            }
+            path_type path(output.transform(),*frame,prj_trans);
+            
+            output.add_path(path);
+            output.set_color(128, 128, 128, int(255 * get_opacity()));
+            output.render();
+            output.reset();
+
+            path_type roof_path (output.transform(),*roof,prj_trans);
+            output.add_path(roof_path);
+            output.set_color(fill_,get_opacity());
+            output.render();
+	}
+    }
+    
 
   }
 
